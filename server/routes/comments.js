@@ -11,8 +11,6 @@ const log = console.log;
 /* MODULE INITS */
 const express = require('express');
     const router = express.Router();
-    router.use(express.json());
-    router.use(express.urlencoded({extended: false}));
 // Database 
 const db = require('../db.js');
 
@@ -24,7 +22,7 @@ const middleWare = async (req, res, next) => {
     res.json({
         status: "success",
         message: req.get('host') + req.originalUrl,
-        payload: response
+        body: response
     });
   } catch (error) {
     log(error);
@@ -37,7 +35,7 @@ const middleWare = async (req, res, next) => {
 
 
 /* ROUTES */
-router.get('/', middleWare);
+router.get("/", middleWare);
 
 
 module.exports = router;
