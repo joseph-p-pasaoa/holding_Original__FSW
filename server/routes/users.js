@@ -37,7 +37,7 @@ const singleUser = async (req, res) => {
   try {
     let id = parseInt(req.params.id);
     console.log(id);
-    let user = await db.any(`SELECT * FROM users WHERE user_id = '${id}'`);
+    let user = await db.any(`SELECT * FROM users WHERE id = '${id}'`);
     console.log(user)
     res.json({
       payload: user,
@@ -72,7 +72,7 @@ const addUser = async (req, res) => {
 const removeUser = async (req, res) => {
   try {
     let id = parseInt(req.params.id);
-    await db.none(`DELETE FROM users WHERE user_id = '${id}'`);
+    await db.none(`DELETE FROM users WHERE id = '${id}'`);
     res.json({
       message: `User was successfully deleted!`
     });
