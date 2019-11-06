@@ -12,7 +12,7 @@ CREATE DATABASE holding_db;
 
 CREATE TABLE users
 (
-   id SERIAL PRIMARY KEY,
+   user_id SERIAL PRIMARY KEY,
    firstname VARCHAR(36),
    lastname VARCHAR(36),
    age INT
@@ -21,14 +21,14 @@ CREATE TABLE users
 CREATE TABLE posts
 (
    post_id SERIAL PRIMARY KEY,
-   poster_id INT REFERENCES users(id) ON DELETE CASCADE,
+   poster_id INT REFERENCES users(user_id) ON DELETE CASCADE,
    body TEXT
 );
 
 CREATE TABLE comments
 (
    comment_id SERIAL PRIMARY KEY,
-   commenter_id INT REFERENCES users(id) ON DELETE CASCADE,
+   commenter_id INT REFERENCES users(user_id) ON DELETE CASCADE,
    post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
    body TEXT
 );
@@ -36,14 +36,14 @@ CREATE TABLE comments
 CREATE TABLE likes
 (
    like_id SERIAL PRIMARY KEY,
-   liker_id INT REFERENCES users(id) ON DELETE CASCADE,
+   liker_id INT REFERENCES users(user_id) ON DELETE CASCADE,
    post_id INT REFERENCES posts(post_id) ON DELETE CASCADE
 );
 
 CREATE TABLE albums
 (
    album_id SERIAL PRIMARY KEY,
-   creator_id INT REFERENCES users(id) ON DELETE CASCADE,
+   creator_id INT REFERENCES users(user_id) ON DELETE CASCADE,
    title TEXT
 );
 
