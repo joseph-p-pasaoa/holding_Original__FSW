@@ -18,12 +18,21 @@ const db = require('../db.js');
 
 
 /* MIDDLEWARE */
-const middleWare = (req, res, next) => {
-  res.json({
-    status: "success/fail",
-    message: "<description>",
-    payload: "<data object goes here>"
-  });
+const middleWare = async (req, res, next) => {
+  try {
+    let response = await db.any("SELECT * FROM users;");
+    res.json({
+        status: "success",
+        message: req.get('host') + req.originalUrl,
+        payload: response
+    });
+  } catch (error) {
+    log(error);
+    res.status(500).json({
+        status: "fail",
+        message: "Error: something went wrong"
+    });
+  }
 }
 
 
