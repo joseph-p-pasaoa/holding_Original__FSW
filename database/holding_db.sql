@@ -44,14 +44,14 @@ CREATE TABLE albums
 (
    album_id SERIAL PRIMARY KEY,
    creator_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-   title VARCHAR
+   title VARCHAR(140)
 );
 
 CREATE TABLE photos
 (
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
-   title VARCHAR,
+   title VARCHAR(140),
    pic_url TEXT
 );
 
