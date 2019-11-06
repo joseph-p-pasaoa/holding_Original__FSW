@@ -44,14 +44,14 @@ CREATE TABLE albums
 (
    album_id SERIAL PRIMARY KEY,
    creator_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-   title TEXT
+   title VARCHAR
 );
 
 CREATE TABLE photos
 (
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
-   title TEXT,
+   title VARCHAR,
    pic_url TEXT
 );
 
@@ -68,7 +68,7 @@ INSERT INTO posts
    (poster_id, body)
 VALUES(1, 'Stuck in this castle. AGAIN.'),
    (2, 'People say I don''t talk much. I guess they don''t follow me on holDING!'),
-   (3, 'JUST ONE MORE PEICE OF THE TRIFORCE, AND I WILL BE UNSTOPPABLE'),
+   (3, 'JUST ONE MORE PIECE OF THE TRIFORCE, AND I WILL BE UNSTOPPABLE'),
    (3, 'YES I WANT CHICKEN NUGGETS, MOM'),
    (3, 'HOW DO YOU DELETE A DING ON THIS SITE?'),
    (4, 'Apples apples apples. Carrot?');
@@ -115,7 +115,7 @@ VALUES(1, 'Nice drawbridge', 'https://www.google.com/url?sa=i&source=images&cd=&
    (4, 'Apple', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjd_5_vtdblAhXhhOAKHd4ZAuEQjRx6BAgBEAQ&url=https%3A%2F%2Ffood.ndtv.com%2Ffood-drinks%2Fapple-fruit-benefits-8-incredible-health-benefits-of-apple-that-you-may-not-have-known-1761603&psig=AOvVaw2HjZwZOV9BMdgtONEY4MKX&ust=1573158391905454'),
    (4, 'Carrot', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiEy5aIttblAhVOq1kKHRY8CpwQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.economist.com%2Fthe-economist-explains%2F2018%2F09%2F26%2Fhow-did-carrots-become-orange&psig=AOvVaw0vCohKjPbPM7ThJgJ5nykx&ust=1573158446476538');
 
-
+/* QUERIES */
 
 SELECT *
 FROM users;
