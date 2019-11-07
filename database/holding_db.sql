@@ -52,7 +52,7 @@ CREATE TABLE photos
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
    title VARCHAR(140),
-   pic_url TEXT
+   photo_url TEXT
 );
 
 /* SEED DATA */
@@ -105,8 +105,8 @@ VALUES(1, 'Castle Pics'),
    (4, 'Apples and Carrots');
 
 INSERT INTO photos
-   (album_id, title, pic_url)
-VALUES(1, 'Nice drawbridge', 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwifwKaEtNblAhWvl-AKHW5fB9AQjRx6BAgBEAQ&url=%2Furl%3Fsa%3Di%26source%3Dimages%26cd%3D%26ved%3D2ahUKEwjoyLqAtNblAhWlnOAKHWVpAJwQjRx6BAgBEAQ%26url%3Dhttps%253A%252F%252Fwww.videoblocks.com%252Fvideo%252Fcastle-drawbridge-side-view-mediavel-structures-bridge-lj-ijdk%26psig%3DAOvVaw1YmiCbIrKio08YfzQuZ2lS%26ust%3D1573157898231126&psig=AOvVaw1YmiCbIrKio08YfzQuZ2lS&ust=1573157898231126'),
+   (album_id, title, photo_url)
+VALUES(1, 'Nice drawbridge', ''),
    (1, 'Pretty Parapet', 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiAh_2ztNblAhXnY98KHcCiBcIQjRx6BAgBEAQ&url=https%3A%2F%2Fhavecamerawilltravel.photoshelter.com%2Fimage%2FI0000RzA3rpTNhMM&psig=AOvVaw24p3pHDzj-hjt7TZXI_wq0&ust=1573157974881749'),
    (2, 'This was a big one', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwir-tfQtNblAhVJj1kKHVb5BYMQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.alibaba.com%2Fproduct-detail%2FUnglazed-terracotta-indian-clay-pot_60356071966.html&psig=AOvVaw10a2velX9feI1HK_51CB_N&ust=1573158064002749'),
    (2, 'This one had a rupee inside!', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj1mtrmtNblAhWuxFkKHeHGAKYQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.chairish.com%2Fproduct%2F888050%2Fantique-clay-painted-handled-pot&psig=AOvVaw10a2velX9feI1HK_51CB_N&ust=1573158064002749'),
