@@ -14,28 +14,45 @@ const express = require('express');
 // Database 
 const db = require('../db.js');
 
-
-/* MIDDLEWARE */
-const middleWare = async (req, res, next) => {
+router.get("/:owner_id", async (req, res) => {
   try {
-    let response = await db.any("SELECT * FROM users;");
+    let ownerId = parseInt(req.params.owner_id)
+    let getQuery = `
+    SELECT *
+    FROM albums
+    WHERE creator_id = $1
+    `
+    let getAllAlbums = await db.any(getQuery, ownerId)
     res.json({
-        status: "success",
-        message: req.get('host') + req.originalUrl,
-        body: response
-    });
+      payload: getAllAlbums,
+      message: "Avast! Albums off the starboard side!"
+    })
   } catch (error) {
-    log(error);
-    res.status(500).json({
-        status: "fail",
-        message: "Error: something went wrong"
-    });
+    res.json({
+      message: "Oops! All Errors!"
+    })
   }
-}
+})
 
-
-/* ROUTES */
-router.get("/", middleWare);
+router.post("/:owner_id", async (req, res) => {
+  try {
+    let title = req.body.title
+    let owner = parseInt(req.params.owner_id)
+    let postQuery = `
+    INSERT INTO albums (creator_id, title)
+    VALUES($1, $2)
+    `
+    let newAlbum = await db.none(postQuery, [owner, title])
+    res.json({
+      payload: `New Album: ${title} - From: ${owner}`,
+      message: "Set sail on a new Album Adventure!"
+    })
+  } catch (error) {
+    res.json({
+      message: "Oops! All Errors!"
+    })
+  }
+})
 
 
 module.exports = router;
