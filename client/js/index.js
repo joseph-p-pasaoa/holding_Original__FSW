@@ -20,5 +20,5 @@ const serverComm = async (method, urlAdds, body) => {
 
 /* POST DOM Loaded Exec */
 document.addEventListener("DOMContentLoaded", () => {
-
+    log('js file connected!');
 });
