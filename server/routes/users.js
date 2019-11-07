@@ -35,12 +35,11 @@ const middleWare = async (req, res, next) => {
 
 const singleUser = async (req, res) => {
   try {
-    let id = parseInt(req.params.id);
-    console.log(id);
-    let user = await db.any(`SELECT * FROM users WHERE user_id = '${id}'`);
-    console.log(user)
+    let selectQuery = `SELECT * FROM users WHERE user_id = $1`
+    let user = await db.any(selectQuery, parseInt(req.params.id))
+
     res.json({
-      payload: user,
+      body: user,
       message: `Here is the user!`
     });
   } catch (error) {
@@ -59,7 +58,7 @@ const addUser = async (req, res) => {
     await db.none(insertQuery, [req.body.firstname, req.body.lastname, req.body.age]);
 
     res.json({
-      payload: req.body,
+      body: req.body,
       message: `User registration was successful!`
     });
   } catch (error) {
@@ -71,8 +70,10 @@ const addUser = async (req, res) => {
 
 const removeUser = async (req, res) => {
   try {
-    let id = parseInt(req.params.id);
-    await db.none(`DELETE FROM users WHERE user_id = '${id}'`);
+
+    let deleteQuery = `DELETE FROM users WHERE user_id = $1`
+    await db.none(deleteQuery, parseInt(req.params.id));
+
     res.json({
       message: `User was successfully deleted!`
     });
