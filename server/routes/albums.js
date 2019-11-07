@@ -31,7 +31,6 @@ router.get("/:owner_id", async (req, res) => {
     res.json({
       message: "Oops! All Errors!"
     })
-    log(error)
   }
 })
 
@@ -52,7 +51,6 @@ router.post("/:owner_id", async (req, res) => {
     res.json({
       message: "Oops! All Errors!"
     })
-    log(error)
   }
 })
 
