@@ -72,10 +72,54 @@ html, body, div#base-grid {
 }
 
 body {
-  /* font-family:  */
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.9em;
 }
 
 h1 {
-	font-size: 3em;
+  font-size: 2em;
 	font-weight: bold;
+	font-family: 'Quicksand', sans-serif;
+}
+
+div#userSimControl {
+  position: fixed;
+  bottom: 15px;
+  right: 41px;
+  z-index: 9001;
+
+  width: 120px;
+  height: 56px;
+
+  background-color: #f9f9f9;
+  border: solid 2px darkorange;
+  border-radius: 16px;
+}
+
+div#userSimControl label {
+  display: block;
+  margin: 5px 0px 0px 12px;
+
+  font-size: 1em;
+}
+
+div#userSimControl label b {
+  font-weight: bold;
+}
+
+div#userSimControl input {
+  height: 18px;
+  padding: 1px 11px 2px 8px;
+  margin: 3px 0px 0px 36px;
+  width: 47px;
+  border-radius: 5px;
+
+  background-color: #ddd;
+
+  font-size: 1em;
+  text-align: right;
+}
+
+div#userSimControl input:focus {
+  outline: none;
 }

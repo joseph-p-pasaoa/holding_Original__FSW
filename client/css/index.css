@@ -6,12 +6,25 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 
 div#base-grid {
   display: grid;
+  grid-template-rows: 2fr 4fr 3fr 1fr;
+  justify-content: center;
+
   background-image: url('../assets/images/Holding_Logo_ALPHA_V2_Cutout_Bell.png');
   background-position: center center;
   background-size: 35%;
   background-repeat: no-repeat;
 }
 
+h1 {
+  grid-row: 3;
+  
+  text-shadow: 2px 1px 1px #444;
+  color: whitesmoke;
+}
+
 span#test {
+  grid-row: 4;
+
+  text-align: center;
   color: green;
 }
