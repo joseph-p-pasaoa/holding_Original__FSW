@@ -2,7 +2,7 @@
 
 ## Developers
 + Douglas MacKrell
-+ Briahana Mauge
++ Briahana Maugé
 + Joseph P. Pasaoa
 + Kathy Puma
 
