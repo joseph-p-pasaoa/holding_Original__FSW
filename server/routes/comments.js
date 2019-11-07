@@ -38,9 +38,19 @@ const middleWare = async (req, res, next) => {
 
 
 const getAllCommentsFromASinglePost =  async(req, res) => {
-  let post_id = req.params.post_id
+
   try {
-    let response = await db.any(`SELECT * FROM comments WHERE post_id = ${post_id}`);
+    let post_id = req.params.post_id
+
+
+
+    let insertQuery =`
+    SELECT body FROM comments 
+    WHERE post_id = $1`
+    let response =   await db.any(insertQuery,[post_id]) 
+
+
+    // let response = await db.any(`SELECT * FROM comments WHERE post_id = ${post_id}`);
     // let response = await db.any(`SELECT body FROM comments WHERE post_id = ${post_id}`);
     res.json({
         status: "success",
@@ -52,6 +62,7 @@ const getAllCommentsFromASinglePost =  async(req, res) => {
       res.json({
           message: "Error. Something went wrong"
       })
+      console.log(error)
   }
 };
 
@@ -90,9 +101,9 @@ const editASinglePost = async(req, res) => {
 
     let insertQuery = `
     UPDATE comments 
-    SET body = ($1)
-    WHERE post_id=${post_id} AND comment_id = ${comment_id}`
-      await db.any(insertQuery,[req.body.body]) 
+    SET body = $1
+    WHERE post_id= $2 AND comment_id = $3`
+      await db.none(insertQuery,[req.body.body,post_id, comment_id ]) 
 
     res.json({
         status: "success",
@@ -115,7 +126,12 @@ const deleteSingleComment=  async(req, res) => {
   try {
     let post_id = parseInt(req.params.post_id)
     let comment_id = parseInt(req.params.comment_id)
-      await db.none(`DELETE FROM comments WHERE post_id= ${post_id} AND comment_id = ${comment_id}`) 
+
+      let insertQuery = `
+      DELETE FROM comments 
+      WHERE post_id= $1 AND comment_id = $2`
+      await db.none(insertQuery,[post_id, comment_id ]) 
+
     res.json({
         status: "success",
         message: `Delete Sucess`,
