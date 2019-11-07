@@ -23,7 +23,12 @@ const db = require('../db.js');
 router.get("/posts/:post_id", async (req, res) => {
   try {
     let postId = parseInt(req.params.post_id)
-    let allLikes = await db.any(`SELECT COUNT(post_id) AS num_of_likes FROM likes WHERE post_id = ${postId}`)
+    let getQuery =`
+    SELECT COUNT(post_id) AS num_of_likes 
+    FROM likes 
+    WHERE post_id = $1
+    `
+    let allLikes = await db.any(getQuery, postId)
     res.json({
         payload: allLikes,
         message: "Yo ho, me hearties! Here be all the likes on all the posts! I'm a pirate server!"
@@ -78,28 +83,5 @@ router.delete("/posts/:post_id/:liker_id", async (req, res) => {
     log(error)
   }
 })
-
-/* MIDDLEWARE */
-const middleWare = async (req, res, next) => {
-  try {
-    let response = await db.any("SELECT * FROM users;");
-    res.json({
-        status: "success",
-        message: req.get('host') + req.originalUrl,
-        body: response
-    });
-  } catch (error) {
-    log(error);
-    res.status(500).json({
-        status: "fail",
-        message: "Error: something went wrong"
-    });
-  }
-}
-
-
-/* ROUTES */
-router.get("/", middleWare);
-
 
 module.exports = router;
