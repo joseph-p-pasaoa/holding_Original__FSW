@@ -4,19 +4,26 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    let makingUserSim = document.createElement('div');
+const initUserSim = () => {
+  let makingUserSim = document.createElement('div');
     makingUserSim.id = "userSimControl";
-    let makingUSLabel = document.createElement('label');
+  let makingUSLabel = document.createElement('label');
     makingUSLabel.for = "userNum";
     makingUSLabel.innerHTML = "<b>user_id</b> sim";
-    let makingUSInput = document.createElement('input');
+  let makingUSInput = document.createElement('input');
     makingUSInput.type = "text";
     makingUSInput.id = "userNum";
     makingUSInput.name = "userNum";
     makingUSInput.value = 1;
-    makingUserSim.append(makingUSLabel, makingUSInput);
-    document.body.appendChild(makingUserSim);
+
+  makingUserSim.append(makingUSLabel, makingUSInput);
+  document.body.appendChild(makingUserSim);
+}
+
+
+/* POST DOM LOAD EXEC */
+document.addEventListener("DOMContentLoaded", () => {
+    initUserSim();
 });
 
 
