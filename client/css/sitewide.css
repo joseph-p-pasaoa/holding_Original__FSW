@@ -74,3 +74,8 @@ html, body, div#base-grid {
 body {
   /* font-family:  */
 }
+
+h1 {
+	font-size: 3em;
+	font-weight: bold;
+}
