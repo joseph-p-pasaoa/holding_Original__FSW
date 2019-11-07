@@ -37,7 +37,6 @@ router.get("/posts/:post_id", async (req, res) => {
     res.json({
         message: "Oops! All Errors!"
     })
-    console.log(error)
 }
 })
 
@@ -58,7 +57,6 @@ router.post("/posts/:post_id/:liker_id", async (req, res) => {
     res.json({
       message:"Oops! All Errors!"
     })
-    log(error)
   }
 })
 
@@ -80,7 +78,6 @@ router.delete("/posts/:post_id/:liker_id", async (req, res) => {
     res.json({
       message:"Oops! All Errors!"
     })
-    log(error)
   }
 })
 
