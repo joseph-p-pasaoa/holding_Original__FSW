@@ -2,7 +2,7 @@
 
 /*
 Server Comments Route | HOLDING Web App
-GROUP 3: Douglas MacKrell, Briahana Mauge, Joseph P. Pasaoa, Kathy Puma
+GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
 
