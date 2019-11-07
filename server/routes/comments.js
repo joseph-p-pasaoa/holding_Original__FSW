@@ -47,7 +47,7 @@ const getAllCommentsFromASinglePost =  async(req, res) => {
     let insertQuery =`
     SELECT body FROM comments 
     WHERE post_id = $1`
-    let response =   await db.any(insertQuery,[post_id]) 
+    let response =   await db.any(insertQuery,post_id) 
 
 
     // let response = await db.any(`SELECT * FROM comments WHERE post_id = ${post_id}`);
@@ -62,7 +62,6 @@ const getAllCommentsFromASinglePost =  async(req, res) => {
       res.json({
           message: "Error. Something went wrong"
       })
-      console.log(error)
   }
 };
 
@@ -116,7 +115,6 @@ const editASinglePost = async(req, res) => {
           message: "Error. Something went wrong"
           
       })
-      console.log(error)
   }
 };
 
@@ -142,7 +140,6 @@ const deleteSingleComment=  async(req, res) => {
       res.json({
           message: "Error. Something went wrong"
       })
-      console.log(error)
   }
 };
 
