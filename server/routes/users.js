@@ -88,7 +88,7 @@ const removeUser = async (req, res) => {
 /* ROUTES */
 router.get("/", middleWare); // get all users
 router.get("/:id", singleUser); //get single user
-router.post("/:id", addUser); // add a user
+router.post("/", addUser); // add a user
 router.delete("/:id", removeUser); // delete a user
 
 
