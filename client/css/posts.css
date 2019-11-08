@@ -9,64 +9,71 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 } */
 
 #tagLine {
-    background-color: goldenrod;
-    text-align: center;
+  background-color: goldenrod;
+  text-align: center;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+#pageName {
+  /*   background-color: lightyellow; */
+  text-align: center;
+  padding: 5px;
+  font-size: 3vw;
+}
+
+a {
+  display: block;
+  font-size: 1.5vw;
+  text-decoration: none;
     padding: 10px;
-    font-weight: bolder;
-  }
-  
-  #pageName {
-    /*   background-color: lightyellow; */
-    text-align: center;
-    padding: 5px;
-    font-size: 3vw;
-  }
-  
-  a {
-    display: block;
-    font-size: 1.5vw;
-    /*   padding: 10px; */
-  }
-  
-  #tableOfContents {
-    width: 10vw;
-    display: block;
-    border: lightgray dashed 3px;
-    /*this will be an invisible border*/
-  }
-  #singlePost{
-    display: block;
-    text-align: center;
-  }
-  
-  #current {
-    font-weight: bolder;
-    background-color: lightblue;
-  }
-  
-  #allPosts{
-    text-align: center;
-    padding: 10px;
-    font-weight: bolder;
-  }
-  ul{
-     list-style-type: none;
-  }
-  
-  .post {
-    font-size: 1.5vw;
-    font-weight: normal;
-  }
-  .comment{
-    background-color: #F1F1F1;
-    font-size: 1.25vw;
-    font-weight: lighter;
-    /* border: */
-  }
-  
-  #footer {
-    background-color: #F1F1F1;
-    text-align: center;
-    padding: 10px;
-  }
-  
+}
+
+#tableOfContents {
+  width: 10vw;
+  display: block;
+  border: lightgray dashed 3px;
+  /*this will be an invisible border*/
+}
+#singlePost{
+  display: block;
+  text-align: center;
+}
+
+#current {
+  font-weight: bolder;
+  background-color: lightblue;
+}
+
+#allPosts{
+  text-align: center;
+  padding: 10px;
+  font-weight: bolder;
+  /* margin-bottom: 50px; */
+}
+ul{
+  width: 400px;
+   list-style-type: none;
+}
+#postList{
+  margin-bottom: 11px;
+  padding-bottom: 20px;
+}
+.post {
+  font-size: 1.5vw;
+  font-weight: normal;
+  border: goldenrod solid 2px;
+}
+.comment{
+  background-color: #F1F1F1;
+  font-size: 1.25vw;
+  font-weight: lighter;
+  /* border: */
+  /* margin-bottom: 50px; */
+}
+
+#footer {
+  background-color: #F1F1F1;
+  text-align: center;
+  padding: 10px;
+}

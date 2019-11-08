@@ -16,9 +16,9 @@ const db = require('../db.js');
 
 
 /* MIDDLEWARE */
-const middleWare = async (req, res, next) => {
+const allPosts = async (req, res, next) => {
   try {
-    let response = await db.any("SELECT * FROM posts;");
+    let response = await db.any("SELECT * FROM posts ORDER BY (post_id) DESC;");
     res.json({
       status: "success",
       message: req.get('host') + req.originalUrl,
@@ -136,7 +136,7 @@ const removePost = async (req, res) => {
 
 
 /* ROUTES */
-router.get("/", middleWare);
+router.get("/", allPosts);
 router.get("/:id", singlePost);
 router.post("/", addPost);
 router.patch("/:id", updatePost);
@@ -144,7 +144,6 @@ router.delete("/:id", removePost);
 
 
 module.exports = router;
-
 
 
 
