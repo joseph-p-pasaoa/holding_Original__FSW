@@ -1,0 +1,66 @@
+/*
+Landing Page Specific CSS | HOLDING Web App
+GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
+*/
+
+
+/* div {
+  margin-top: 20px;
+} */
+
+#tagLine {
+    background-color: goldenrod;
+    text-align: center;
+    padding: 10px;
+    font-weight: bolder;
+  }
+  
+  #pageName {
+    /*   background-color: lightyellow; */
+    text-align: center;
+    padding: 5px;
+    font-size: 3vw;
+  }
+  
+  a {
+    display: block;
+    font-size: 3vw;
+    /*   padding: 10px; */
+  }
+  
+  #tableOfContents {
+    width: 10vw;
+    display: block;
+    border: lightgray dashed 3px;
+    /*this will be an invisible border*/
+  }
+  #singlePost{
+    display: block;
+    text-align: center;
+  }
+  
+  #current {
+    font-weight: bolder;
+    background-color: lightblue;
+  }
+  
+  #allPosts{
+    text-align: center;
+    padding: 10px;
+    font-weight: bolder;
+  }
+  ul{
+     list-style-type: none;
+  }
+  
+  .comment{
+    background-color: #F1F1F1;
+    /* border: */
+  }
+  
+  #footer {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 10px;
+  }
+  
