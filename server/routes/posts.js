@@ -33,13 +33,31 @@ const middleWare = async (req, res, next) => {
   }
 }
 
+// router.get('/:id', async(req, res) => {
+//   try {
+//     let selectQuery = `SELECT body FROM posts WHERE post_id =$1`
+//     let post = await db.any(selectQuery, parseInt(req.params.id));
+
+//     res.json({
+//       body: post,
+//       message: `Here is the post!`
+//     });
+//   } catch (error) {
+//     res.json({
+//       message: `There was an error!`
+//     });
+//   }
+// })
+
 const singlePost = async (req, res) => {
   try {
     let selectQuery = `SELECT body FROM posts WHERE post_id =$1`
     let post = await db.any(selectQuery, parseInt(req.params.id));
 
     res.json({
-      body: post,
+      body: {body: body,
+        poster_id: id
+      },
       message: `Here is the post!`
     });
   } catch (error) {
@@ -49,6 +67,24 @@ const singlePost = async (req, res) => {
   }
 }
 
+// router.post('/', async(req, res) =>{
+//   try {
+//     let insertQuery = `
+//   INSERT INTO posts(poster_id, body)
+//   VALUES($1, $2)
+//   `
+//     await db.none(insertQuery, [req.body.poster_id, req.body.body]);
+
+//     res.json({
+//       body: req.body,
+//       message: `Post was successfully added!`
+//     });
+//   } catch (error) {
+//     res.json({
+//       message: `There was an error!`
+//     });
+//   }
+// })
 const addPost = async (req, res) => {
   try {
     let insertQuery = `
@@ -102,7 +138,7 @@ const removePost = async (req, res) => {
 /* ROUTES */
 router.get("/", middleWare);
 router.get("/:id", singlePost);
-router.post("/:id", addPost);
+router.post("/", addPost);
 router.patch("/:id", updatePost);
 router.delete("/:id", removePost);
 

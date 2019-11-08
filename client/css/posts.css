@@ -24,7 +24,7 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
   
   a {
     display: block;
-    font-size: 3vw;
+    font-size: 1.5vw;
     /*   padding: 10px; */
   }
   
@@ -53,8 +53,14 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
      list-style-type: none;
   }
   
+  .post {
+    font-size: 1.5vw;
+    font-weight: normal;
+  }
   .comment{
     background-color: #F1F1F1;
+    font-size: 1.25vw;
+    font-weight: lighter;
     /* border: */
   }
   
