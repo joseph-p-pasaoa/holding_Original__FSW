@@ -13,6 +13,8 @@ CREATE DATABASE holding_db;
 CREATE TABLE users
 (
    user_id SERIAL PRIMARY KEY,
+   username VARCHAR(16),
+   password VARCHAR(36),
    firstname VARCHAR(36),
    lastname VARCHAR(36),
    age INT
@@ -57,12 +59,12 @@ CREATE TABLE photos
 
 /* SEED DATA */
 INSERT INTO users
-   (firstname, lastname, age)
+   (username, password, firstname, lastname, age)
 VALUES
-   ('Zelda', 'Alpha', 23),
-   ('Link', 'Beta', 19),
-   ('Ganon', 'Charlie', 61),
-   ('Epona', 'Delta', 36);
+   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23),
+   ('ElfWithSword', '321cba', 'Link', 'Beta', 19),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61),
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36);
 
 INSERT INTO posts
    (poster_id, body)
