@@ -28,23 +28,22 @@ const loadPost = async () => {
   posts.forEach((post) => {
 
     let listItem = document.createElement("li");
-    listItem.setAttribute('class', 'post');
-
-    //this is where the test comment made from yesterday
-    // let comment = document.createElement("p");
-    // comment.setAttribute('class', 'comment')
-    // comment.innerText = 'test';
-
-    listItem.innerText = `${post.body}`;
-    // listItem.appendChild(comment)
-
+    listItem.id = `_${post.post_id}`;
+    listItem.className = `post`;
+    listItem.innerText = post.body;
     postList.appendChild(listItem);
+
+    loadLikes(post.post_id);
+    loadComment(post.post_id);
+
+
+
   });
 }
 
 const getPosts = async () => {
   const text = document.querySelector('#text').value;
-  let id = parseInt('1');
+  let id = parseInt('1'); //change this to accept value from Joey's Sim
   let response = await axios.post(`http://localhost:11000/posts/ `, { poster_id: id, body: text });
   loadPost();
 }
@@ -54,25 +53,36 @@ const newPostFormSubmitted = (event) => {
   getPosts();
 }
 
-/*I was thinking about making a separete function to get all comments for a specific post but im 
-unsure how to implement it in the load posts function*/
 
-const loadComment = async () => {
-  let id = Math.floor(Math.random()*(6));
+const loadComment = async (id) => {
   let response = await axios.get(`http://localhost:11000/comments/posts/${id}`);
-  // log(response)
-  let marks = response.data.body
+  let marks = response.data.body;
+
   marks.forEach((mark) => {
 
-log(`comment for post ${mark.post_id}: ${mark.body}`)
-    // let comment = document.createElement("p");
-    // comment.setAttribute('class', 'comment')
-    // comment.innerText = `mark.body`;
-    
-    // }
+    let comment = document.createElement("p");
+    comment.className = `comment`;
+    comment.innerText = mark.body;
+    let post = document.querySelector(`#_${id}`)
+    if (id === mark.post_id) {
+      post.append(comment);
+    }
   })
-  // let comment = document.createElement("p");
-  //   comment.setAttribute('class', 'comment')
-  //   comment.innerText = `response.body`;
 }
- loadComment()
+
+const loadLikes = async (id) => {
+  let response = await axios.get(`http://localhost:11000/likes/posts/${id}`);
+  let likes = response.data.payload;
+  let num = 0;
+
+  let bell = document.createElement(`p`);
+  bell.className = `like`;
+  bell.id = `like${id}`
+  let post = document.querySelector(`#_${id}`)
+  bell.innerText = likes.length;
+  if (id === id) {
+    if (likes.length > 0) {
+      post.append(bell);
+    }
+  }
+}

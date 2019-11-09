@@ -24,10 +24,10 @@ router.get("/posts/:post_id", async (req, res) => {
   try {
     let postId = parseInt(req.params.post_id)
     let getQuery =`
-    SELECT COUNT(post_id) AS num_of_likes 
+    SELECT post_id, post_id AS num_of_likes 
     FROM likes 
-    WHERE post_id = $1
-    `
+    WHERE post_id = $1`
+
     let allLikes = await db.any(getQuery, postId)
     res.json({
         payload: allLikes,
