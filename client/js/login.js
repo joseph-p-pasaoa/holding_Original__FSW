@@ -18,6 +18,21 @@ const userFound = () => {
 
 const tryAgain = () => {
     clearAlerts();
+    const firstname = document.querySelector("#firstname").value 
+    const lastname = document.querySelector("#lastname").value
+    const age = document.querySelector("#age").value
+    if (!firstname) {
+        let req1 = document.querySelector("#req1")
+        req1.innerText = "** REQUIRED **"
+    }
+    if (!lastname) {
+        let req2 = document.querySelector("#req2")
+        req2.innerText = "** REQUIRED **"
+    }
+    if (!age) {
+        let req3 = document.querySelector("#req3")
+        req3.innerText = "** REQUIRED **"
+    }
     let alertUser = document.querySelector("#alert1")
     alertUser.innerText = "Missing Information! Please fill out all inputs and try again!"
 }
@@ -31,6 +46,9 @@ const userCheck = async (event) => {
     let response = await axios.get(`http://localhost:11000/users/`);
     let existingUsers = response.data.body
     for (let user of existingUsers) {
+        if (isNaN(age)){
+            return tryAgain();
+        }
         if (!lastname || !firstname || !age) {
             return tryAgain();
         }
@@ -52,6 +70,18 @@ const userCheck = async (event) => {
 }
 
 const clearAlerts = () => {
+    if (document.querySelector("#req1")) {
+        let removeReq1 = document.querySelector("#req1")
+        removeReq1.innerText = ""
+    }
+    if (document.querySelector("#req2")) {
+        let removeReq2 = document.querySelector("#req2")
+        removeReq2.innerText = ""
+    }
+    if (document.querySelector("#req3")) {
+        let removeReq3 = document.querySelector("#req3")
+        removeReq3.innerText = ""
+    }
     if (document.querySelector("#alert1")) {
         console.log("gotcha alert1")
         let removeAlert1 = document.querySelector("#alert1")
