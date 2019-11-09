@@ -8,7 +8,6 @@ html,body{
     width: 55px;
     display: flex;
     justify-content: space-between;
-    
 }
 
 #searchBox{
@@ -17,9 +16,6 @@ html,body{
     justify-content: center;
     align-content: center;
 }
-
-
-
 
 li {
     list-style-type: none;
@@ -36,24 +32,15 @@ form{
     border: 1px solid gold;
     display: table;
     font-size: 100%;
-   
     padding: 20px;
     width: 100px;
     display: flex;
     flex-direction: column;
-
-   
 }
 
 #allTheUsers, #usersResults,#searchResults, #deleteUser , #addUser, #displayAllPostFromGivenUser{
-    /* display:flex; */
     margin-left: 200px;
-    /* margin-right: auto; */
-    /* margin-right: 10%; */
     margin-right: 10%;
-    
-    
-
 }
 ul{
     padding-left: 0;
@@ -61,7 +48,6 @@ ul{
 
 #current{
     font-weight: 700;
-    
 }
 
 .allResultsDiv, .searchResultsDiv{
@@ -70,17 +56,9 @@ ul{
     margin-right: 10%;
     padding-top: 20px;
     padding-bottom: 20px;
-        /* padding: 20px; */
 }
 
-
-
-
 #title{
-   
-
-
-
     display: grid;
     justify-content: center;
     border-bottom: 1px solid black;
@@ -94,7 +72,6 @@ ul{
 #heading{
     display: grid;
     grid-template-columns: repeat(2,1fr);
-    /* margin-right: s10%; */
 }
 
 
@@ -102,14 +79,13 @@ ul{
     display: flex;
     justify-content: flex-end;
     align-items: center;
-
-
 }
 
 input{
     border-left-style: ridge;
     margin-right: 10px;
 }
+
 #search{
     width: 100%;
 }
