@@ -1,0 +1,119 @@
+html,body{
+    height: 100%;
+}
+
+#submitButton, #deleteButton, #addButton, #submitButton2{
+    border-radius: 12px;
+    height: 30px;
+    width: 55px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+#searchBox{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+
+
+li {
+    list-style-type: none;
+    }
+
+form{
+    display:flex;
+    margin-bottom: 20px;
+}
+
+#tableOfContents{
+    align-items: center;
+    position: fixed;
+    border: 1px solid gold;
+    display: table;
+    font-size: 100%;
+   
+    padding: 20px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+
+   
+}
+
+#allTheUsers, #usersResults,#searchResults, #deleteUser , #addUser, #displayAllPostFromGivenUser{
+    /* display:flex; */
+    margin-left: 200px;
+    /* margin-right: auto; */
+    /* margin-right: 10%; */
+    margin-right: 10%;
+    
+    
+
+}
+ul{
+    padding-left: 0;
+}
+
+#current{
+    font-weight: 700;
+    
+}
+
+.allResultsDiv, .searchResultsDiv{
+    border: 1px solid gold;
+    margin-bottom: 50px;
+    margin-right: 10%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+        /* padding: 20px; */
+}
+
+
+
+
+#title{
+   
+
+
+
+    display: grid;
+    justify-content: center;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    padding: 20px;
+  
+    grid-row: 2;
+    grid-column: 1/4;
+}
+
+#heading{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /* margin-right: s10%; */
+}
+
+
+#searchBoxTop{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+
+}
+
+input{
+    border-left-style: ridge;
+    margin-right: 10px;
+}
+#search{
+    width: 100%;
+}
+
+#submitButton2{
+    margin-right: 10%;
+}
