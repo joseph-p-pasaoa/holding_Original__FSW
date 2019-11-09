@@ -5,28 +5,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const userNotFound = async () => {
     const firstname = document.querySelector("#firstname").value 
-    console.log(firstname)
     const lastname = document.querySelector("#lastname").value
-    console.log(lastname)
     const age = document.querySelector("#age").value
-    console.log(age)
-    let response = await axios.post(`http://localhost:11000/users/`, {firstname, lastname, age});
+    let response = await axios.post(`http://localhost:11000/users/`, {
+        firstname: firstname, 
+        lastname: lastname, 
+        age: age
+    });
     enterSite()
 }
 
 const userFound = () => {
-    let form = document.querySelector("#formy-mcformface")
-    let alertUser = document.createElement("p")
+    clearAlerts()
+    let alertUser = document.querySelector("#alert1")
     alertUser.innerText = "User Already Exists!"
-    let linkToLogin = document.createElement("a")
+    let linkToLogin = document.querySelector("#alert2")
     linkToLogin.innerText = "Click Here To Login!"
     linkToLogin.href = "../html/login.html"
-    form.appendChild(alertUser)
-    form.appendChild(linkToLogin)
 }
 
 const enterSite = () => {
     window.location.href = "../html/posts.html"
+}
+
+const tryAgain = () => {
+    clearAlerts();
+    let alertUser = document.querySelector("#alert1")
+    alertUser.innerText = "Missing Information! Please fill out all inputs and try again!"
 }
 
 const userCheck = async (event) => {
@@ -38,6 +43,9 @@ const userCheck = async (event) => {
     let response = await axios.get(`http://localhost:11000/users/`);
     let existingUsers = response.data.body
     for (let user of existingUsers) {
+        if (!lastname || !firstname || !age) {
+            return tryAgain();
+        }
         if (lastname === user.lastname) {
             counter += 1
         }
@@ -49,8 +57,20 @@ const userCheck = async (event) => {
         } 
     }
     if (counter === 3) {
-        return userFound()
+        return userFound();
     } else {
-        return userNotFound()
+        return userNotFound();
+    }
+}
+
+const clearAlerts = () => {
+    if (document.querySelector("#alert1")) {
+        let removeAlert1 = document.querySelector("#alert1")
+        removeAlert1.innerText = ""
+    }
+    if (document.querySelector("#alert2")) {
+        let removeAlert2 = document.querySelector("#alert2")
+        removeAlert2.innerText = ""
+        removeAlert2.href = ""
     }
 }
