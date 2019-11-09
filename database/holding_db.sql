@@ -63,7 +63,7 @@ INSERT INTO users
 VALUES
    ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23),
    ('ElfWithSword', '321cba', 'Link', 'Beta', 19),
-   ('gerudo master', '3$trifs', 'Ganon', 'Charlie', 61),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61),
    ('NEIGH', 'nay nay', 'Epona', 'Delta', 36);
 
 INSERT INTO posts
