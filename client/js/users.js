@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadUsers()
-    const searchHoldUsers = document.querySelector('#displayAllPostFromGivenUser');
-    searchHoldUsers.addEventListener('submit', () => {
+    const searchUsers = document.querySelector('#displayAllPostFromGivenUser');
+    searchUsers.addEventListener('submit', () => {
         searchUser()
     });
-    const searchAllUsers = document.querySelector('#searchBoxTop');
-    searchAllUsers.addEventListener('submit', () => {
-        searchTopLeftUser()
-    });
+    // const searchAllUsers = document.querySelector('#searchBoxTop');
+    // searchAllUsers.addEventListener('submit', () => {
+    //     searchTopLeftUser()
+    // });
 
     const addUser = document.querySelector('#addUser');
     addUser.addEventListener('submit', () => {
@@ -42,8 +42,6 @@ async function loadUsers() {
         resultDiv.append(usersName, usersUserName, usersAge)
     })
 }
-
-
 
 
 async function searchUser() {
@@ -147,9 +145,6 @@ const deleteAUser = async () => {
         loadUsers()
     }
 }
-
-
-
 
 const filerResults = (data, username) => {
     let index = -1;
