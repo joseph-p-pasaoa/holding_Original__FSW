@@ -1,0 +1,65 @@
+body {
+    background-image: url(../assets/images/Couple_01.jpeg);
+    background-repeat: no-repeat;
+    background-color: black;
+    background-size: cover;
+}
+
+#logo_container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-self: center;
+    text-align: center;
+}
+
+#logo {
+    display: block;
+    margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7%;
+    margin-bottom: 5%;
+    width: 60%;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
+
+}
+
+#login-container {
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    background: lightyellow;
+    text-align: center;
+}
+
+.button {
+    width: 150px;
+    height: 40px;
+    font-size: large;
+    justify-self: center;
+    align-items: center;
+    border-radius: 10px;
+    border: solid 3px goldenrod;
+    background-color: gold;
+    box-shadow: 10px 10px 5px black;
+}
+
+.button:hover {
+    width: 150px;
+    height: 40px;
+    font-size: large;
+    justify-self: center;
+    align-items: center;
+    border-radius: 10px;
+    border: solid 3px gold;
+    background-color: yellow;
+    box-shadow: 10px 10px 5px black;
+}
+
+#formy-mcformface {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
