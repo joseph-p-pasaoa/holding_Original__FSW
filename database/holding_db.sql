@@ -104,7 +104,12 @@ INSERT INTO albums
 VALUES(1, 'Castle Pics'),
    (2, 'Pots I''ve smashed'),
    (3, 'DATING PROFILE PICTURES'),
-   (4, 'Apples and Carrots');
+   (4, 'Foodie-isms'),
+   (4, 'Profile Photos'),
+   (4, 'friends'),
+   (4, 'field shots'),
+   (4, 'artwork of the most awesome horse eva'),
+   (4, 'trip to botw');
 
 INSERT INTO photos
    (album_id, title, photo_url)
@@ -114,8 +119,20 @@ VALUES(1, 'Nice drawbridge', ''),
    (2, 'This one had a rupee inside!', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj1mtrmtNblAhWuxFkKHeHGAKYQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.chairish.com%2Fproduct%2F888050%2Fantique-clay-painted-handled-pot&psig=AOvVaw10a2velX9feI1HK_51CB_N&ust=1573158064002749'),
    (3, 'I GET SWEATY AFTER WORKING OUT SO MUCH', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjrh5v5tNblAhVDxVkKHf1XA5QQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.polygon.com%2Fe3%2F2019%2F6%2F13%2F18677551%2Fbreath-of-the-wild-sequel-ganondorf-e3-2019-nintendo-mummy-hydrated&psig=AOvVaw0rn7SNL2auuvUklbuxKcXJ&ust=1573158145840964'),
    (3, 'SOMETIMES I JUST LIKE TO HUG', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi657qTtdblAhXBhOAKHVojDVIQjRx6BAgBEAQ&url=https%3A%2F%2Fkotaku.com%2Fwhat-ganon-from-breath-of-the-wild-might-actually-look-1836718493&psig=AOvVaw0rn7SNL2auuvUklbuxKcXJ&ust=1573158145840964'),
-   (4, 'Apple', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjd_5_vtdblAhXhhOAKHd4ZAuEQjRx6BAgBEAQ&url=https%3A%2F%2Ffood.ndtv.com%2Ffood-drinks%2Fapple-fruit-benefits-8-incredible-health-benefits-of-apple-that-you-may-not-have-known-1761603&psig=AOvVaw2HjZwZOV9BMdgtONEY4MKX&ust=1573158391905454'),
-   (4, 'Carrot', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiEy5aIttblAhVOq1kKHRY8CpwQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.economist.com%2Fthe-economist-explains%2F2018%2F09%2F26%2Fhow-did-carrots-become-orange&psig=AOvVaw0vCohKjPbPM7ThJgJ5nykx&ust=1573158446476538');
+   (4, 'Apple', 'https://i.ndtvimg.com/i/2017-10/apple-benefits_620x350_51507721694.jpg'),
+   (4, 'Carrot', 'https://www.economist.com/sites/default/files/imagecache/1280-width/20180929_BLP506.jpg'),
+   (5, 'my good side', '../../database/photoDbSim/hc-epona-horse-c-ben-blackall.jpg'),
+   (5, 'high school portrait', '../../database/photoDbSim/Inspection_b.jpg'),
+   (6, 'morvan', '../../database/photoDbSim/9-10-17_Morvan_c.jpeg'),
+   (6, 'aonbarr fell asleep!', '../../database/photoDbSim/Aonbarr_sleeping_7-4-14.jpeg'),
+   (7, 'link and me epicness of epicness', '../../database/photoDbSim/link and epona.jpg'),
+   (7, 'glamour musculature!', '../../database/photoDbSim/Keidranx.jpg'),
+   (8, 'Ayo B''s sketch', '../../database/photoDbSim/Ayo B.jpg'),
+   (8, 'Rhiannon''s sculpture', '../../database/photoDbSim/Rhiannon(Epona).jpg'),
+   (9, 'horse be horsing', '../../database/photoDbSim/epona-breath-of-the-wild-3.jpg'),
+   (9, 'showing some skin', '../../database/photoDbSim/Epona-Breath-of-the-Wild.jpg'),
+   (9, 'cool horses dont look at splosions', '../../database/photoDbSim/LoZ_wronghorse.jpg'),
+   (9, 'wind in my mane!!!', '../../database/photoDbSim/tlozbotw-run.jpg');
 
 /* QUERIES */
 
