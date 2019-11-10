@@ -42,7 +42,7 @@ const getAllCommentsFromASinglePost = async (req, res) => {
   try {
     let post_id = req.params.post_id
     let insertQuery = `
-    SELECT * FROM comments 
+    SELECT * FROM comments INNER JOIN users ON comments.commenter_id = users.user_id 
     WHERE post_id = $1`
     let CommentsSinglePost = await db.any(insertQuery, post_id)
 
@@ -126,7 +126,7 @@ const deleteSingleComment = async (req, res) => {
 
     res.json({
       status: "success",
-      message: `Delete Sucess`,
+      message: `Delete Success`,
       body: req.body
     });
   } catch (error) {

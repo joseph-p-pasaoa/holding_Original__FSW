@@ -64,7 +64,7 @@ ul{
   font-weight: normal;
   border: goldenrod solid 2px;
 }
-.comment{
+p[className ^= 'comment']{
   background-color: #F1F1F1;
   font-size: 1.25vw;
   font-weight: lighter;

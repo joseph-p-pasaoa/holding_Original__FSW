@@ -8,16 +8,72 @@
    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
    <title>HolDING: Posts</title>
    <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
+   <script src="../js/userSim.js" type="text/javascript"></script>
    <script src="../js/posts.js" type="text/javascript"></script>
-   <!-- <link rel="stylesheet" href="../css/sitewide.css" type="text/css" /> -->
+   <link rel="stylesheet" href="../css/sitewide.css" type="text/css" />
    <link rel="stylesheet" href="../css/posts.css" type="text/css" />
 </head>
     <body>
         <div id="base-grid">
           <h1>Posts Page | Holding</h1>
+          <div id='tagLine'>
+            A Family Social Media
+          </div>
+      
+          <div id='posts'>
+            <p id = 'pageName'>
+              POSTS
+            </p>
+          </div>
+      
+          <div id ='singlePost'>
+            <form id='postAPost'>
+              <textarea id = 'text' rows="2" cols="50" placeholder='Share thoughts with family' required style='height:30px;'></textarea>
+              <button>Submit</button>
+            </form>
+          </div>
+      
+          <div id=tableOfContents>
+            <div id='current'>
+              <a href='./posts.html'>Posts</a>
+            </div> <br>
+            <a href='./users.html'>Users</a><br>
+            <a href='./albums.html'>Albums</a>
+          </div>
+         
+      
+          <div id='allPosts'>
+            <ul id = 'postList'>
+              <!-- <li>post 1
+              <p class = 'comment'>
+              comment 1
+              </p>
+              <p class = 'comment'>
+              comment 2
+              </p>
+              <p class = 'comment'>
+              comment 3
+              </p>
+              </li>
+              <li>post 2<p class = 'comment'>
+              comment 1
+              </p></li>
+              <li>post 3<p class = 'comment'>
+              comment 1
+              </p></li>
+              <li>post 4 <p class = 'comment'>
+              comment 1
+              </p>
+          </li> -->
+            </ul>
+          </div>
+          
+          <div id='footer'>
+            All Posts Loaded
+          </div>
         </div>
     
-        <div id='tagLine'>
+        <!-- <div id='tagLine'>
           A Family Social Media
         </div>
     
@@ -71,7 +127,7 @@
         
         <div id='footer'>
           All Posts Loaded
-        </div>
+        </div> -->
       </body>
     
     </html>
