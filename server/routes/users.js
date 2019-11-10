@@ -52,10 +52,10 @@ const singleUser = async (req, res) => {
 const addUser = async (req, res) => {
   try {
     let insertQuery = `
-  INSERT INTO users(firstname, lastname, age)
-  VALUES($1, $2, $3)
+  INSERT INTO users(username, password, firstname, lastname, age)
+  VALUES($1, $2, $3, $4, $5)
   `
-    await db.none(insertQuery, [req.body.firstname, req.body.lastname, req.body.age]);
+    await db.none(insertQuery, [req.body.username, req.body.password, req.body.firstname, req.body.lastname, req.body.age]);
 
     res.json({
       body: req.body,

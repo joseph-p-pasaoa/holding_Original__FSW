@@ -4,10 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 const userNotFound = async () => {
+    const username = document.querySelector("#username").value
+    const password = document.querySelector("#password").value
     const firstname = document.querySelector("#firstname").value 
     const lastname = document.querySelector("#lastname").value
     const age = document.querySelector("#age").value
     let response = await axios.post(`http://localhost:11000/users/`, {
+        username: username,
+        password: password,
         firstname: firstname, 
         lastname: lastname, 
         age: age
@@ -30,20 +34,30 @@ const enterSite = () => {
 
 const tryAgain = () => {
     clearAlerts();
+    const username = document.querySelector("#username").value
     const firstname = document.querySelector("#firstname").value 
     const lastname = document.querySelector("#lastname").value
     const age = document.querySelector("#age").value
-    if (!firstname) {
+    const password = document.querySelector("#password").value
+    if (!username) {
         let req1 = document.querySelector("#req1")
         req1.innerText = "** REQUIRED **"
     }
-    if (!lastname) {
+    if (!firstname) {
         let req2 = document.querySelector("#req2")
         req2.innerText = "** REQUIRED **"
     }
-    if (!age) {
+    if (!lastname) {
         let req3 = document.querySelector("#req3")
         req3.innerText = "** REQUIRED **"
+    }
+    if (!age) {
+        let req4 = document.querySelector("#req4")
+        req4.innerText = "** REQUIRED **"
+    }
+    if (!password) {
+        let req5 = document.querySelector("#req5")
+        req5.innerText = "** REQUIRED **"
     }
     let alertUser = document.querySelector("#alert1")
     alertUser.innerText = "Missing Information! Please fill out all inputs and try again!"
@@ -52,17 +66,22 @@ const tryAgain = () => {
 const userCheck = async (event) => {
     event.preventDefault();
     let counter = 0
+    const username = document.querySelector("#username").value
     const firstname = document.querySelector("#firstname").value 
     const lastname = document.querySelector("#lastname").value
     const age = document.querySelector("#age").value
+    const password = document.querySelector("#password").value
     let response = await axios.get(`http://localhost:11000/users/`);
     let existingUsers = response.data.body
     for (let user of existingUsers) {
         if (isNaN(age)){
             return tryAgain();
         }
-        if (!lastname || !firstname || !age) {
+        if (!username || !lastname || !firstname || !age || !password) {
             return tryAgain();
+        }
+        if (username === user.username) {
+            counter += 1
         }
         if (lastname === user.lastname) {
             counter += 1
@@ -72,9 +91,13 @@ const userCheck = async (event) => {
         }
         if (parseInt(age) === user.age) {
             counter += 1
-        } 
+        }
+        if (password === user.password) {
+            counter += 1
+        }
     }
-    if (counter === 3) {
+    console.log(counter)
+    if (counter === 5) {
         return userFound();
     } else {
         return userNotFound();
@@ -93,6 +116,14 @@ const clearAlerts = () => {
     if (document.querySelector("#req3")) {
         let removeReq3 = document.querySelector("#req3")
         removeReq3.innerText = ""
+    }
+    if (document.querySelector("#req4")) {
+        let removeReq4 = document.querySelector("#req4")
+        removeReq4.innerText = ""
+    }
+    if (document.querySelector("#req5")) {
+        let removeReq5 = document.querySelector("#req5")
+        removeReq5.innerText = ""
     }
     if (document.querySelector("#alert1")) {
         let removeAlert1 = document.querySelector("#alert1")
