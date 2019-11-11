@@ -1,0 +1,45 @@
+/*
+Albums CSS | HOLDING Web App
+GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
+*/
+
+
+div#right-body {
+
+}
+
+div#albumsStage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 250px;
+
+  margin: 4px 42px;
+}
+
+div.album-card {
+  width: 395px;
+  height: auto;
+  margin: 1px 12px 12px 12px;
+  border: solid 2px #000;
+}
+
+img.a_cover {
+  width: 395px;
+  height: 207px;
+  object-fit: cover;
+}
+
+div.album-card a, div.album-card p {
+  text-decoration: none;
+}
+
+div.album-card p {
+  padding: 4px 12px 6px 12px;
+
+  font-size: 1em;
+  font-weight: bold;
+  color: #000;
+
+  background: rgb(255,236,126);
+	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
+}

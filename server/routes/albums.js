@@ -16,12 +16,15 @@ const db = require('../db.js');
 
 router.get("/:owner_id", async (req, res) => {
   try {
-    let ownerId = parseInt(req.params.owner_id)
+    let ownerId = parseInt(req.params.owner_id);
     let getQuery = `
-    SELECT *
-    FROM albums
-    WHERE creator_id = $1
-    `
+      SELECT creator_id AS user_id
+        , albums.album_id
+        , albums.title AS album_title
+        , photos.photo_url AS photo_url
+      FROM albums JOIN photos ON (albums.album_id = photos.album_id)
+      WHERE creator_id = ${ownerId};
+    `;
     let getAllAlbums = await db.any(getQuery, ownerId)
     res.json({
       payload: getAllAlbums,
@@ -29,7 +32,7 @@ router.get("/:owner_id", async (req, res) => {
     })
   } catch (error) {
     res.json({
-      message: "Oops! All Errors!"
+      message: "GET Oops! All Errors!"
     })
   }
 })
@@ -49,7 +52,7 @@ router.post("/:owner_id", async (req, res) => {
     })
   } catch (error) {
     res.json({
-      message: "Oops! All Errors!"
+      message: "POST Oops! All Errors!"
     })
   }
 })
