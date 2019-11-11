@@ -14,7 +14,7 @@ const initUserSim = () => {
     makingUSInput.type = "text";
     makingUSInput.id = "userNum";
     makingUSInput.name = "userNum";
-    makingUSInput.value = 1;
+    makingUSInput.value = 3;
 
   makingUserSim.append(makingUSLabel, makingUSInput);
   document.body.appendChild(makingUserSim);

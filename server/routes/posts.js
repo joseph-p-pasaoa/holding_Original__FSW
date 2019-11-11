@@ -16,9 +16,9 @@ const db = require('../db.js');
 
 
 /* MIDDLEWARE */
-const allPosts = async (req, res, next) => {
+const allPosts = async (req, res) => {
   try {
-    let response = await db.any("SELECT * FROM posts ORDER BY (post_id) DESC;");
+    let response = await db.any("SELECT * FROM posts INNER JOIN users ON posts.poster_id = users.user_id ORDER BY (post_id) DESC;");
     res.json({
       status: "success",
       message: req.get('host') + req.originalUrl,

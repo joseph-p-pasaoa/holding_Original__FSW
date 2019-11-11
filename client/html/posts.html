@@ -2,76 +2,52 @@
 <html lang="en" dir="ltr">
 
 <head>
-   <meta name="author" content="Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma" />
-   <meta charset="UTF-8" />
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-   <title>HolDING: Posts</title>
-   <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
-   <script src="../js/posts.js" type="text/javascript"></script>
-   <!-- <link rel="stylesheet" href="../css/sitewide.css" type="text/css" /> -->
-   <link rel="stylesheet" href="../css/posts.css" type="text/css" />
+  <meta name="author" content="Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>HolDING: Posts</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
+  <script src="../js/userSim.js" type="text/javascript"></script>
+  <script src="../js/posts.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../css/sitewide.css" type="text/css" />
+  <link rel="stylesheet" href="../css/posts.css" type="text/css" />
 </head>
-    <body>
-        <div id="base-grid">
-          <h1>Posts Page | Holding</h1>
-        </div>
-    
-        <div id='tagLine'>
-          A Family Social Media
-        </div>
-    
-        <div id='posts'>
-          <p id = 'pageName'>
-            POSTS
-          </p>
-        </div>
-    
-        <div id ='singlePost'>
+
+<body>
+  <div id="base-grid">
+    <script src="../js/sw-htBuilder.js" type="text/javascript"></script>
+
+    <div id='right-body'>
+      <h1>Posts</h1>
+      <div id='postsStage'>
+        <div id='singlePost'>
           <form id='postAPost'>
-            <textarea id = 'text' rows="2" cols="50" placeholder='Share thoughts with family' required style='height:30px;'></textarea>
+            <input id='text' rows="4" cols="50" placeholder="What's on your mind?" required
+              style='height:30px; width: 200px'></input>
             <button>Submit</button>
           </form>
         </div>
-    
-        <div id=tableOfContents>
-          <div id='current'>
-            <a href='./posts.html'>Posts</a>
-          </div> <br>
-          <a href='./users.html'>Users</a><br>
-          <a href='./albums.html'>Albums</a>
+        <div id = 'postAComment'>
+            <form id='postAComment'>
+                <input id='cText' rows="4" cols="50" placeholder='Make a comment...' required
+                  style='height:30px; width: 200px'></input>
+                <button id = 'addCom'>Submit</button>
+              </form>
         </div>
-       
-    
+
+
         <div id='allPosts'>
-          <ul id = 'postList'>
-            <li>post 1
-            <p class = 'comment'>
-            comment 1
-            </p>
-            <p class = 'comment'>
-            comment 2
-            </p>
-            <p class = 'comment'>
-            comment 3
-            </p>
-            </li>
-            <li>post 2<p class = 'comment'>
-            comment 1
-            </p></li>
-            <li>post 3<p class = 'comment'>
-            comment 1
-            </p></li>
-            <li>post 4 <p class = 'comment'>
-            comment 1
-            </p>
-        </li>
+          <ul id='postList'>
           </ul>
         </div>
-        
+
         <div id='footer'>
           All Posts Loaded
         </div>
-      </body>
-    
-    </html>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
