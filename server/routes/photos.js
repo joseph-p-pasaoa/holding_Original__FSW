@@ -28,12 +28,12 @@ const getAlbumPhotos = async (req, res, next) => {
   try {
     const albumId = parseInt(req.params.album_id.trim());
     const getQuery = `
-      // SELECT photo_url 
+      SELECT photo_url 
       FROM photos 
       WHERE album_id = $1
     `;
     let response = await db.any(getQuery, albumId);
-    if (response.length <= 1) {
+    if (response.length < 1) {
       res.json({
           status: "success",
           message: "no photos found"

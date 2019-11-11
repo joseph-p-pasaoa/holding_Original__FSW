@@ -16,12 +16,16 @@ const db = require('../db.js');
 
 router.get("/:owner_id", async (req, res) => {
   try {
-    let ownerId = parseInt(req.params.owner_id)
+    let ownerId = parseInt(req.params.owner_id);
     let getQuery = `
-    SELECT *
-    FROM albums
-    WHERE creator_id = $1
-    `
+      SELECT creator_id AS user_id
+        , albums.album_id
+        , albums.title AS album_title
+        , photos.photo_url AS photo_url
+      FROM albums FULL OUTER JOIN photos ON (albums.album_id = photos.album_id)
+      WHERE creator_id = $1
+      ORDER BY albums.album_id DESC;
+    `;
     let getAllAlbums = await db.any(getQuery, ownerId)
     res.json({
       payload: getAllAlbums,
@@ -39,8 +43,8 @@ router.post("/:owner_id", async (req, res) => {
     let title = req.body.title
     let owner = parseInt(req.params.owner_id)
     let postQuery = `
-    INSERT INTO albums (creator_id, title)
-    VALUES($1, $2)
+      INSERT INTO albums (creator_id, title)
+      VALUES($1, $2)
     `
     let newAlbum = await db.none(postQuery, [owner, title])
     res.json({
