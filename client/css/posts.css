@@ -8,18 +8,8 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
   margin-top: 20px;
 } */
 
-#tagLine {
-  background-color: goldenrod;
-  text-align: center;
-  padding: 10px;
-  font-weight: bolder;
-}
-
-#pageName {
-  /*   background-color: lightyellow; */
-  text-align: center;
-  padding: 5px;
-  font-size: 3vw;
+#text{
+  overflow-wrap: break-word;
 }
 
 a {
@@ -66,6 +56,9 @@ ul{
   /* margin-bottom: 20px; */
 
 }
+form[id ^= 'cForm']{
+  order:4;
+}
 p[id ^= 'comment']{
   background-color: #F1F1F1;
   font-size: 1.25vw;
@@ -86,6 +79,8 @@ p[id ^= 'comment']{
 .commentForm{
   display: block;
 }
+
+
 
 div[id ^= 'likeDiv']:hover{
   visibility: visible;
@@ -122,7 +117,7 @@ div[id ^= 'name_'] a {
 
 #btnDiv:hover div[id ^= 'name_'] {display: block;}
 
-div[id ^= 'sep']{
+div[class ^= 'sep']{
   margin-bottom: 10px;
   border: goldenrod solid 2px;
 }

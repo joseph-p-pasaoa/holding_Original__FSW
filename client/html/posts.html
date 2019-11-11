@@ -20,25 +20,33 @@
 
     <div id='right-body'>
       <h1>Posts</h1>
-      <div id='postsStage' <div id='singlePost'>
-        <form id='postAPost'>
-          <textarea id='text' rows="2" cols="50" placeholder='Share thoughts with family' required
-            style='height:30px;'></textarea>
-          <button>Submit</button>
-        </form>
-      </div>
+      <div id='postsStage'>
+        <div id='singlePost'>
+          <form id='postAPost'>
+            <input id='text' rows="4" cols="50" placeholder='Share thoughts with family' required
+              style='height:30px; width: 200px'></input>
+            <button>Submit</button>
+          </form>
+        </div>
+        <div id = 'postAComment'>
+            <form id='postAComment'>
+                <input id='cText' rows="4" cols="50" placeholder='Make a comment...' required
+                  style='height:30px; width: 200px'></input>
+                <button id = 'addCom'>Submit</button>
+              </form>
+        </div>
 
 
-      <div id='allPosts'>
-        <ul id='postList'>
-        </ul>
-      </div>
+        <div id='allPosts'>
+          <ul id='postList'>
+          </ul>
+        </div>
 
-      <div id='footer'>
-        All Posts Loaded
+        <div id='footer'>
+          All Posts Loaded
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </body>
 
