@@ -63,11 +63,15 @@ ul{
   font-size: 1.5vw;
   font-weight: normal;
   border: goldenrod solid 2px;
+  margin-bottom: 20px;
+
 }
-p[className ^= 'comment']{
+p{
   background-color: #F1F1F1;
   font-size: 1.25vw;
   font-weight: lighter;
+  border-top: solid;
+  margin-top: 5px;
   /* border: */
   /* margin-bottom: 50px; */
 }
@@ -77,3 +81,38 @@ p[className ^= 'comment']{
   text-align: center;
   padding: 10px;
 }
+/* div[id ^= 'likeDiv']:hover{
+  visibility: visible;
+} */
+/* button[id ^= 'likeDiv'] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+} */
+
+#div {
+  position: relative;
+  display: inline-block;
+}
+
+div[id ^= 'name_'] {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+div[id ^= 'name_'] a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+div[id ^= 'name_'] a:hover {background-color: #ddd;}
+
+#div:hover div[id ^= 'name_'] {display: block;}

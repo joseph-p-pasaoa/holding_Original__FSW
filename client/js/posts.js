@@ -13,12 +13,14 @@ const log = console.log;
 /* POST DOM Loaded Exec */
 document.addEventListener("DOMContentLoaded", () => {
   log('js file connected!');
-  document.querySelector('#base-grid').addEventListener("click", () => {
-    log(document.querySelector(`#userNum`).value)
+
+  document.querySelector('#userSimControl').addEventListener("click", () => {
+    log(document.querySelector(`#userNum`).value);
+    loadPost() //this will reload every time you delete something or change the user
   })
   let addPostForm = document.querySelector('#postAPost');
   addPostForm.addEventListener('submit', newPostFormSubmitted);
-  loadPost();
+
 });
 
 const loadPost = async () => {
@@ -42,28 +44,17 @@ const loadPost = async () => {
 
     deleteBTN.onclick = function () {
       let user = parseInt(document.querySelector(`#userNum`).value);
-      if (user === post.poster_id) { 
-        deletePost(post.post_id) 
+      if (user === post.poster_id) {
+        deletePost(post.post_id)
       }
     }
 
+    if (id === post.poster_id) {
+      listItem.append(deleteBTN);
+    }
 
-
-    // let editBTN = document.createElement('button');
-    // editBTN.innerText = `Edit`;
-    // editBTN.id = `btn${post.post_id}`
-
-    // if(id === post.poster_id){
-    // editBTN.onclick = function() {editPost(post.post_id)}
-    // }
-    // // log(edit)
-
-    // listItem.append(editBTN)
-
-    listItem.append(deleteBTN);
     postList.appendChild(listItem);
-
-    loadLikes(post.post_id);
+    loadLikes(post.post_id, id);
     loadComment(post.post_id);
 
   });
@@ -99,47 +90,62 @@ const loadComment = async (id) => {
     let deleteBTN = document.createElement(`button`);
     deleteBTN.id = `comment${mark.comment_id}`;
     deleteBTN.innerText = `delete`;
-    comment.append(deleteBTN)
+    if (fakeUser === mark.commenter_id) {
+      comment.append(deleteBTN)
+    }
 
 
     let user = parseInt(document.querySelector(`#userNum`).value);
-    deleteBTN.onclick = function () {
+    deleteBTN.onclick = function (event) {
+      event.preventDefault()
       let user = parseInt(document.querySelector(`#userNum`).value);
       if (user === mark.commenter_id) {
         deleteComments(mark.post_id, mark.comment_id)
       }
     }
-
-
   })
 }
+
+
 
 const loadLikes = async (post_id) => {
   let response = await axios.get(`http://localhost:11000/likes/posts/${post_id}`);
   let likes = response.data.payload;
-  let num = 0;
-
   let bell = document.createElement(`p`);
+  let buttonDiv = document.createElement(`div`);
+  buttonDiv.id = `div`
+
   bell.className = `like`;
+
   bell.id = `like${post_id}`
-  let post = document.querySelector(`#_${post_id}`)
-  bell.innerText = likes.length;
-  if (post_id === post_id) {
-    if (likes.length > 0) {
-      post.append(bell);
-    }
-  }
+  let post = document.querySelector(`#_${post_id}`);
+  post.append(buttonDiv);
+  buttonDiv.append(bell);
+
+  let likeBTN = document.createElement('button');
+  likeBTN.id = `like_${post_id}`
+  likeBTN.innerText = 'like';
+
+buttonDiv.append(likeBTN);
+  let names = document.createElement('div');
+  names.id = `name_${post_id}`;
+ 
+
+  likes.forEach((like) => {
+    let name = document.createElement('a');
+    name.href = `#`;
+    name.innerText = `${like.firstname} ${like.lastname}`
+
+      names.append(name)
+      buttonDiv.append(names)
+    log(name)
+  })
+
+  bell.innerText = `Likes: ${likes.length}`;
+  
+ likeBTN.classList.toggle('show');
 }
 
-const likeLink = () => {
-  let posts = document.querySelector(`.post`);
-  log(posts)
-  let like = document.createElement(`p`);
-  like.innerText = `Like`;
-  posts.append(like);
-
-  log(posts)
-}
 
 const deletePost = async (post) => {
   await axios.delete(`http://localhost:11000/posts/${post}`);
@@ -152,46 +158,4 @@ const deleteComments = async (post, comment_id) => {
   console.log(deletedComment)
   deletedComment.parentNode.removeChild(deletedComment);
   await axios.delete(`http://localhost:11000/comments/${post}/${comment_id}`);
-
-  log(`deleted comment`, deletedComment)
-
-  log(`pushed`)
 }
-
-
-// const editPost = async (post) =>{
-//   let newBox = document.createElement(`form`);
-
-//   newBox.append(editBox);
-//   newBox = (event) => {
-//     event.preventDefault();
-//   };
-
-//   let editBox = document.createElement(`input`);
-//   editBox.type=`text`;
-
-
-//   let feedPost = document.querySelector(`#_${post}`)
-//   log(feedPost)
-//   feedPost.innerText = editBox.value;
-//   feedPost.append(newBox)
-
-
-
-
-//   // editBox.value = 'test'
-
-//   let response = await axios.patch(`http://localhost:11000/posts/${post}`, {body: editBox.value, post_id: post});
-//   log(response)
-
-//    log(feedPost)
-
-
-
-
-//   // let button = document.querySelector(`#btn${post}`);
-
-//   // alert(`${editBox}`)
-//   // log(button)
-//   log(`button clicked for post #${post}`)
-// }
