@@ -62,39 +62,46 @@ ul{
 .post {
   font-size: 1.5vw;
   font-weight: normal;
-  border: goldenrod solid 2px;
-  margin-bottom: 20px;
+  order:1;
+  /* margin-bottom: 20px; */
 
 }
-p{
+p[id ^= 'comment']{
   background-color: #F1F1F1;
   font-size: 1.25vw;
   font-weight: lighter;
-  border-top: solid;
+  border-top: solid black .5px;
   margin-top: 5px;
+  order:3;
   /* border: */
   /* margin-bottom: 50px; */
 }
 
 #footer {
+  display: block;
   background-color: #F1F1F1;
   text-align: center;
   padding: 10px;
 }
-/* div[id ^= 'likeDiv']:hover{
+.commentForm{
+  display: block;
+}
+
+div[id ^= 'likeDiv']:hover{
   visibility: visible;
-} */
-/* button[id ^= 'likeDiv'] {
+} 
+ button[id ^= 'likeDiv'] {
   background-color: #4CAF50;
   color: white;
   padding: 16px;
   font-size: 16px;
   border: none;
-} */
+}
 
-#div {
+#btnDiv {
   position: relative;
   display: inline-block;
+  order:2;
 }
 
 div[id ^= 'name_'] {
@@ -113,6 +120,9 @@ div[id ^= 'name_'] a {
   display: block;
 }
 
-div[id ^= 'name_'] a:hover {background-color: #ddd;}
+#btnDiv:hover div[id ^= 'name_'] {display: block;}
 
-#div:hover div[id ^= 'name_'] {display: block;}
+div[id ^= 'sep']{
+  margin-bottom: 10px;
+  border: goldenrod solid 2px;
+}

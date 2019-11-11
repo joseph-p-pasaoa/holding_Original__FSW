@@ -30,7 +30,10 @@ const loadPost = async () => {
   let id = parseInt(document.querySelector(`#userNum`).value);
 
   let posts = response.data.body;
+
   posts.forEach((post) => {
+    let separateDivs = document.createElement(`div`);
+    separateDivs.id = `sep${post.post_id}`;
 
     let listItem = document.createElement("li");
     listItem.id = `_${post.post_id}`;
@@ -40,7 +43,6 @@ const loadPost = async () => {
     let deleteBTN = document.createElement(`button`);
     deleteBTN.id = `post${post.post_id}`;
     deleteBTN.innerText = `delete`;
-
 
     deleteBTN.onclick = function () {
       let user = parseInt(document.querySelector(`#userNum`).value);
@@ -52,12 +54,16 @@ const loadPost = async () => {
     if (id === post.poster_id) {
       listItem.append(deleteBTN);
     }
+separateDivs.append(listItem);
+postList.append(separateDivs);
 
-    postList.appendChild(listItem);
-    loadLikes(post.post_id, id);
-    loadComment(post.post_id);
+    // postList.appendChild(listItem);
+    loadLikes(post.post_id, separateDivs);
+    loadComment(post.post_id, separateDivs);
 
+    // makeComment(listItem, post.post_id, separateDivs);
   });
+
 }
 
 const makePosts = async () => {
@@ -73,18 +79,37 @@ const newPostFormSubmitted = (event) => {
   makePosts();
 }
 
+const makeComment = async (post_id, div) => {
+  let newCommentForm = document.createElement('form')
+  newCommentForm.className = `commentForm`
+  newCommentForm.id = `cForm${post_id}`
 
-const loadComment = async (id) => {
+  let newComment = document.createElement(`input`);
+  let commentBtn = document.createElement('button');
+  commentBtn.innerText = `Send`
+  newComment.type = `text`
+  newComment.placeholder = `Write a comment...`
+  newComment.required = `true`;
+
+  newCommentForm.append(newComment)
+  newCommentForm.append(commentBtn)
+  div.append(newCommentForm)
+
+}
+
+const loadComment = async (post_id, div) => {
   let fakeUser = parseInt(document.querySelector(`#userNum`).value);
-  let response = await axios.get(`http://localhost:11000/comments/posts/${id}`);
+  let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
+
   marks.forEach((mark) => {
     let comment = document.createElement("p");
     comment.id = `comment${mark.comment_id}`;
     comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
-    let post = document.querySelector(`#_${id}`)
-    if (id === mark.post_id) {
-      post.append(comment);
+    // let post = document.querySelector(`#_${id}`)
+
+    if (post_id === mark.post_id) {
+      div.append(comment);
     }
 
     let deleteBTN = document.createElement(`button`);
@@ -94,8 +119,6 @@ const loadComment = async (id) => {
       comment.append(deleteBTN)
     }
 
-
-    let user = parseInt(document.querySelector(`#userNum`).value);
     deleteBTN.onclick = function (event) {
       event.preventDefault()
       let user = parseInt(document.querySelector(`#userNum`).value);
@@ -104,48 +127,52 @@ const loadComment = async (id) => {
       }
     }
   })
+  
+  // div.forEach((box) => {
+  //   log(box);
+  // })
+  log(div.id)
+  // if(div.id === post_id){
+  //   makeComment(post_id, div)
+  // }
 }
 
-
-
-const loadLikes = async (post_id) => {
+const loadLikes = async (post_id, div) => {
   let response = await axios.get(`http://localhost:11000/likes/posts/${post_id}`);
   let likes = response.data.payload;
   let bell = document.createElement(`p`);
   let buttonDiv = document.createElement(`div`);
-  buttonDiv.id = `div`
+  buttonDiv.id = `btnDiv`
 
   bell.className = `like`;
 
   bell.id = `like${post_id}`
-  let post = document.querySelector(`#_${post_id}`);
-  post.append(buttonDiv);
+  // let post = document.querySelector(`#_${post_id}`);
+  div.append(buttonDiv);
   buttonDiv.append(bell);
 
   let likeBTN = document.createElement('button');
   likeBTN.id = `like_${post_id}`
   likeBTN.innerText = 'like';
 
-buttonDiv.append(likeBTN);
+  buttonDiv.append(likeBTN);
   let names = document.createElement('div');
   names.id = `name_${post_id}`;
- 
+
 
   likes.forEach((like) => {
     let name = document.createElement('a');
     name.href = `#`;
     name.innerText = `${like.firstname} ${like.lastname}`
 
-      names.append(name)
-      buttonDiv.append(names)
-    log(name)
+    names.append(name)
+    buttonDiv.append(names)
   })
 
   bell.innerText = `Likes: ${likes.length}`;
-  
- likeBTN.classList.toggle('show');
-}
 
+  likeBTN.classList.toggle('show');
+}
 
 const deletePost = async (post) => {
   await axios.delete(`http://localhost:11000/posts/${post}`);
