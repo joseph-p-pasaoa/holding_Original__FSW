@@ -1,0 +1,83 @@
+.user-photo {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    justify-self: center;
+    border: solid 3px black;
+}
+
+/* .user-photo:active {
+    z-index: 5;
+    width: 800px;
+    height: auto;
+    box-shadow: 10px 10px 5px black;
+    grid-row: 1/4;
+    justify-self: center;
+} */
+
+.picture-frame {
+    display: grid;
+    border: solid 3px black;
+    justify-content: space-around;
+    text-align: left;
+    align-content: center;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 5px black;
+    margin-bottom: 40px;
+    margin: 40px;
+}
+
+.picture-frame > .user-photo:active {
+    position: absolute;
+    width: 800px;
+    height: auto;
+}
+
+#photo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-self: center;
+
+}
+
+.new-pic-input {
+    width: 300px;
+    padding: 10px;
+    margin: 20px;
+}
+
+#submit {
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    background-image: linear-gradient(rgb(0, 233, 0), forestgreen);
+    color: white;
+    font-size: large;
+}
+
+#submit:hover {
+    width: 100px;
+    height: 35px;
+    border-radius: 10px;
+    background: rgb(60, 255, 60);
+    color: black;
+    font-size: large;
+    font-weight: bold;
+}
+
+.button {
+    background: forestgreen;
+    color: white;
+    padding: 5px;
+    border: solid 2px darkgreen;
+}
+
+.button:hover {
+    background: rgb(0, 216, 0);
+    font-weight: bold;
+    color: black;
+    padding: 5px;
+    border: solid 2px forestgreen;
+}

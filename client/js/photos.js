@@ -14,8 +14,10 @@ const loadPhotos = async () => {
         let mainDiv = document.querySelector("#photo-container")
         let newDiv = document.createElement("div")
         newDiv.id = photo.photo_id
+        newDiv.className = "picture-frame"
         let newPic = document.createElement("img")
         newPic.src = photo.photo_url
+        newPic.className = "user-photo"
         let picTitle = document.createElement("p")
         picTitle.innerText = photo.title
         let deleteBtn = document.createElement("button")
