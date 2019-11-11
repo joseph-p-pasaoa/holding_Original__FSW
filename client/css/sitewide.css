@@ -77,11 +77,143 @@ body {
 }
 
 h1 {
+  margin-right: 5%;
+
+  text-align: right;
   font-size: 2em;
 	font-weight: bold;
 	font-family: 'Quicksand', sans-serif;
 }
 
+
+/* MADE WITH HEADER-TOC BUILDER */
+div#base-grid {
+  display: grid;
+  grid-template-columns: 189px auto;
+  grid-template-rows: 131px 31px auto;
+  grid-gap: 0px;
+}
+
+div#header {
+  grid-column: span 2;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+img#logo {
+  height: 41px;
+  margin: 11px;
+}
+
+div#right-console {
+  width: 400px;
+  text-align: left;
+}
+
+div#cornerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  margin: 12px 12px 6px 6px;
+  padding: 3px 40px 2px 6px;
+  border-radius: 25px 25px 25px 0px;
+
+  background: rgb(255,236,126);
+	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
+	border-top: solid 1px gold;
+	border-right: solid 1px gold;
+	border-bottom: solid 1px goldenrod;
+	border-left: solid 1px goldenrod;
+}
+
+div#cornerNav a {
+  padding: 3px 15px 4px 15px;
+
+  font-weight: bold;
+}
+
+input[name="search"] {
+  margin: 6px 12px 12px 6px;
+  padding: 0px 10px 1px 10px;
+  width: 260px;
+  height: 22px;
+  border-radius: 27px;
+
+  font-size: 1em;
+}
+
+input[name="search"]:focus {
+  outline: none;
+}
+
+div#marquee {
+  grid-column: span 2;
+  padding: 9px 12px 12px 0px;
+  
+  text-align: center;
+  
+  background: rgb(255,236,126);
+	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
+	border-top: solid 1px gold;
+	border-bottom: solid 1px goldenrod;
+}
+
+div#left-body {
+  padding-top: 50px;
+
+  font-size: 1em;
+}
+
+ul#toc {
+  margin: 0px 12px;
+  padding: 8px 0px 48px 0px;
+
+  border: solid 2px #000;
+  border-radius: 7px 0px 7px 7px;
+}
+
+ul#toc li {
+  padding: 4px 12px;
+}
+
+ul#toc li a.current {
+	cursor: default;
+	text-decoration: none;
+	color: orange;
+}
+
+div#section-actions {
+  padding-top: 40px;
+}
+
+div#left-body button {
+  margin: 4px 12px;
+
+  border-radius: 7px;
+}
+
+div#right-body {
+  display: block;
+  margin-top: 17px;
+}
+/* end MADE WITH HEADER-TOC BUILDER */
+
+
+.hover-fade {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.hover-fade:hover {
+  opacity: 0.5;
+}
+
+
+/* MADE WITH USER SIM CONTROL */
 div#userSimControl {
   position: fixed;
   bottom: 15px;
@@ -123,3 +255,4 @@ div#userSimControl input {
 div#userSimControl input:focus {
   outline: none;
 }
+/* end MADE WITH USER SIM CONTROL */

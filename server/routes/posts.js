@@ -16,9 +16,9 @@ const db = require('../db.js');
 
 
 /* MIDDLEWARE */
-const middleWare = async (req, res, next) => {
+const allPosts = async (req, res, next) => {
   try {
-    let response = await db.any("SELECT * FROM posts;");
+    let response = await db.any("SELECT * FROM posts ORDER BY (post_id) DESC;");
     res.json({
       status: "success",
       message: req.get('host') + req.originalUrl,
@@ -39,7 +39,9 @@ const singlePost = async (req, res) => {
     let post = await db.any(selectQuery, parseInt(req.params.id));
 
     res.json({
-      body: post,
+      body: {body: body,
+        poster_id: id
+      },
       message: `Here is the post!`
     });
   } catch (error) {
@@ -100,15 +102,14 @@ const removePost = async (req, res) => {
 
 
 /* ROUTES */
-router.get("/", middleWare);
+router.get("/", allPosts);
 router.get("/:id", singlePost);
-router.post("/:id", addPost);
+router.post("/", addPost);
 router.patch("/:id", updatePost);
 router.delete("/:id", removePost);
 
 
 module.exports = router;
-
 
 
 
