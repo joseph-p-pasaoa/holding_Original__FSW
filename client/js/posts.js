@@ -216,7 +216,6 @@ const deletePost = async (post, div) => {
 /* Delete specified comment from database */
 const deleteComments = async (post, comment_id) => {
   let deletedComment = document.querySelector(`#comment${comment_id}`);
-  console.log(deletedComment)
   deletedComment.parentNode.removeChild(deletedComment);
   await axios.delete(`http://localhost:11000/comments/${post}/${comment_id}`);
 }
