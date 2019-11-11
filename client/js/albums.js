@@ -17,6 +17,13 @@ const serverComm = async (method, urlAdds, body) => {
   }
 }
 
+const clearStage = () => {
+  const stage = document.querySelector('#albumsStage');
+  while (stage.firstChild) {
+    stage.removeChild(stage.lastChild);
+  }
+}
+
 const grabAllAlbums = async () => {
   const currentUser = 4; // document.querySelector('#userNum').value;
   const response = await serverComm("get", `albums/${currentUser}`);
@@ -33,7 +40,9 @@ const buildAlbumCards = (dataArray) => {
         let makingA = document.createElement('a');
           makingA.href = `./photos.html?album=${photoObj.album_id}`;
         let makingImg = document.createElement('img');
-          makingImg.src = photoObj.photo_url;
+          photoObj.photo_url
+            ? makingImg.src = photoObj.photo_url
+            : makingImg.src = "http://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif";
           makingImg.alt = photoObj.album_title;
           makingImg.className = "a_cover";
         let makingP = document.createElement('p');
@@ -49,9 +58,23 @@ const buildAlbumCards = (dataArray) => {
     }
 }
 
+const newAlbum = async () => {
+  const userId = document.querySelector('#userNum').value;
+  const body = {
+    title: document.querySelector('#titleBox').value
+  };
+  await serverComm("post", `albums/${userId}`, body);
+}
+
 
 /* POST DOM Loaded Exec */
 document.addEventListener("DOMContentLoaded", async () => {
-    let albumsArray = await grabAllAlbums();
-    buildAlbumCards(albumsArray);
+    buildAlbumCards(await grabAllAlbums());
+
+    document.querySelector('#createAlbum').addEventListener("click", async () => {
+        await newAlbum();
+        // window.location.href = ""; // send to photos page of new album instead?
+        clearStage();
+        buildAlbumCards(await grabAllAlbums());
+    });
 });

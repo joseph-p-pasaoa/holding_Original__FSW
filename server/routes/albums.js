@@ -22,8 +22,9 @@ router.get("/:owner_id", async (req, res) => {
         , albums.album_id
         , albums.title AS album_title
         , photos.photo_url AS photo_url
-      FROM albums JOIN photos ON (albums.album_id = photos.album_id)
-      WHERE creator_id = ${ownerId};
+      FROM albums FULL OUTER JOIN photos ON (albums.album_id = photos.album_id)
+      WHERE creator_id = $1
+      ORDER BY albums.album_id DESC;
     `;
     let getAllAlbums = await db.any(getQuery, ownerId)
     res.json({
@@ -32,7 +33,7 @@ router.get("/:owner_id", async (req, res) => {
     })
   } catch (error) {
     res.json({
-      message: "GET Oops! All Errors!"
+      message: "Oops! All Errors!"
     })
   }
 })
@@ -42,8 +43,8 @@ router.post("/:owner_id", async (req, res) => {
     let title = req.body.title
     let owner = parseInt(req.params.owner_id)
     let postQuery = `
-    INSERT INTO albums (creator_id, title)
-    VALUES($1, $2)
+      INSERT INTO albums (creator_id, title)
+      VALUES($1, $2)
     `
     let newAlbum = await db.none(postQuery, [owner, title])
     res.json({
@@ -52,7 +53,7 @@ router.post("/:owner_id", async (req, res) => {
     })
   } catch (error) {
     res.json({
-      message: "POST Oops! All Errors!"
+      message: "Oops! All Errors!"
     })
   }
 })

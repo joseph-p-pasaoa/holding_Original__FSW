@@ -5,7 +5,25 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 
 
 div#right-body {
+  position: relative;
+}
 
+div#createDiv {
+  margin: 16px 53px 22px 61px;
+}
+
+input[name="titleBox"] {
+  width: 500px;
+  font-size: 1em;
+  margin-left: 8px;
+  padding: 2px 8px 3px 8px;
+}
+
+button#createAlbum {
+  margin-left: 12px;
+  width: 100px;
+  font-size: 0.9em;
+  border-radius: 5px;
 }
 
 div#albumsStage {
