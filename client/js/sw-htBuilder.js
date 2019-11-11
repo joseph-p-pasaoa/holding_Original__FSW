@@ -27,9 +27,7 @@ const insertFill = () => {
             <li><a href="./html/albums.html" id="tocAlbums">Albums</a></li>
             <li><a href="./html/users.html" id="tocPosts">Users</a></li>
          </ul>
-         <div id="section-actions">
-            <button type="button" id="addAlbum">Create a New Album</button>
-         </div>
+         <div id="section-actions"></div>
       </div>
   `;
 document.querySelector('#base-grid').innerHTML = fill;
@@ -46,9 +44,11 @@ const setActive = () => {
   if (window.location.href.includes("users.html")) {
     whereAreWe = document.querySelector('#tocUsers');
   }
-  whereAreWe.className += ' current';
-  whereAreWe.href = 'javascript: void(0)';
-  // whereAreWe.parentElement.style.display = 'none'; // maybe used in future
+  if (whereAreWe) {
+    whereAreWe.className += ' current';
+    whereAreWe.href = 'javascript: void(0)';
+    // whereAreWe.parentElement.style.display = 'none'; // maybe used in future
+  }
 }
 
 insertFill();
