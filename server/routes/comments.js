@@ -43,7 +43,7 @@ const getAllCommentsFromASinglePost = async (req, res) => {
     let post_id = req.params.post_id
     let insertQuery = `
     SELECT * FROM comments INNER JOIN users ON comments.commenter_id = users.user_id 
-    WHERE post_id = $1`
+    WHERE post_id = $1 ORDER BY (comment_id);`
     let CommentsSinglePost = await db.any(insertQuery, post_id)
 
     res.json({

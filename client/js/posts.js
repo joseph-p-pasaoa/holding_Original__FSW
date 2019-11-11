@@ -13,8 +13,9 @@ const log = console.log;
 
 
 /* POST DOM Loaded Exec */
-document.addEventListener("DOMContentLoaded", () => {
 
+document.addEventListener("DOMContentLoaded", () => {
+  loadPosts();
   document.querySelector("#userSimControl").addEventListener("click", () => {
     loadPosts();
   })
@@ -33,14 +34,14 @@ const newPostFormSubmitted = (event) => {
 
 const makePosts = async () => {
   const text = document.querySelector("#text").value;
-  let id = parseInt(document.querySelector(`#userNum`).value)
-  let response = await axios.post(`http://localhost:11000/posts/ `, { poster_id: id, body: text });
+  let currentUser = parseInt(document.querySelector(`#userNum`).value)
+  let response = await axios.post(`http://localhost:11000/posts/ `, { poster_id: currentUser, body: text });
   loadPosts();
 }
 
 /* Load all posts from database */
 const loadPosts = async () => {
-  let simUser = parseInt(document.querySelector("#userNum").value);
+  let currentUser = parseInt(document.querySelector("#userNum").value);
 
   let addCommentForm = document.querySelector("#postAComment");
   addCommentForm.style.display = "none"
@@ -52,6 +53,7 @@ const loadPosts = async () => {
   let posts = response.data.body;
 
   posts.forEach((post) => {
+
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
     separateDivs.id = post.post_id;
@@ -67,19 +69,19 @@ const loadPosts = async () => {
     let deleteBTN = document.createElement("button");
     deleteBTN.id = `post${post.post_id}`;
     deleteBTN.innerText = "delete";
-    
+
     deleteBTN.onclick = function () {
-      if (simUser === post.poster_id) {
+      if (currentUser === post.poster_id) {
         deletePost(post.post_id, separateDivs)
       }
     }
 
     /* Only show delete buttons on user's own posts */
-    if (simUser === post.poster_id) {
+    if (currentUser === post.poster_id) {
       listItem.append(deleteBTN);
     }
 
-/* Append all posts things to the postList ul */
+    /* Append all posts things to the postList ul */
     separateDivs.append(listItem);
     postList.append(separateDivs);
 
@@ -104,12 +106,12 @@ const makeComments = (post) => {
   }
 
   const postComment = async (post) => {
-    let fakeUser = parseInt(document.querySelector("#userNum").value);
+    let currentUser = parseInt(document.querySelector("#userNum").value);
     let commentBox = document.querySelector("#cText").value;
     commentBox.id = post;
     const text = commentBox;
 
-    let response = await axios.post(`http://localhost:11000/comments/posts/${post}/${fakeUser}`, { commenter_id: fakeUser, post_id: post, body: text });
+    let response = await axios.post(`http://localhost:11000/comments/posts/${post}/${currentUser}`, { commenter_id: currentUser, post_id: post, body: text });
     loadPosts();
   }
 }
@@ -117,7 +119,7 @@ const makeComments = (post) => {
 /* Load all comments from database */
 
 const loadComment = async (post_id, div) => {
-  let fakeUser = parseInt(document.querySelector("#userNum").value);
+  let currentUser = parseInt(document.querySelector("#userNum").value);
   let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
 
@@ -153,14 +155,14 @@ const loadComment = async (post_id, div) => {
     deleteBTN.id = `comment${mark.comment_id}`;
     deleteBTN.innerText = "delete";
 
-    if (fakeUser === mark.commenter_id) {
+    if (currentUser === mark.commenter_id) {
       comment.append(deleteBTN);
     }
 
     deleteBTN.onclick = function (event) {
       event.preventDefault()
-      let user = parseInt(document.querySelector("#userNum").value);
-      if (user === mark.commenter_id) {
+      let currentUser = parseInt(document.querySelector("#userNum").value);
+      if (currentUser === mark.commenter_id) {
         deleteComments(mark.post_id, mark.comment_id);
       }
     }
