@@ -56,6 +56,21 @@ CREATE TABLE photos
    photo_url TEXT
 );
 
+CREATE TABLE holds
+(
+   hold_id SERIAL PRIMARY KEY,
+   password VARCHAR(36),
+   description VARCHAR(140),
+   max_users INT,
+   name VARCHAR(36)
+);
+
+CREATE TABLE user_holds
+(
+   holds_user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
+   holds_hold_id INT REFERENCES holds(hold_id) ON DELETE CASCADE
+);
+
 /* SEED DATA */
 INSERT INTO users
    (username, password, firstname, lastname, age)
@@ -133,6 +148,26 @@ VALUES
    (9, 'cool horses dont look at splosions', '../../database/photoDbSim/LoZ_wronghorse.jpg'),
    (9, 'wind in my mane!!!', '../../database/photoDbSim/tlozbotw-run.jpg');
 
+INSERT INTO holds
+   (hold_id, password, description, max_users, name)
+VALUES
+   (1, 'PWblue', 'Blue is the best', 2, 'The Blue Boys'),
+   (2, 'PWcastle', 'Castles are the best', 4, 'Castle Creeps'),
+   (3, 'PWcars', 'Fast and Furious!', 3, 'Car Talk'),
+   (4, 'PWapple', 'Everypony is welcome!', 10, 'My Little Pony Superfans');
+
+INSERT INTO user_holds
+   (holds_user_id, holds_hold_id)
+VALUES
+   (1, 1),
+   (1, 2),
+   (2, 4),
+   (3, 1),
+   (3, 2),
+   (3, 3),
+   (3, 4),
+   (4, 3);
+
 /* QUERIES */
 
 SELECT *
@@ -152,3 +187,9 @@ FROM albums;
 
 SELECT *
 FROM photos;
+
+SELECT *
+FROM holds;
+
+SELECT *
+FROM user_holds;
