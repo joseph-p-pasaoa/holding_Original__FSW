@@ -1,25 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadPhotos();
-    loadAlbumInfo();
+    // loadAlbumInfo(); // delete if no bugs found after testing
     const form = document.querySelector("#formy-mcformface")
     form.addEventListener("submit", addPhoto)
 });
 
-const loadAlbumInfo = async () => {
-    let params = (new URL(document.location)).searchParams;
-    let album = params.get("album");
-    let response = await axios.get(`http://localhost:11000/photos/albums/${parseInt(album)}`);
-    let albumInfo = response.data.body[0].album_title
-    console.log(response)
-    let title = document.querySelector("#album-title")
-    title.innerText = albumInfo
-}
+/* delete if no bugs found after testing
+// const loadAlbumInfo = async () => {
+//     let params = (new URL(document.location)).searchParams;
+//     let album = params.get("album");
+//     let response = await axios.get(`http://localhost:11000/photos/albums/${parseInt(album)}`);
+//     let albumInfo = response.data.body[0].album_title
+//     console.log(response)
+//     let title = document.querySelector("#album-title")
+//     title.innerText = albumInfo
+// }
+*/
 
 const loadPhotos = async () => {
     let params = (new URL(document.location)).searchParams;
     let album = params.get("album");
     let response = await axios.get(`http://localhost:11000/photos/albums/${parseInt(album)}`);
-    console.log(response);
     let title = document.querySelector("#album-title")
 
     if (response.status === 'fail') {
@@ -55,16 +56,10 @@ const loadPhotos = async () => {
             }
         }
     }
-    // } else {
-    //     let mainDiv = document.querySelector("#photo-container")
-    //     let alert = document.createElement("p")
-    //     alert.innerText = "Album empty! Please add a photo to this album by using the input above!"
-    //     mainDiv.append(alert)
-    // }
 }
 
 const deletePhoto = async (pic_id) => {
-    let response = await axios.delete(`http://localhost:11000/photos/${pic_id}`)
+    await axios.delete(`http://localhost:11000/photos/${pic_id}`)
     window.location.reload();
 }
 
@@ -78,7 +73,7 @@ const addPhoto = async (event) => {
         let alert = document.querySelector("#alert1")
         alert.innerText = "** Inputs missing. Please enter a valid title and photo url, and retry. **"
     } else {
-        let response = await axios.post(`http://localhost:11000/photos/albums/${parseInt(album)}`, {
+        await axios.post(`http://localhost:11000/photos/albums/${parseInt(album)}`, {
             album_id: album,
             title: userTitle,
             photo_url: userUrl

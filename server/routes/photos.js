@@ -33,12 +33,6 @@ const getAlbumPhotos = async (req, res, next) => {
       FULL OUTER JOIN albums ON photos.album_id = albums.album_id 
       WHERE albums.album_id = $1
     `;
-    // const getQuery = `
-    //   SELECT * 
-    //   FROM photos
-    //   INNER JOIN albums ON photos.album_id = albums.album_id 
-    //   WHERE photos.album_id = $1
-    // `;
     let response = await db.any(getQuery, albumId);
     if (response.length < 1) {
       res.json({
@@ -97,7 +91,7 @@ const addPhotoToAlbum = async (req, res, next) => {
     const title = req.body.title.trim();
     const photo_url = req.body.photo_url.trim();
     let insertQuery = `
-      INSERT INTO photos (album_id, title, photo_url) VALUES
+      INSERT INTO photos (album_id, photo_title, photo_url) VALUES
           ($1, $2, $3);
     `;
     await db.none(insertQuery, [albumId, title, photo_url]);
@@ -144,5 +138,3 @@ router.delete("/:photo_id", deletePhoto); // delete single picture from album
 
 
 module.exports = router;
-
-// SELECT * FROM albums FULL OUTER JOIN photos ON photos.album_id = albums.album_id WHERE photos.album_id = 10;
