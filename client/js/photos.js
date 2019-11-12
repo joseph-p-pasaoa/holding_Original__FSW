@@ -10,7 +10,7 @@ const loadAlbumInfo = async () => {
     let album = params.get("album");
     let response = await axios.get(`http://localhost:11000/albums/${parseInt(album)}`);
     let albumInfo = response.data.payload
-    console.log(albumInfo)
+    console.log(response)
     for (let singleAlbum of albumInfo) {
         let params = (new URL(document.location)).searchParams;
         let album = params.get("album");
@@ -67,7 +67,7 @@ const addPhoto = async (event) => {
     let userUrl = document.querySelector("#user-url").value
     if (!userTitle || !userUrl) {
         let alert = document.querySelector("#alert1")
-        alert.innerText = "** PLEASE ENTER URL **"
+        alert.innerText = "** Inputs missing. Please enter a valid title and photo url, and retry. **"
     } else {
         let response = await axios.post(`http://localhost:11000/photos/albums/${parseInt(album)}`, {
             album_id: album,
