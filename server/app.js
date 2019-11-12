@@ -26,6 +26,7 @@ app.listen(port, () => {
 
 /* MAIN ROUTING */
 // Imports
+const swRT = require('./routes/sw.js');
 const usersRT = require('./routes/users.js');
 const postsRT = require('./routes/posts.js');
 const commentsRT = require('./routes/comments.js');
@@ -34,6 +35,7 @@ const albumsRT = require('./routes/albums.js');
 const photosRT = require('./routes/photos.js');
 const eventsRT = require('./routes/events.js');
 // Connects
+app.use('/sw', swRT);
 app.use('/users', usersRT);
 app.use('/posts', postsRT);
 app.use('/comments', commentsRT);
