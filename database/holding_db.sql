@@ -16,7 +16,8 @@ CREATE TABLE users
    password VARCHAR(36),
    firstname VARCHAR(36),
    lastname VARCHAR(36),
-   age INT
+   age INT,
+   avatar TEXT
 );
 
 CREATE TABLE posts
@@ -45,14 +46,14 @@ CREATE TABLE albums
 (
    album_id SERIAL PRIMARY KEY,
    creator_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-   title VARCHAR(140)
+   album_title VARCHAR(140)
 );
 
 CREATE TABLE photos
 (
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
-   title VARCHAR(140),
+   photo_title VARCHAR(140),
    photo_url TEXT
 );
 
@@ -73,12 +74,12 @@ CREATE TABLE user_holds
 
 /* SEED DATA */
 INSERT INTO users
-   (username, password, firstname, lastname, age)
+   (username, password, firstname, lastname, age, avatar)
 VALUES
-   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23),
-   ('ElfWithSword', '321cba', 'Link', 'Beta', 19),
-   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36);
+   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatar/zelda by manreeree.jpg'),
+   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatar/Link Avatar.jpg'),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatar/Ganon avatar.jpeg'),
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan');
 
 INSERT INTO posts
    (poster_id, body)
@@ -114,7 +115,7 @@ VALUES(1, 4),
    (4, 2);
 
 INSERT INTO albums
-   (creator_id, title)
+   (creator_id, album_title)
 VALUES(1, 'Castle Pics'),
    (2, 'Pots I''ve smashed'),
    (3, 'DATING PROFILE PICTURES'),
@@ -126,7 +127,7 @@ VALUES(1, 'Castle Pics'),
    (4, 'trip to botw');
 
 INSERT INTO photos
-   (album_id, title, photo_url)
+   (album_id, photo_title, photo_url)
 VALUES
    (1, 'Pretty Parapet', '../../database/photoDbSim/albums/parapet.jpg'),
    (2, 'This was a big one', '../../database/photoDbSim/albums/clay-pot.jpg'),
