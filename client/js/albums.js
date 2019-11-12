@@ -25,7 +25,7 @@ const clearStage = () => {
 }
 
 const grabAllAlbums = async () => {
-  const currentUser = 4; // document.querySelector('#userNum').value;
+  const currentUser = document.querySelector('#userNum').value;
   const response = await serverComm("get", `albums/${currentUser}`);
   return response.payload;
 }
@@ -42,7 +42,7 @@ const buildAlbumCards = (dataArray) => {
         let makingImg = document.createElement('img');
           photoObj.photo_url
             ? makingImg.src = photoObj.photo_url
-            : makingImg.src = "http://www.jennybeaumont.com/wp-content/uploads/2015/03/placeholder-800x423.gif";
+            : makingImg.src = "../assets/images/emptyAlbumPh.gif";
           makingImg.alt = photoObj.album_title;
           makingImg.className = "a_cover";
         let makingP = document.createElement('p');
