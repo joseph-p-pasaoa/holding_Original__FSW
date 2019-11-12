@@ -13,14 +13,6 @@ const loadAlbumInfo = async () => {
     console.log(response)
     let title = document.querySelector("#album-title")
     title.innerText = albumInfo
-    // for (let singleAlbum of albumInfo) {
-    //     let params = (new URL(document.location)).searchParams;
-    //     let album = params.get("album");
-    //     if (singleAlbum.album_id === parseInt(album)) {
-    //         let title = document.querySelector("#album-title")
-    //         title.innerText = singleAlbum.album_title
-    //     }
-    // }
 }
 
 const loadPhotos = async () => {
@@ -69,7 +61,7 @@ const addPhoto = async (event) => {
     let userUrl = document.querySelector("#user-url").value
     if (!userTitle || !userUrl) {
         let alert = document.querySelector("#alert1")
-        alert.innerText = "** PLEASE ENTER URL **"
+        alert.innerText = "** Inputs missing. Please enter a valid title and photo url, and retry. **"
     } else {
         let response = await axios.post(`http://localhost:11000/photos/albums/${parseInt(album)}`, {
             album_id: album,
