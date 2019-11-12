@@ -25,8 +25,22 @@ const commForThisUserHolds = async (userId) => {
   return await swServerComm('get', `sw/userholds/${userId}`);
 } 
 
+const swReloadFromUserChange = (userId, holdId) => {
+  currentPathname = window.location.pathname;
+  if (currentPathname.includes('photos.html')) {
+    let urlBuild = window.location.href;
+    urlBuild = urlBuild.replace("photos.html", "albums.html");
+    urlBuild = urlBuild.replace(window.location.search, `?user=${userId}&hold=${holdId}`);
+    window.location.href = urlBuild;
+  } else {
+    window.location.search = `?user=${userId}&hold=${holdId}`;
+  }
+}
+
 const initHoldsDropper = async () => {
   const userId = document.querySelector('#userNum').value;
+  const presentHold = whatHoldAmIIn();
+  document.querySelector('#currentHold').value = presentHold;
   const dropperSelect = document.querySelector('#holdsDropper');
   const response = await commForThisUserHolds(userId);
   const dataArr = response.body;
@@ -37,15 +51,16 @@ const initHoldsDropper = async () => {
       let makingOpt = document.createElement('option');
       makingOpt.innerText = holdObj.name;
       makingOpt.value = holdObj.hold_id;
-      if (whatHoldAmIIn() === holdObj.hold_id) {
+      if (presentHold === holdObj.hold_id) {
         makingOpt.selected = "selected";
+        document.querySelector('#marquee').innerHTML = `Welcome <strong>${holdObj.username}</strong> to ${holdObj.name}`;
       }
       dropperSelect.appendChild(makingOpt);
     }
     dropperSelect.addEventListener("change", (e) => {
         const holdGoingTo = e.target.options[e.target.selectedIndex].value;
         // var text = e.target.options[e.target.selectedIndex].text; // saved for future display of Hold Name
-
+        swReloadFromUserChange(userId, holdGoingTo);
     });
   }
 } 
@@ -56,5 +71,3 @@ const initHoldsDropper = async () => {
 document.addEventListener("DOMContentLoaded", () => {
     initHoldsDropper();
 });
-
-

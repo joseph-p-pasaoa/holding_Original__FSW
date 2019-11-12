@@ -13,7 +13,10 @@ const insertFill = () => {
          <img id="logo" src="../assets/images/logo-191107.png" alt="Holding Logo" />
          <div id="right-console">
             <div id="cornerNav">
-               <select id="holdsDropper"></select>
+               <form>
+                  <select id="holdsDropper"></select>
+                  <input type="hidden" id="currentHold">
+               </form>
                <a href="#">Me</a>
                <a href="#">Events</a>
             </div>

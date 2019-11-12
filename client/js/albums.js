@@ -27,18 +27,19 @@ const clearStage = () => {
 const grabAllAlbums = async () => {
   const currentUser = document.querySelector('#userNum').value;
   const response = await serverComm("get", `albums/${currentUser}`);
-  log(response);
   return response.payload;
 }
 
 const buildAlbumCards = (dataArray) => {
     let albumTracker = {};
+    let idSearchStr = window.location.search;
+    idSearchStr = idSearchStr.slice(1);
     for (let photoObj of dataArray) {
       if (!albumTracker[photoObj.album_id]) {
         let makingCard = document.createElement('div');
           makingCard.className = 'album-card hover-fade';
         let makingA = document.createElement('a');
-          makingA.href = `./photos.html?album=${photoObj.album_id}`;
+          makingA.href = `./photos.html?album=${photoObj.album_id}&${idSearchStr}`;
         let makingImg = document.createElement('img');
           photoObj.photo_url
             ? makingImg.src = photoObj.photo_url
