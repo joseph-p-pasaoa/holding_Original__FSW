@@ -48,7 +48,7 @@ async function searchUser() {
     let userNameValue = document.querySelector('#userSearch').value;
     let userName = userNameValue
 
-    if (userNameValue.includes = (" ")) {
+    if (userNameValue.includes(" ")) {
         userName = userNameValue.trim()
 
     }
