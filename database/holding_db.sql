@@ -16,7 +16,8 @@ CREATE TABLE users
    password VARCHAR(36),
    firstname VARCHAR(36),
    lastname VARCHAR(36),
-   age INT
+   age INT,
+   avatar TEXT
 );
 
 CREATE TABLE posts
@@ -53,7 +54,7 @@ CREATE TABLE photos
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
    title VARCHAR(140),
-   photo_url TEXT
+   photo_url TEXT,
 );
 
 CREATE TABLE holds
@@ -73,12 +74,12 @@ CREATE TABLE user_holds
 
 /* SEED DATA */
 INSERT INTO users
-   (username, password, firstname, lastname, age)
+   (username, password, firstname, lastname, age, avatar)
 VALUES
-   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23),
-   ('ElfWithSword', '321cba', 'Link', 'Beta', 19),
-   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36);
+   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatar/zelda by manreeree.jpg'),
+   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatar/Link Avatar.jpg'),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatar/Ganon avatar.jpeg'),
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan');
 
 INSERT INTO posts
    (poster_id, body)
