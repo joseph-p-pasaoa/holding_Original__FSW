@@ -7,15 +7,6 @@
     border: solid 3px black;
 }
 
-/* .user-photo:active {
-    z-index: 5;
-    width: 800px;
-    height: auto;
-    box-shadow: 10px 10px 5px black;
-    grid-row: 1/4;
-    justify-self: center;
-} */
-
 .picture-frame {
     display: grid;
     border: solid 3px black;
@@ -30,7 +21,6 @@
 }
 
 .picture-frame > .user-photo:active {
-    position: absolute;
     width: 800px;
     height: auto;
 }
