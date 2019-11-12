@@ -1,123 +1,51 @@
-/*
-Landing Page Specific CSS | HOLDING Web App
-GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
-*/
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 
+<head>
+  <meta name="author" content="Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>HolDING: Posts</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
+  <script src="../js/userSim.js" type="text/javascript"></script>
+  <script src="../js/holds.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../css/sitewide.css" type="text/css" />
+  <link rel="stylesheet" href="../css/holds.css" type="text/css" />
+</head>
 
-/* div {
-  margin-top: 20px;
-} */
+<body>
+  <div id="base-grid">
+    <script src="../js/sw-htBuilder.js" type="text/javascript"></script>
 
-#text{
-  overflow-wrap: break-word;
-}
+    <div id='right-body'>
+      <h1>Posts</h1>
+      <div id='postsStage'>
+        <div id='singlePost'>
+          <form id='postAPost'>
+            <input id='text' rows="4" cols="50" placeholder="What's on your mind?" required
+              style='height:30px; width: 200px'></input>
+            <button>Submit</button>
+          </form>
+        </div>
+        <div id = 'postAComment'>
+            <form id='postAComment'>
+                <input id='cText' rows="4" cols="50" placeholder='Make a comment...' required
+                  style='height:30px; width: 200px'></input>
+                <button id = 'addCom'>Submit</button>
+              </form>
+        </div>
+        <div id='allPosts'>
+          <ul id='postList'>
+          </ul>
+        </div>
 
-a {
-  display: block;
-  font-size: 1.5vw;
-  text-decoration: none;
-    padding: 10px;
-}
+        <div id='footer'>
+          All Posts Loaded
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
 
-#tableOfContents {
-  width: 10vw;
-  display: block;
-  border: lightgray dashed 3px;
-  /*this will be an invisible border*/
-}
-#singlePost{
-  display: block;
-  text-align: center;
-}
-
-#current {
-  font-weight: bolder;
-  background-color: lightblue;
-}
-
-#allPosts{
-  text-align: center;
-  padding: 10px;
-  font-weight: bolder;
-  /* margin-bottom: 50px; */
-}
-#right-body ul{
-  width: 400px;
-   list-style-type: none;
-}
-#postList{
-  margin-bottom: 11px;
-  padding-bottom: 20px;
-}
-.post {
-  font-size: 1.5vw;
-  font-weight: normal;
-  order:1;
-  /* margin-bottom: 20px; */
-
-}
-form[id ^= 'cForm']{
-  order:4;
-}
-p[id ^= 'comment']{
-  background-color: #F1F1F1;
-  font-size: 1.25vw;
-  font-weight: lighter;
-  border-top: solid black .5px;
-  margin-top: 5px;
-  order:3;
-  /* border: */
-  /* margin-bottom: 50px; */
-}
-
-#footer {
-  display: block;
-  background-color: #F1F1F1;
-  text-align: center;
-  padding: 10px;
-}
-.commentForm{
-  display: block;
-}
-
-
-
-div[id ^= 'likeDiv']:hover{
-  visibility: visible;
-} 
- button[id ^= 'likeDiv'] {
-  background-color: #4CAF50;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-}
-
-#btnDiv {
-  position: relative;
-  display: inline-block;
-  order:2;
-}
-
-div[id ^= 'name_'] {
-  display: none;
-  position: absolute;
-  background-color: #f1f1f1;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-div[id ^= 'name_'] a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-#btnDiv:hover div[id ^= 'name_'] {display: block;}
-
-div[class ^= 'sep']{
-  margin-bottom: 10px;
-  border: goldenrod solid 2px;
-}
+</html>
