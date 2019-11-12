@@ -1,13 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     loadUsers()
     const searchUsers = document.querySelector('#displayAllPostFromGivenUser');
-    searchUsers.addEventListener('submit', () => {
+    searchUsers.addEventListener('submit', (event) => {
+        event.preventDefault();
         searchUser()
     });
-    // const searchAllUsers = document.querySelector('#searchBoxTop');
-    // searchAllUsers.addEventListener('submit', () => {
-    //     searchTopLeftUser()
-    // });
+
 
     const addUser = document.querySelector('#addUser');
     addUser.addEventListener('submit', () => {
@@ -45,11 +43,23 @@ async function loadUsers() {
 
 
 async function searchUser() {
-    event.preventDefault();
+
     loadUsers()
-    let userName = document.querySelector('#search').value;
+    let userNameValue = document.querySelector('#userSearch').value;
+    let userName= userNameValue
+    console.log(userName)
+    if (userNameValue.includes = (" ")){
+        userName = userNameValue.trim()
+        console.log(userName)
+    }
+
+ 
+
+    
+    console.log("userName", userName)
     const findAllUsers = await axios.get(`http://localhost:11000/users/`)
     let responsedata = findAllUsers.data.body
+
     let userId = searchNames(responsedata, userName)
     const title = document.getElementById("allTheUsers")
     title.innerHTML = `Results for ${userName}`;
@@ -73,49 +83,27 @@ async function searchUser() {
 }
 
 
-async function searchTopLeftUser() {
-    event.preventDefault();
-    loadUsers()
-    let userName = document.querySelector('#search2').value;
-    const findAllUsers = await axios.get(`http://localhost:11000/users/`)
-    let responsedata = findAllUsers.data.body
-    let userId = searchNames(responsedata, userName)
-    const title = document.getElementById("allTheUsers")
-    title.innerHTML = `Results for ${userName}`;
-    const userPost = document.querySelector("#usersResults");
-    userPost.innerHTML = ""
-    for (let i = 0; i < userId.length; i++) {
-        let response = await axios.get(`http://localhost:11000/users/${userId[i]}`)
-        response.data.body.forEach((users) => {
-            let searchDiv = document.createElement('div')
-            searchDiv.className = "searchResultsDiv"
-            userPost.append(searchDiv)
-            let usersName = document.createElement('li')
-            let UsersUsername = document.createElement('li')
-            let UsersAge = document.createElement('li')
-            usersName.innerText = `Name:${users.firstname} ${users.lastname}`;
-            UsersUsername.innerText = `Username:${users.username}`
-            UsersAge.innerText = `Age: ${users.age}`;
-            searchDiv.append(usersName, UsersUsername, UsersAge)
-        })
-    }
-}
+
+
+
 
 const searchNames = (data, userName) => {
+    let trimUserName =userName.split(" ").join("")
     let id = []
     for (result of data) {
-        if (userName.toUpperCase() === result.firstname.toUpperCase()) {
+        
+        let names = result.firstname  + result.lastname 
+        let nameStr = names.toUpperCase()
+        console.log(nameStr)
+        if (result.username.toUpperCase().includes(trimUserName.toUpperCase())) {
             id.push(result.user_id)
-        } else if (userName.toUpperCase() === result.lastname.toUpperCase()) {
-            id.push(result.user_id)
-        } else if (userName.toUpperCase() === result.firstname.toUpperCase() + " " + result.lastname.toUpperCase()) {
-            id.push(result.user_id)
-        } else if (userName === result.username) {
+        }else if(nameStr.includes(trimUserName.toUpperCase()) || nameStr.includes(trimUserName.toUpperCase())){
             id.push(result.user_id)
         }
     }
     return id
 }
+
 
 const addAUser = async () => {
     event.preventDefault();
