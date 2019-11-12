@@ -8,17 +8,19 @@ document.addEventListener("DOMContentLoaded", () => {
 const loadAlbumInfo = async () => {
     let params = (new URL(document.location)).searchParams;
     let album = params.get("album");
-    let response = await axios.get(`http://localhost:11000/albums/${parseInt(album)}`);
-    let albumInfo = response.data.payload
-    console.log(albumInfo)
-    for (let singleAlbum of albumInfo) {
-        let params = (new URL(document.location)).searchParams;
-        let album = params.get("album");
-        if (singleAlbum.album_id === parseInt(album)) {
-            let title = document.querySelector("#album-title")
-            title.innerText = singleAlbum.album_title
-        }
-    }
+    let response = await axios.get(`http://localhost:11000/photos/albums/${parseInt(album)}`);
+    let albumInfo = response.data.body[0].album_title
+    console.log(response)
+    let title = document.querySelector("#album-title")
+    title.innerText = albumInfo
+    // for (let singleAlbum of albumInfo) {
+    //     let params = (new URL(document.location)).searchParams;
+    //     let album = params.get("album");
+    //     if (singleAlbum.album_id === parseInt(album)) {
+    //         let title = document.querySelector("#album-title")
+    //         title.innerText = singleAlbum.album_title
+    //     }
+    // }
 }
 
 const loadPhotos = async () => {
@@ -36,7 +38,7 @@ const loadPhotos = async () => {
             newPic.src = photo.photo_url
             newPic.className = "user-photo"
             let picTitle = document.createElement("p")
-            picTitle.innerText = photo.title
+            picTitle.innerText = photo.photo_title
             let deleteBtn = document.createElement("button")
             deleteBtn.innerText = "DELETE"
             deleteBtn.className = "button"

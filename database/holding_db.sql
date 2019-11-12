@@ -45,14 +45,14 @@ CREATE TABLE albums
 (
    album_id SERIAL PRIMARY KEY,
    creator_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-   title VARCHAR(140)
+   album_title VARCHAR(140)
 );
 
 CREATE TABLE photos
 (
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
-   title VARCHAR(140),
+   photo_title VARCHAR(140),
    photo_url TEXT
 );
 
@@ -114,7 +114,7 @@ VALUES(1, 4),
    (4, 2);
 
 INSERT INTO albums
-   (creator_id, title)
+   (creator_id, album_title)
 VALUES(1, 'Castle Pics'),
    (2, 'Pots I''ve smashed'),
    (3, 'DATING PROFILE PICTURES'),
@@ -126,7 +126,7 @@ VALUES(1, 'Castle Pics'),
    (4, 'trip to botw');
 
 INSERT INTO photos
-   (album_id, title, photo_url)
+   (album_id, photo_title, photo_url)
 VALUES
    (1, 'Pretty Parapet', 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiAh_2ztNblAhXnY98KHcCiBcIQjRx6BAgBEAQ&url=https%3A%2F%2Fhavecamerawilltravel.photoshelter.com%2Fimage%2FI0000RzA3rpTNhMM&psig=AOvVaw24p3pHDzj-hjt7TZXI_wq0&ust=1573157974881749'),
    (2, 'This was a big one', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwir-tfQtNblAhVJj1kKHVb5BYMQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.alibaba.com%2Fproduct-detail%2FUnglazed-terracotta-indian-clay-pot_60356071966.html&psig=AOvVaw10a2velX9feI1HK_51CB_N&ust=1573158064002749'),
