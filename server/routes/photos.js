@@ -28,7 +28,7 @@ const getAlbumPhotos = async (req, res, next) => {
   try {
     const albumId = parseInt(req.params.album_id.trim());
     const getQuery = `
-      SELECT photo_url 
+      SELECT * 
       FROM photos 
       WHERE album_id = $1
     `;
@@ -101,13 +101,11 @@ const deletePhoto = async (req, res, next) => {
   try {
     const photoId = parseInt(req.params.photo_id);
     const deleteQuery = `
-      WITH instance AS (
           DELETE FROM photos 
           WHERE photo_id = $1 
           RETURNING 1
-          )
-        SELECT COUNT(*) FROM instance;
     `; // above psql query returns {count: x} where x is a STRING number of how many rows affected by DELETE
+
     let response = await db.one(deleteQuery, photoId);
     if (Number(response.count) === 0) {
       res.json({
