@@ -46,17 +46,13 @@ async function searchUser() {
 
     loadUsers()
     let userNameValue = document.querySelector('#userSearch').value;
-    let userName= userNameValue
-    console.log(userName)
-    if (userNameValue.includes = (" ")){
+    let userName = userNameValue
+
+    if (userNameValue.includes = (" ")) {
         userName = userNameValue.trim()
-        console.log(userName)
+
     }
 
- 
-
-    
-    console.log("userName", userName)
     const findAllUsers = await axios.get(`http://localhost:11000/users/`)
     let responsedata = findAllUsers.data.body
 
@@ -88,16 +84,15 @@ async function searchUser() {
 
 
 const searchNames = (data, userName) => {
-    let trimUserName =userName.split(" ").join("")
+    let trimUserName = userName.split(" ").join("")
     let id = []
     for (result of data) {
-        
-        let names = result.firstname  + result.lastname 
+
+        let names = result.firstname + result.lastname
         let nameStr = names.toUpperCase()
-        console.log(nameStr)
         if (result.username.toUpperCase().includes(trimUserName.toUpperCase())) {
             id.push(result.user_id)
-        }else if(nameStr.includes(trimUserName.toUpperCase()) || nameStr.includes(trimUserName.toUpperCase())){
+        } else if (nameStr.includes(trimUserName.toUpperCase()) || nameStr.includes(trimUserName.toUpperCase())) {
             id.push(result.user_id)
         }
     }
@@ -113,10 +108,10 @@ const addAUser = async () => {
     const username = document.querySelector("#searchBoxAddUsername").value
     const password = document.querySelector("#searchBoxAddPassword").value
     const findAllUsers = await axios.get(`http://localhost:11000/users/`)
-    let responseData = findAllUsers.data.body 
+    let responseData = findAllUsers.data.body
     let id = filerResults(responseData, username)
     if (id === -1) {
-        await axios.post(`http://localhost:11000/users/`, {username: username, password:password, firstname: firstname, lastname: lastname, age: age});
+        await axios.post(`http://localhost:11000/users/`, { username: username, password: password, firstname: firstname, lastname: lastname, age: age });
         loadUsers()
     }
 }
