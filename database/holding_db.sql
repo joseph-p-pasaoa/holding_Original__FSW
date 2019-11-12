@@ -46,15 +46,15 @@ CREATE TABLE albums
 (
    album_id SERIAL PRIMARY KEY,
    creator_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-   title VARCHAR(140)
+   album_title VARCHAR(140)
 );
 
 CREATE TABLE photos
 (
    photo_id SERIAL PRIMARY KEY,
    album_id INT REFERENCES albums(album_id) ON DELETE CASCADE,
-   title VARCHAR(140),
-   photo_url TEXT,
+   photo_title VARCHAR(140),
+   photo_url TEXT
 );
 
 CREATE TABLE holds
@@ -115,7 +115,7 @@ VALUES(1, 4),
    (4, 2);
 
 INSERT INTO albums
-   (creator_id, title)
+   (creator_id, album_title)
 VALUES(1, 'Castle Pics'),
    (2, 'Pots I''ve smashed'),
    (3, 'DATING PROFILE PICTURES'),
@@ -127,7 +127,7 @@ VALUES(1, 'Castle Pics'),
    (4, 'trip to botw');
 
 INSERT INTO photos
-   (album_id, title, photo_url)
+   (album_id, photo_title, photo_url)
 VALUES
    (1, 'Pretty Parapet', '../../database/photoDbSim/albums/parapet.jpg'),
    (2, 'This was a big one', '../../database/photoDbSim/albums/clay-pot.jpg'),

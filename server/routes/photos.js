@@ -29,8 +29,9 @@ const getAlbumPhotos = async (req, res, next) => {
     const albumId = parseInt(req.params.album_id.trim());
     const getQuery = `
       SELECT * 
-      FROM photos 
-      WHERE album_id = $1
+      FROM photos
+      INNER JOIN albums ON photos.album_id = albums.album_id 
+      WHERE photos.album_id = $1
     `;
     let response = await db.any(getQuery, albumId);
     if (response.length < 1) {
