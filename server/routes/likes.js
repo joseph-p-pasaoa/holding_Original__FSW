@@ -24,9 +24,7 @@ router.get("/posts/:post_id", async (req, res) => {
   try {
     let postId = parseInt(req.params.post_id)
     let getQuery =`
-    SELECT post_id, post_id AS num_of_likes 
-    FROM likes 
-    WHERE post_id = $1`
+    SELECT DISTINCT(firstname), lastname FROM users INNER JOIN likes ON users.user_id = likes.liker_id WHERE users.user_id IN (SELECT likes.liker_id FROM posts INNER JOIN likes ON posts.post_id = likes.post_id WHERE posts.post_id = $1);`
 
     let allLikes = await db.any(getQuery, postId)
     res.json({

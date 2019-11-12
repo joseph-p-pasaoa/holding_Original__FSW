@@ -23,9 +23,9 @@ const insertFill = () => {
 
       <div id="left-body">
          <ul id="toc">
-            <li><a href="./html/posts.html" id="tocPosts">Posts</a></li>
-            <li><a href="./html/albums.html" id="tocAlbums">Albums</a></li>
-            <li><a href="./html/users.html" id="tocPosts">Users</a></li>
+            <li><a href="./posts.html" id="tocPosts">Posts</a></li>
+            <li><a href="./albums.html" id="tocAlbums">Albums</a></li>
+            <li><a href="./users.html" id="tocPosts">Users</a></li>
          </ul>
          <div id="section-actions"></div>
       </div>
