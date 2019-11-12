@@ -30,19 +30,31 @@ const getAlbumPhotos = async (req, res, next) => {
     const getQuery = `
       SELECT * 
       FROM photos
-      INNER JOIN albums ON photos.album_id = albums.album_id 
-      WHERE photos.album_id = $1
+      FULL OUTER JOIN albums ON photos.album_id = albums.album_id 
+      WHERE albums.album_id = $1
     `;
+    // const getQuery = `
+    //   SELECT * 
+    //   FROM photos
+    //   INNER JOIN albums ON photos.album_id = albums.album_id 
+    //   WHERE photos.album_id = $1
+    // `;
     let response = await db.any(getQuery, albumId);
     if (response.length < 1) {
       res.json({
+          status: "fail",
+          message: "no album found"
+      });
+    } else if (response.length === 1 && !response[0].photo_url) {
+      res.json({
           status: "success",
-          message: "no photos found"
+          message: "empty album retrieved",
+          body: response
       });
     } else {
       res.json({
           status: "success",
-          message: "photos of album retrieved",
+          message: "photos retrieved",
           body: response
       });
     }
@@ -132,3 +144,5 @@ router.delete("/:photo_id", deletePhoto); // delete single picture from album
 
 
 module.exports = router;
+
+// SELECT * FROM albums FULL OUTER JOIN photos ON photos.album_id = albums.album_id WHERE photos.album_id = 10;
