@@ -16,7 +16,8 @@ CREATE TABLE users
    password VARCHAR(36),
    firstname VARCHAR(36),
    lastname VARCHAR(36),
-   age INT
+   age INT,
+   avatar TEXT
 );
 
 CREATE TABLE posts
@@ -73,12 +74,12 @@ CREATE TABLE user_holds
 
 /* SEED DATA */
 INSERT INTO users
-   (username, password, firstname, lastname, age)
+   (username, password, firstname, lastname, age, avatar)
 VALUES
-   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23),
-   ('ElfWithSword', '321cba', 'Link', 'Beta', 19),
-   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36);
+   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatar/zelda by manreeree.jpg'),
+   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatar/Link Avatar.jpg'),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatar/Ganon avatar.jpeg'),
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan');
 
 INSERT INTO posts
    (poster_id, body)
@@ -128,25 +129,26 @@ VALUES(1, 'Castle Pics'),
 INSERT INTO photos
    (album_id, photo_title, photo_url)
 VALUES
-   (1, 'Pretty Parapet', 'https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwiAh_2ztNblAhXnY98KHcCiBcIQjRx6BAgBEAQ&url=https%3A%2F%2Fhavecamerawilltravel.photoshelter.com%2Fimage%2FI0000RzA3rpTNhMM&psig=AOvVaw24p3pHDzj-hjt7TZXI_wq0&ust=1573157974881749'),
-   (2, 'This was a big one', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwir-tfQtNblAhVJj1kKHVb5BYMQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.alibaba.com%2Fproduct-detail%2FUnglazed-terracotta-indian-clay-pot_60356071966.html&psig=AOvVaw10a2velX9feI1HK_51CB_N&ust=1573158064002749'),
-   (2, 'This one had a rupee inside!', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwj1mtrmtNblAhWuxFkKHeHGAKYQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.chairish.com%2Fproduct%2F888050%2Fantique-clay-painted-handled-pot&psig=AOvVaw10a2velX9feI1HK_51CB_N&ust=1573158064002749'),
-   (3, 'I GET SWEATY AFTER WORKING OUT SO MUCH', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjrh5v5tNblAhVDxVkKHf1XA5QQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.polygon.com%2Fe3%2F2019%2F6%2F13%2F18677551%2Fbreath-of-the-wild-sequel-ganondorf-e3-2019-nintendo-mummy-hydrated&psig=AOvVaw0rn7SNL2auuvUklbuxKcXJ&ust=1573158145840964'),
-   (3, 'SOMETIMES I JUST LIKE TO HUG', 'https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwi657qTtdblAhXBhOAKHVojDVIQjRx6BAgBEAQ&url=https%3A%2F%2Fkotaku.com%2Fwhat-ganon-from-breath-of-the-wild-might-actually-look-1836718493&psig=AOvVaw0rn7SNL2auuvUklbuxKcXJ&ust=1573158145840964'),
-   (4, 'Apple', 'https://i.ndtvimg.com/i/2017-10/apple-benefits_620x350_51507721694.jpg'),
-   (4, 'Carrot', 'https://www.economist.com/sites/default/files/imagecache/1280-width/20180929_BLP506.jpg'),
-   (5, 'my good side', '../../database/photoDbSim/hc-epona-horse-c-ben-blackall.jpg'),
-   (5, 'high school portrait', '../../database/photoDbSim/Inspection_b.jpg'),
-   (6, 'morvan', '../../database/photoDbSim/9-10-17_Morvan_c.jpeg'),
-   (6, 'aonbarr fell asleep!', '../../database/photoDbSim/Aonbarr_sleeping_7-4-14.jpeg'),
-   (7, 'link and me epicness of epicness', '../../database/photoDbSim/link and epona.jpg'),
-   (7, 'glamour musculature!', '../../database/photoDbSim/Keidranx.jpg'),
-   (8, 'Ayo B''s sketch', '../../database/photoDbSim/Ayo B.jpg'),
-   (8, 'Rhiannon''s sculpture', '../../database/photoDbSim/Rhiannon(Epona).jpg'),
-   (9, 'horse be horsing', '../../database/photoDbSim/epona-breath-of-the-wild-3.jpg'),
-   (9, 'showing some skin', '../../database/photoDbSim/Epona-Breath-of-the-Wild.jpg'),
-   (9, 'cool horses dont look at splosions', '../../database/photoDbSim/LoZ_wronghorse.jpg'),
-   (9, 'wind in my mane!!!', '../../database/photoDbSim/tlozbotw-run.jpg');
+   (1, 'Pretty Parapet', '../../database/photoDbSim/albums/parapet.jpg'),
+   (2, 'This was a big one', '../../database/photoDbSim/albums/clay-pot.jpg'),
+   (2, 'This one had a rupee inside!', '../../database/photoDbSim/albums/vintage-clay-pot.jpeg'),
+   (3, 'I GET SWEATY AFTER WORKING OUT SO MUCH', '../../database/photoDbSim/albums/hydrated.png'),
+   (3, 'SOMETIMES I JUST LIKE TO HUG', '../../database/photoDbSim/albums/hugs.png'),
+   (4, 'Apple', '../../database/photoDbSim/albums/apples-in-box.png'),
+   (4, 'Carrot', '../../database/photoDbSim/albums/carrots.jpg'),
+   (5, 'my good side', '../../database/photoDbSim/albums/hc-epona-horse-c-ben-blackall.jpg'),
+   (5, 'high school portrait', '../../database/photoDbSim/albums/Inspection_b.jpg'),
+   (6, 'morvan', '../../database/photoDbSim/albums/9-10-17_Morvan_c.jpeg'),
+   (6, 'aonbarr fell asleep!', '../../database/photoDbSim/albums/Aonbarr_sleeping_7-4-14.jpeg'),
+   (7, 'link and me epicness of epicness', '../../database/photoDbSim/albums/link and epona.jpg'),
+   (7, 'glamour musculature!', '../../database/photoDbSim/albums/Keidranx.jpg'),
+   (8, 'Ayo B''s sketch', '../../database/photoDbSim/albums/Ayo B.jpg'),
+   (8, 'Rhiannon''s sculpture', '../../database/photoDbSim/albums/Rhiannon(Epona).jpg'),
+   (9, 'horse be horsing', '../../database/photoDbSim/albums/epona-breath-of-the-wild-3.jpg'),
+   (9, 'showing some skin', '../../database/photoDbSim/albums/Epona-Breath-of-the-Wild.jpg'),
+   (9, 'cool horses dont look at splosions', '../../database/photoDbSim/albums/LoZ_wronghorse.jpg'),
+   (9, 'wind in my mane!!!', '../../database/photoDbSim/albums/tlozbotw-run.jpg');
+
 
 INSERT INTO holds
    (hold_id, password, description, max_users, name)
