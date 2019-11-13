@@ -35,9 +35,11 @@ const getHoldsWNames = async (req, res, next) => {
       const userId = req.params.user_id;
       const getQuery = `
         SELECT hold_id
-          , name
+          , holds.name
+          , users.username
         FROM user_holds
         JOIN holds ON (user_holds.holds_hold_id = holds.hold_id)
+        JOIN users ON (user_holds.holds_user_id = users.user_id)
         WHERE holds_user_id = $1;
       `;
       let response = await db.any(getQuery, userId);
@@ -71,7 +73,7 @@ const customMiddle = async (req, res) => {
 
 
 /* ROUTES */
-router.get("/user/:user_id", getHoldsWNames);
+router.get("/userholds/:user_id", getHoldsWNames);
 
 
 module.exports = router;
