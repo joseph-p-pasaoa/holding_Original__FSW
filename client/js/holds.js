@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const newPostFormSubmitted = (event) => {
   event.preventDefault();
   makePosts();
-  
+
 }
 
 const checkHold = async () => {
@@ -43,12 +43,11 @@ const checkHold = async () => {
     }
     return uniqueUser;
   })
-  log(uniqueUser)
   if (uniqueUser.includes(currentUser)) {
     loadPosts(uniqueUser)
-    
-    
-  } 
+
+
+  }
 }
 
 
@@ -76,11 +75,18 @@ const loadPosts = async (hold_user) => {
   let posts = response.data.body;
 
   posts.forEach((post) => {
-
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
     separateDivs.id = post.post_id;
     separateDivs.className = `sep${post.post_id}`;
+
+    log(post)
+    /*Create picture for each post*/
+    let avatar = document.createElement("img");
+    avatar.src = post.avatar;
+    avatar.className = "avatar";
+    log(avatar)
+    separateDivs.append(avatar)
 
     /* Create list items for each post */
     let listItem = document.createElement("li");
@@ -222,15 +228,16 @@ const loadLikes = async (post_id, div, hold_user) => {
   names.id = `name_${post_id}`;
 
   likes.forEach((like) => {
-    
-    if(hold_user.includes(like.liker_id)){
-    let name = document.createElement("a");
-    name.href = "#";
-    name.innerText = `${like.firstname} ${like.lastname}`
 
-    names.append(name);
-    
- buttonDiv.append(names);}
+    if (hold_user.includes(like.liker_id)) {
+      let name = document.createElement("a");
+      name.href = "#";
+      name.innerText = `${like.firstname} ${like.lastname}`
+
+      names.append(name);
+
+      buttonDiv.append(names);
+    }
   });
 
   bell.innerText = `Likes: ${likes.length}`;
