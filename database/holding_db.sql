@@ -76,10 +76,10 @@ CREATE TABLE user_holds
 INSERT INTO users
    (username, password, firstname, lastname, age, avatar)
 VALUES
-   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatar/zelda by manreeree.jpg'),
-   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatar/Link Avatar.jpg'),
-   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatar/Ganon avatar.jpeg'),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan');
+   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
+   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatars/epona_s_favorite_child_by_celticbotan');
 
 INSERT INTO posts
    (poster_id, body)
