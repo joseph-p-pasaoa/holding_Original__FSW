@@ -14,7 +14,7 @@ const log = console.log;
 /* POST DOM Loaded Exec */
 
 document.addEventListener("DOMContentLoaded", () => {
-  checkHold()
+  checkHold();
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
@@ -31,10 +31,9 @@ const newPostFormSubmitted = (event) => {
 
 const checkHold = async () => {
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
-  let hold = document.querySelector("#currentHold");
-  
+  let hold = document.querySelector("#currentHold").value;
+
   let group = await axios.get(`http://localhost:11000/holds/${hold}`, { hold_id: hold });
-  log(group.data.body)
   let holds = group.data.body
   let uniqueUser = [];
   holds.forEach((hold) => {
@@ -67,7 +66,7 @@ const loadPosts = async () => {
   const postList = document.querySelector("#postList");
   postList.innerText = "";
 
-  let hold = document.querySelector("#currentHold");
+  let hold = document.querySelector("#currentHold").value;
 
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
@@ -78,7 +77,7 @@ const loadPosts = async () => {
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
     separateDivs.id = post.post_id;
-    separateDivs.className = `sep${post.post_id}`
+    separateDivs.className = `sep${post.post_id}`;
 
     /* Create list items for each post */
     let listItem = document.createElement("li");
@@ -94,7 +93,7 @@ const loadPosts = async () => {
     deleteBTN.onclick = function () {
       if (currentUser === post.user_id) {
 
-        deletePost(post.post_id, separateDivs)
+        deletePost(post.post_id, separateDivs);
       }
     }
 
@@ -125,7 +124,7 @@ const makeComments = (post) => {
   let button = document.querySelector("#addCom");
   button.onclick = function (event) {
     event.preventDefault();
-    postComment(post)
+    postComment(post);
   }
 
   const postComment = async (post) => {
@@ -153,8 +152,8 @@ const loadComment = async (post_id, div) => {
   div.append(commentBtn);
 
   commentBtn.onclick = function (event) {
-    makeComments(commentBtn.id)
-    event.preventDefault()
+    makeComments(commentBtn.id);
+    event.preventDefault();
 
     let field = document.querySelector("#postAComment");
     if (field.style.display === "none") {
@@ -183,7 +182,7 @@ const loadComment = async (post_id, div) => {
     }
 
     deleteBTN.onclick = function (event) {
-      event.preventDefault()
+      event.preventDefault();
       let currentUser = parseInt(document.querySelector("#userNum").value);
       if (currentUser === mark.commenter_id) {
         deleteComments(mark.post_id, mark.comment_id);
@@ -197,14 +196,14 @@ const loadComment = async (post_id, div) => {
 const loadLikes = async (post_id, div) => {
   log(post_id, div)
 
-  let hold = document.querySelector("#currentHold");
+  let hold = document.querySelector("#currentHold").value;
 
   let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
   log(response)
   let likes = response.data.payload;
   let bell = document.createElement("p");
   let buttonDiv = document.createElement("div");
-  buttonDiv.id = "btnDiv"
+  buttonDiv.id = "btnDiv";
 
   bell.className = "like";
 
@@ -225,8 +224,8 @@ const loadLikes = async (post_id, div) => {
     name.href = "#";
     name.innerText = `${like.firstname} ${like.lastname}`
 
-    names.append(name)
-    buttonDiv.append(names)
+    names.append(name);
+    buttonDiv.append(names);
   })
 
   bell.innerText = `Likes: ${likes.length}`;
@@ -237,7 +236,7 @@ const loadLikes = async (post_id, div) => {
 /* Delete specified post from database */
 const deletePost = async (post, div) => {
   await axios.delete(`http://localhost:11000/posts/${post}`);
-  div.parentNode.removeChild(div)
+  div.parentNode.removeChild(div);
 }
 
 /* Delete specified comment from database */

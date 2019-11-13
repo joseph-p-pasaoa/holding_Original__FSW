@@ -21,7 +21,7 @@ const allPosts = async (req, res) => {
     let selectQuery = `SELECT users.user_id, users.firstname, users.lastname, holds.name, posts.body, posts.post_id 
     FROM users INNER JOIN user_holds ON users.user_id = user_holds.holds_user_id 
     INNER JOIN holds ON user_holds.holds_hold_id = holds.hold_id 
-    INNER JOIN posts ON posts.poster_id = users.user_id WHERE holds.hold_id = $1;`
+    INNER JOIN posts ON posts.poster_id = users.user_id WHERE holds.hold_id = $1 ORDER BY posts.post_id DESC;`
 
     let response = await db.any(selectQuery, parseInt(req.params.hold));
     res.json({
@@ -37,13 +37,7 @@ const allPosts = async (req, res) => {
     });
   }
 }
-// const holdUsers = async(req, res) => {
-//   try{
-//     let selectQuery = 
-//   }catch{
 
-//   }
-// }
 
 const singlePost = async (req, res) => {
   try {
