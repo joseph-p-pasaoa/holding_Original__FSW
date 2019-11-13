@@ -85,8 +85,9 @@ const loadPosts = async (hold_user) => {
     let avatar = document.createElement("img");
     avatar.src = post.avatar;
     avatar.className = "avatar";
-    log(avatar)
-    separateDivs.append(avatar)
+    avatar.width = "50";
+    avatar.height = "50";
+    // separateDivs.append(avatar)
 
     /* Create list items for each post */
     let listItem = document.createElement("li");
@@ -112,6 +113,7 @@ const loadPosts = async (hold_user) => {
       listItem.append(deleteBTN);
     }
     /* Append all posts things to the postList ul */
+    separateDivs.prepend(avatar, listItem)
     separateDivs.append(listItem);
     postList.append(separateDivs);
 
@@ -158,7 +160,7 @@ const loadComment = async (post_id, div) => {
   commentBtn.innerText = "Add Comment";
   commentBtn.className = `comm${post_id}`;
   commentBtn.id = post_id;
-  div.append(commentBtn);
+  
 
   commentBtn.onclick = function (event) {
     makeComments(commentBtn.id);
@@ -198,6 +200,7 @@ const loadComment = async (post_id, div) => {
       }
     }
   })
+  div.append(commentBtn);
 }
 
 /* Load all likes from database */
@@ -213,10 +216,14 @@ const loadLikes = async (post_id, div, hold_user) => {
   let buttonDiv = document.createElement("div");
   buttonDiv.id = "btnDiv";
 
+  let post = document.querySelector('.post');
+  log(post)
+
   bell.className = "like";
 
   bell.id = `like${post_id}`
   div.append(buttonDiv);
+  // div.prepend(post, buttonDiv)
   buttonDiv.append(bell);
 
   let likeBTN = document.createElement("button");
