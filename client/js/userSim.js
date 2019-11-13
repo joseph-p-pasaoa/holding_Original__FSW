@@ -4,21 +4,40 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
 
+const usServerComm = async (method, urlAdds, body) => {
+  const url = `http://localhost:11000/${urlAdds}`;
+  try {
+    const response = await axios[method](url, body);
+    return response.data;
+  } catch (err) {
+    log("client-side error: ", err);
+  }
+}
+
+const commForDESTUserHolds = async (userId) => {
+  const response = await usServerComm('get', `sw/userholds/${userId}`);
+  // console.log(response.body.length);
+  if (response.body.length > 0) {
+    return response.body[0].hold_id;
+  }
+  return 999;
+} 
+
+
 const whoIsUser = () => {
   const urlParams = (new URL(document.location)).searchParams;
   return urlParams.get('user');
 }
 
-const reloadFromUserChange = () => {
-  const userId = document.querySelector('#userNum').value;
+const reloadFromUserChange = (userId, holdId) => {
   currentPathname = window.location.pathname;
   if (currentPathname.includes('photos.html')) {
     let urlBuild = window.location.href;
     urlBuild = urlBuild.replace("photos.html", "albums.html");
-    urlBuild = urlBuild.replace(window.location.search, `?user=${userId}`);
+    urlBuild = urlBuild.replace(window.location.search, `?user=${userId}&hold=${holdId}`);
     window.location.href = urlBuild;
   } else {
-    window.location.search = `?user=${userId}`;
+    window.location.search = `?user=${userId}&hold=${holdId}`;
   }
 }
 
@@ -35,15 +54,20 @@ const initUserSim = () => {
     makingUSInput.value = whoIsUser() || 4; 
     makingUSInput.addEventListener("focus", (e) => {
         e.target.parentNode.style.backgroundColor = "gold";
+        e.target.style.backgroundColor = "red";
     });
-    makingUSInput.addEventListener("keypress", (e) => {
+    makingUSInput.addEventListener("keypress", async (e) => {
         if (e.keyCode === 13) {
-          reloadFromUserChange();
+          const userId = document.querySelector('#userNum').value;
+          const holdId = await commForDESTUserHolds(userId);
+          reloadFromUserChange(userId, holdId);
         };
     });
-    makingUSInput.addEventListener("change", () => {
-          reloadFromUserChange();
-    });
+    // makingUSInput.addEventListener("change", async () => {
+    //     const userId = document.querySelector('#userNum').value;  
+    //     let holdId = await commForDESTUserHolds(userId);
+    //     // reloadFromUserChange(userId, holdId);
+    // });
 
   makingUserSim.append(makingUSLabel, makingUSInput);
   document.body.appendChild(makingUserSim);
