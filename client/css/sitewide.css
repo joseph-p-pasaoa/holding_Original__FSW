@@ -103,10 +103,13 @@ body {
 }
 
 h1 {
-  margin-right: 5%;
 
+  width: 600px;
+  margin-bottom: 12px;
+
+  color: #B8D1C9;
   text-align: right;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: 900;
   font-style: normal;
   font-family: 'AlegreyaSans-Black', sans-serif;
@@ -128,20 +131,6 @@ img#logo {
   height: 54px;
   margin: 13px 6px 6px 25px;
 }
-
-/* input[name="search"] {
-  margin: 6px 12px 12px 6px;
-  padding: 0px 10px 1px 10px;
-  width: 260px;
-  height: 22px;
-  border-radius: 27px;
-
-  font-size: 1em;
-}
-
-input[name="search"]:focus {
-  outline: none;
-} */
 
 div#headerNav {
   display: flex;
@@ -179,6 +168,7 @@ ul#toc li a:hover, ul#toc li a:active {
 }
 
 ul#toc li a.current {
+  text-decoration: underline;
 	cursor: default;
 	color: #6C8F92;
 }
@@ -288,10 +278,35 @@ div#aboutHold h3 {
 }
 
 div#right-body {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  
   margin-top: 17px;
+  padding: 0px 12px 12px 18px;
 }
 /* end MADE WITH HEADER-TOC BUILDER */
+
+
+img.avatar {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* input[name="search"] {
+  margin: 6px 12px 12px 6px;
+  padding: 0px 10px 1px 10px;
+  width: 260px;
+  height: 22px;
+  border-radius: 27px;
+
+  font-size: 1em;
+}
+
+input[name="search"]:focus {
+  outline: none;
+} */
 
 
 .hover-fade {

@@ -84,7 +84,7 @@ VALUES
    ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
    ('Toadstool', 'password', 'Princess', 'Peach', 21, '../../database/photoDbSim/avatars/Peach-Avatar.jpg'),
    ('TheVeryBest', 'LkeNo1EvrWuz', 'Ash', 'Ketchum', 14, '../../database/photoDbSim/avatars/Ash-Avatar.png'),
-   ('StarGirl', 'TokaPeePee', 'Misty', 'Mysterious', 15, '../../database/photoDbSim/avatars/Misty_Burnt_Bike'),
+   ('StarGirl', 'TokaPeePee', 'Misty', 'Mysterious', 15, '../../database/photoDbSim/avatars/Misty_Burnt_Bike.png'),
    ('RockMaster', 'J33lyD0nut', 'Brock', 'Sampson', 19, '../../database/photoDbSim/avatars/brockcharacter.jpg');
 
 INSERT INTO posts
