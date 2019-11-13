@@ -1,17 +1,17 @@
 
 
 /*
-Landing Page JS | HOLDING Web App
+
+Holds JS | HOLDING Web App
 GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
 
+/* FILLER FILE - COMPLETELY COPY PASTED from Posts.js */
+
+
 /* HELPERS */
 const log = console.log;
-
-
-
-
 /* POST DOM Loaded Exec */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //   // loadPosts();
     // makePosts()
   // })
+
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
@@ -33,6 +34,7 @@ const newPostFormSubmitted = (event) => {
   event.preventDefault();
   makePosts();
 }
+
 
 const checkHold = async () => {
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
@@ -70,12 +72,14 @@ const loadPosts = async () => {
 
   const postList = document.querySelector("#postList");
   postList.innerText = "";
+
   let hold = 3;
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
   
 
   posts.forEach((post) => {
+
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
     separateDivs.id = post.post_id;
@@ -86,7 +90,7 @@ const loadPosts = async () => {
     listItem.id = post.post_id;
     listItem.className = "post";
     listItem.innerText = `${post.firstname} ${post.lastname}: ${post.body}`;
- 
+
     /* Create functional delete buttons for each post */
     let deleteBTN = document.createElement("button");
     deleteBTN.id = `post${post.post_id}`;
@@ -94,22 +98,22 @@ const loadPosts = async () => {
 
     deleteBTN.onclick = function () {
       if (currentUser === post.user_id) {
+
         deletePost(post.post_id, separateDivs)
       }
     }
 
     /* Only show delete buttons on user's own posts */
+
     if (currentUser === post.user_id) {
       listItem.append(deleteBTN);
     }
-
-
     /* Append all posts things to the postList ul */
     separateDivs.append(listItem);
     postList.append(separateDivs);
 
     /* Functions to display likes and comments for each post */
-  
+
     loadLikes(post.post_id, separateDivs);
     loadComment(post.post_id, separateDivs);
   });
@@ -221,6 +225,10 @@ const loadLikes = async (post_id, div) => {
   names.id = `name_${post_id}`;
 
 
+    names.append(name)
+    buttonDiv.append(names)
+  })
+
   likes.forEach((like) => {
     let name = document.createElement("a");
     name.href = "#";
@@ -245,6 +253,7 @@ const deletePost = async (post, div) => {
 //   await axios.delete(`http://localhost:11000/posts/${hold}/${post}`);
 //   div.parentNode.removeChild(div)
 // }
+
 
 /* Delete specified comment from database */
 const deleteComments = async (post, comment_id) => {
