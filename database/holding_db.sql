@@ -79,7 +79,13 @@ VALUES
    ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatar/zelda by manreeree.jpg'),
    ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatar/Link Avatar.jpg'),
    ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatar/Ganon avatar.jpeg'),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan');
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan'),
+   ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatar/Mario-Avatar.jpg'),
+   ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatar/luigi-circle.jpg'),
+   ('Toadstool', 'password', 'Princess', 'Peach', 21, '../../database/photoDbSim/avatar/Peach-Avatar.jpg'),
+   ('TheVeryBest', 'LkeNo1EvrWuz', 'Ash', 'Ketchum', 14, '../../database/photoDbSim/avatar/Ash-Avatar.png'),
+   ('StarGirl', 'TokaPeePee', 'Misty', 'Mysterious', 15, '../../database/photoDbSim/avatar/Misty_Burnt_Bike'),
+   ('RockMaster', 'J33lyD0nut', 'Brock', 'Sampson', 19, '../../database/photoDbSim/avatar/brockcharacter.jpg');
 
 INSERT INTO posts
    (poster_id, body)
@@ -88,7 +94,17 @@ VALUES(1, 'Stuck in this castle. AGAIN.'),
    (3, 'JUST ONE MORE PIECE OF THE TRIFORCE, AND I WILL BE UNSTOPPABLE'),
    (3, 'YES I WANT CHICKEN NUGGETS, MOM'),
    (3, 'HOW DO YOU DELETE A DING ON THIS SITE?'),
-   (4, 'Apples apples apples. Carrot?');
+   (4, 'Apples apples apples. Carrot?'),
+   (5, 'Sometimes I wish the princess was in THIS castle.'),
+   (5, 'FUN FACT: Fire Flowers taste like Mint!'),
+   (6, 'Haunted Mansion? It''s free real estate.'),
+   (6, 'It''s easy being green.'),
+   (7, 'Who wants cake?!'),
+   (8, 'Only 732 more Pokemon to catch!'),
+   (8, 'On my way to the Gym!'),
+   (9, 'Bike 4 Sale, slightly used.'),
+   (10, 'My DMs are open, Nurse Joy.'),
+   (10, 'Officer Jenny, U up?');
 
 INSERT INTO comments
    (commenter_id, post_id, body)
@@ -99,7 +115,21 @@ VALUES(1, 2, 'I''d like to see you talk my way out of this mess.'),
    (2, 5, 'You press the button that says DELETE USER.'),
    (2, 6, 'Who''s a good horse?! YOU ARE!!'),
    (3, 1, 'HOW DO YOU MAKE A DING PRIVATE? NO ONE READ THIS.'),
-   (4, 2, 'Apple?');
+   (4, 2, 'Apple?'),
+   (5, 11, 'Me! Mario! Let''s-a GO!'),
+   (5, 1, 'I can-a help with that.'),
+   (5, 9, 'You need to stop. This-a is an intervention.'),
+   (6, 8, 'MARIO! Stop trying to trick people into eating those things!'),
+   (6, 14, 'If it''s still for sale, I''m interested!'),
+   (7, 5, 'You seem trustworthy, so just stop by my castle and I''ll show you how. The gate password is 1234.'),
+   (7, 9, 'Ghosts are too scary for me!'),
+   (8, 3, 'I suggest getting a jacket you can pin them to. That''s where I keep my Gym Badges!'),
+   (8, 14, 'I said I was sorry!'),
+   (8, 16, 'Brock, you''re posting in the wrong HOLD.'),
+   (9, 6, 'What a pretty horse!'),
+   (9, 15, 'Ew, Brock. Gross.'),
+   (10, 1, 'WOW! YOU ARE SO BEAUTIFUL, HAS ANYONE EVER TOLD YOU THAT?'),
+   (10, 7, 'They never are, buddy. They never are.');
 
 INSERT INTO likes
    (liker_id, post_id)
@@ -110,9 +140,48 @@ VALUES(1, 4),
    (2, 4),
    (2, 5),
    (2, 6),
+   (2, 7),
+   (2, 8),
+   (2, 9),
+   (2, 10),
+   (2, 11),
+   (2, 12),
+   (2, 13),
+   (2, 14),
+   (2, 15),
+   (2, 16),
    (3, 3),
    (4, 1),
-   (4, 2);
+   (4, 2),
+   (5, 1),
+   (5, 9),
+   (5, 10),
+   (6, 2),
+   (6, 6),
+   (6, 7),
+   (6, 8),
+   (6, 11),
+   (6, 14),
+   (7, 1),
+   (7, 3),
+   (7, 4),
+   (7, 5),
+   (7, 7),
+   (7, 8),
+   (7, 15),
+   (7, 16),
+   (8, 6),
+   (8, 14),
+   (8, 15),
+   (8, 16),
+   (9, 2),
+   (9, 6),
+   (9, 8),
+   (9, 9),
+   (9, 12),
+   (9, 13),
+   (10, 1),
+   (10, 11);
 
 INSERT INTO albums
    (creator_id, album_title)
@@ -124,7 +193,21 @@ VALUES(1, 'Castle Pics'),
    (4, 'friends'),
    (4, 'field shots'),
    (4, 'artwork of the most awesome horse eva'),
-   (4, 'trip to botw');
+   (4, 'trip to botw'),
+   (5, 'Selfies'),
+   (5, 'Family'),
+   (5, 'Pasta'),
+   (6, 'Family'),
+   (6, 'Plumbing Mishaps'),
+   (6, 'Ghosts And Other Dead People I Know'),
+   (7, 'Castle Blueprints'),
+   (7, 'My Favorite Secret Entrances'),
+   (8, 'Pokemon'),
+   (8, 'More Pokemon'),
+   (9, 'The Great Lakes'),
+   (9, 'Water Dancing'),
+   (10, 'Ladies'),
+   (10, 'Ladies, Vol 2.');
 
 INSERT INTO photos
    (album_id, photo_title, photo_url)
@@ -147,7 +230,35 @@ VALUES
    (9, 'horse be horsing', '../../database/photoDbSim/albums/epona-breath-of-the-wild-3.jpg'),
    (9, 'showing some skin', '../../database/photoDbSim/albums/Epona-Breath-of-the-Wild.jpg'),
    (9, 'cool horses dont look at splosions', '../../database/photoDbSim/albums/LoZ_wronghorse.jpg'),
-   (9, 'wind in my mane!!!', '../../database/photoDbSim/albums/tlozbotw-run.jpg');
+   (9, 'wind in my mane!!!', '../../database/photoDbSim/albums/tlozbotw-run.jpg'),
+   (10, 'It''s a ME', 'https://cdn.arstechnica.net/wp-content/uploads/2017/09/mario-collage-800x450.jpg'),
+   (10, 'Stop and smell-a the roses', 'https://mario.nintendo.com/assets/img/home/fb-mario-pose_2x.png'),
+   (11, 'My Bro!', 'https://nintendosoup.com/wp-content/uploads/2018/10/luigi-super-mario-party.jpg'),
+   (11, 'Luigi gets so-a scared', 'https://cdn.wccftech.com/wp-content/uploads/2019/07/WCCFluigismansion31.jpg'),
+   (12, 'Ravioli', 'https://www.donnafugata.it/wp-content/uploads/2016/08/ravioli.jpg'),
+   (12, 'Lasagna', 'https://www.tasteofhome.com/wp-content/uploads/0001/01/The-Best-Ever-Lasagna_EXPS_THD18_233582_E08_01_2b-696x696.jpg'),
+   (13, 'Mario wins the race again', 'https://cdn.vox-cdn.com/thumbor/ItgQB6vbeE99EEUXR83NsU_kbdg=/0x0:2048x2048/1820x1213/filters:focal(861x861:1187x1187):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/65327601/mobile_MarioKartTour_screen_07_png_jpgcopy.0.jpg'),
+   (13, 'Men at work', 'https://supermariomaker.nintendo.com/assets/img/buy/char-mario-luigi-2x.png'),
+   (14, 'Quick Fix', 'https://www.familyhandyman.com/wp-content/uploads/2017/10/Duct-tape-drains.jpg'),
+   (14, 'Toad''s Shower', 'https://www.familyhandyman.com/wp-content/uploads/2017/10/Low-Shower.jpg'),
+   (15, 'Man at Arms', 'http://images.nintendolife.com/cf1b6818b1948/switch-luigismansion3-e3-artwork-140.large.jpg'),
+   (15, 'Sucks to be him', 'http://images.nintendolife.com/fcd959f5c572c/switch-luigismansion3-e3-artwork-137.large.jpg'),
+   (16, 'Mushroom Kingdom', 'https://jhmrad.com/wp-content/uploads/real-castle-blueprints-romantic-retreat_29940-670x400.jpg'),
+   (16, 'Summer Castle', 'http://www.0onegames.com/images/product_pres/blu43/shot01.jpg'),
+   (17, 'Opens right into my bedroom!', 'https://preview.redd.it/ch400mpthcd11.jpg?width=640&crop=smart&auto=webp&s=648d88eb96064fe1056bba3e910847a58bdbc3dc'),
+   (17, 'Gets me past the castle guards! ;)', 'https://www.newslinq.com/wp-content/uploads/2017/01/secret-entrance-2.jpg'),
+   (18, 'Bulbasaur', 'https://www.thefactsite.com/wp-content/uploads/2018/04/Bulbasaur-facts.jpg'),
+   (18, 'Charmander', 'https://cdn.vox-cdn.com/thumbor/Pgdis0zYgwp1PfGrqXbAQzsXayc=/0x0:898x504/1820x1213/filters:focal(378x181:520x323):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/57504397/Screen_Shot_2017_11_07_at_1.39.21_PM.0.png'),
+   (19, 'Squirtle', 'https://cdn.vox-cdn.com/thumbor/jBIzWLPmABAW32GI_LS4Whz-0YY=/0x0:951x724/1820x1213/filters:focal(397x384:549x536):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/54808171/Screen_Shot_2017_05_16_at_1.32.45_PM.0.png'),
+   (19, 'Pikachu', 'https://i.kym-cdn.com/entries/icons/original/000/027/475/Screen_Shot_2018-10-25_at_11.02.15_AM.png'),
+   (20, 'Lake Erie', 'https://greatlakes.org/wp-content/uploads/2017/10/Lake-Erie-algal-bloom-Aerial-Associates-Photography.jpg'),
+   (20, 'Lake Superior', 'https://www.cleanwateraction.org/sites/default/files/images/features/water_MN_great%20lakes_Lake%20superior_Split-Rock-Lighthouse-000069674007_Full.jpg'),
+   (21, 'Splash City', 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/01/2d/0c.jpg'),
+   (21, 'The Splash Sisters', 'https://i.dailymail.co.uk/i/pix/2012/08/06/article-0-146959EC000005DC-587_964x636.jpg'),
+   (22, 'Joy', 'https://princessofdragons.files.wordpress.com/2016/04/800px-nurse_joy.png'),
+   (22, 'Joy At Work', 'http://images6.fanpop.com/image/photos/32900000/Nurse-Joy-girls-of-pokemon-32920705-342-192.jpg'),
+   (23, 'Jenny', 'https://cdn.bulbagarden.net/upload/thumb/4/4d/Officer_Jenny.png/730px-Officer_Jenny.png'),
+   (23, 'Jenny At Work', 'https://cdn.bulbagarden.net/upload/2/22/Jenny_Blue.png');
 
 
 INSERT INTO holds
@@ -156,7 +267,13 @@ VALUES
    (1, 'PWblue', 'Blue is the best', 2, 'The Blue Boys'),
    (2, 'PWcastle', 'Castles are the best', 4, 'Castle Creeps'),
    (3, 'PWcars', 'Fast and Furious!', 3, 'Car Talk'),
-   (4, 'PWapple', 'Everypony is welcome!', 10, 'My Little Pony Superfans');
+   (4, 'PWapple', 'Everypony is welcome!', 10, 'My Little Pony Superfans'),
+   (5, 'staR13Star', 'Feel the energy', 7, 'Powerup Players'),
+   (6, '6Le5*2', 'Player 2 Support Group', 3, 'Supporting Players'),
+   (7, '1234', 'Swap recipes with the QUEEN of baking!', 100, 'Get Baked'),
+   (8, 'iLk3p3cAchu', 'Sharing our best catches', 5, 'Gotta Catch ''Em All'),
+   (9, 'Atlantic1Pacific2', 'Oceanic Research And Study', 5, 'Water Watchers'),
+   (10, 'th4tsAr0ckF4ct', 'Rock Facts Only (no rock music please)', 10, 'Legends Of Rock');
 
 INSERT INTO user_holds
    (holds_user_id, holds_hold_id)
@@ -168,7 +285,37 @@ VALUES
    (3, 2),
    (3, 3),
    (3, 4),
-   (4, 3);
+   (4, 3),
+   (5, 2),
+   (5, 4),
+   (5, 5),
+   (5, 7),
+   (5, 9),
+   (6, 3),
+   (6, 5),
+   (6, 6),
+   (6, 7),
+   (6, 10),
+   (7, 2),
+   (7, 4),
+   (7, 7),
+   (7, 10),
+   (8, 4),
+   (8, 5),
+   (8, 7),
+   (8, 8),
+   (8, 9),
+   (8, 10),
+   (9, 4),
+   (9, 5),
+   (9, 7),
+   (9, 8),
+   (9, 9),
+   (9, 10),
+   (10, 7),
+   (10, 8),
+   (10, 9),
+   (10, 10);
 
 /* QUERIES */
 
