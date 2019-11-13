@@ -31,7 +31,6 @@ const newPostFormSubmitted = (event) => {
 
 const checkHold = async () => {
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
-  let hold = 3;
   let group = await axios.get(`http://localhost:11000/holds/${hold}`, { hold_id: hold });
   log(group.data.body)
   let holds = group.data.body
@@ -66,7 +65,6 @@ const loadPosts = async () => {
   const postList = document.querySelector("#postList");
   postList.innerText = "";
 
-  let hold = 3;
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
   
