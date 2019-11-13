@@ -1,0 +1,258 @@
+/*
+Site-Wide CSS Styles | HOLDING Web App
+GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
+*/
+
+
+/* CSS RESET
+http://meyerweb.com/eric/tools/css/reset/ 
+v2.0 | 20110126
+License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* FONT INITS -- just here for reference. delete if wanted */
+/* @font-face {
+  font-family: 'Special Elite';
+  src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} */
+
+
+/* MAIN STYLE */
+html, body, div#base-grid {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 0.9em;
+}
+
+h1 {
+  margin-right: 5%;
+
+  text-align: right;
+  font-size: 2em;
+	font-weight: bold;
+	font-family: 'Quicksand', sans-serif;
+}
+
+
+/* MADE WITH HEADER-TOC BUILDER */
+div#base-grid {
+  display: grid;
+  grid-template-columns: 189px auto;
+  grid-template-rows: 131px 31px auto;
+  grid-gap: 0px;
+}
+
+div#header {
+  grid-column: span 2;
+  background-color: #fff;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+img#logo {
+  height: 41px;
+  margin: 11px;
+}
+
+div#right-console {
+  width: 400px;
+  text-align: left;
+}
+
+div#cornerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  margin: 12px 12px 6px 6px;
+  padding: 3px 40px 2px 6px;
+  border-radius: 25px 25px 25px 0px;
+
+  background: rgb(255,236,126);
+	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
+	border-top: solid 1px gold;
+	border-right: solid 1px gold;
+	border-bottom: solid 1px goldenrod;
+	border-left: solid 1px goldenrod;
+}
+
+div#cornerNav a {
+  padding: 3px 15px 4px 15px;
+
+  font-weight: bold;
+}
+
+input[name="search"] {
+  margin: 6px 12px 12px 6px;
+  padding: 0px 10px 1px 10px;
+  width: 260px;
+  height: 22px;
+  border-radius: 27px;
+
+  font-size: 1em;
+}
+
+input[name="search"]:focus {
+  outline: none;
+}
+
+div#marquee {
+  grid-column: span 2;
+  padding: 9px 12px 12px 0px;
+  
+  text-align: center;
+  
+  background: rgb(255,236,126);
+	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
+	border-top: solid 1px gold;
+	border-bottom: solid 1px goldenrod;
+}
+
+div#left-body {
+  padding-top: 50px;
+
+  font-size: 1em;
+}
+
+ul#toc {
+  margin: 0px 12px;
+  padding: 8px 0px 48px 0px;
+
+  border: solid 2px #000;
+  border-radius: 7px 0px 7px 7px;
+}
+
+ul#toc li {
+  padding: 4px 12px;
+}
+
+ul#toc li a.current {
+	cursor: default;
+	text-decoration: none;
+	color: orange;
+}
+
+div#section-actions {
+  padding-top: 40px;
+}
+
+div#left-body button {
+  margin: 4px 12px;
+
+  border-radius: 7px;
+}
+
+/* div#right-body {
+  display: block;
+  margin-top: 17px;
+} */
+/* end MADE WITH HEADER-TOC BUILDER */
+
+
+.hover-fade {
+  opacity: 1;
+  transition: opacity 0.2s;
+}
+
+.hover-fade:hover {
+  opacity: 0.5;
+}
+
+
+/* MADE WITH USER SIM CONTROL */
+div#userSimControl {
+  position: fixed;
+  bottom: 15px;
+  right: 41px;
+  z-index: 9001;
+
+  width: 120px;
+  height: 52px;
+
+  background-color: #f9f9f9;
+  border: solid 2px darkorange;
+  border-radius: 16px;
+}
+
+div#userSimControl label {
+  display: block;
+  margin: 5px 0px 0px 12px;
+
+  font-size: 1em;
+}
+
+div#userSimControl label b {
+  font-weight: bold;
+}
+
+div#userSimControl input {
+  height: 18px;
+  padding: 1px 11px 2px 8px;
+  margin: 3px 0px 0px 36px;
+  width: 47px;
+  border-radius: 5px;
+
+  background-color: #ddd;
+
+  font-size: 1em;
+  text-align: right;
+}
+
+div#userSimControl input:focus {
+  outline: none;
+}
+/* end MADE WITH USER SIM CONTROL */

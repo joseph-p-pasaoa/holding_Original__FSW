@@ -1,0 +1,94 @@
+ img{
+    height: 250px;
+}
+
+#right-body {
+    display: inherit;
+    margin-top: 17px;
+    grid-column: repeat(2,1fr);
+    grid-template-columns: 240px auto;
+}
+
+#profileName{
+    display: flex;
+    font-family: serif;
+    padding-bottom: 5px;
+}
+
+.zeldasInfo, #zeldaPost{
+    font-family: serif;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.zeldaComments {
+    font-family: serif;
+}
+
+.zeldasInfo{
+    font-size: 1.5vw;
+}
+
+.button{
+    float: right;
+    margin-top: -16px;
+}
+
+
+
+#zeldaPostAndComments{
+    border: goldenrod solid 2px;
+
+    width: 460px;
+    font-size: 1.75vw;
+    margin-top: 51px;
+    margin-bottom: auto;
+
+    margin-left: 35px;
+    margin-right: 10%;
+
+}
+
+#inputComm{
+    margin-top: 51px;
+    margin-bottom: auto;
+
+    margin-left: 35px;
+    margin-right: 10%;
+}
+  
+#likesAndAddComments{
+    display: flex;
+}
+
+ #likeslabel,#likesAndAddComments{
+    display: flex;
+    justify-content: center;
+}  
+
+
+p{
+    display: flex; 
+    align-self: center;
+    justify-content: center;
+    background-color: #F1F1F1;
+    font-size: 1.25vw;
+    font-weight: lighter; 
+    border-top: solid black .5px;
+    margin-top: 5px;
+}
+
+#zeldaPost , #likes{
+    display: flex;
+    justify-content: center;
+}
+
+#likes{
+    font-size: 1.25vw;
+}
+.lastTwo{
+    display: flex;
+    text-align-last: center;
+}
+
+
