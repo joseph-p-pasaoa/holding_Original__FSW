@@ -184,3 +184,11 @@ div#allPosts button.delPostBtn {
 /* div#btnDiv {
   margin-left: 60px;
 } */
+
+#postAComment{
+  position: fixed;
+  width: 50%;
+  text-align: right;
+  margin-top: 30px;
+  z-index: 1;
+}
