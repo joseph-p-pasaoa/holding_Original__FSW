@@ -10,64 +10,72 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
     <script src="../js/sw.js" type="text/javascript"></script>
     <script src="../js/profile.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="../css/zeldatsitewide.css" type="text/css" />
+    <link rel="stylesheet" href="../css/sitewide.css" type="text/css" />
     <link rel="stylesheet" href="../css/zeldasProfile.css" type="text/css" />
+</head>
 
 <body>
     <div id="base-grid">
-        <script src="../js/zeldasw-htBuilder.js" type="text/javascript"></script>
+            <script src="../js/zeldasw-htBuilder.js" type="text/javascript"></script>
         <div id="right-body">
-            <div id= "infoDetails">
-            <h1 id="profileName"> notsheik's Profile</h1>
-
-        
-            <h2 id="zeldasAvatar"><img src="../../database/photoDbSim/avatars/zelda by manreeree.jpg"></h2>
-            <h2 class="zeldasInfo" id="name">Name: Zelda Alpha</h2>
-            <h2 class="zeldasInfo" id="username">Username: notsheik </h2>
-            <h2 class="zeldasInfo" id="age">Age: 23</h2>
-        </div>
-        <div>
-            <div id= "inputComm">
-                    <input id='Text' rows="4" cols="50" placeholder='Make a comment...' required
-                    style='height:30px; width: 460px'></input>
-                  <button id = 'addCom'>Submit</button>
-                
+            <div id="infoDetails">
+                <h2 id="zeldasAvatar"><img src="../../database/photoDbSim/avatars/zelda by manreeree.jpg"></h2>
+                <h2 class="zeldasInfo" id="name">Name: Zelda Alpha</h2>
+                <h2 class="zeldasInfo" id="username">Username: notsheik </h2>
+                <h2 class="zeldasInfo" id="age">Age: 23</h2>
             </div>
-
-        
-            <div id="zeldaPostAndComments">
-                <h2 id="zeldaPost">Zelda Alpha: Stuck in this castle. AGAIN.</h2>
-                <label id="likes"> Likes: 4</label>
-                <br>
-                <div id="likesAndAddComments">
-                    <button>likes</button> <button>Add Comment</button>
+            <div>
+                <div id="inputComm">
+                    <input id='Text' rows="4" cols="50" placeholder='Make a comment...' required
+                        style='height:30px; width: 460px'></input>
+                    <button id='addCom'>Submit</button>
                 </div>
-                <div class="zeldaComments">
-                    <p id="comment">Link Beta: Well EXCUSE ME, Princess.</p>
-                    <button class="button">Delete</button>
+                <div id="zeldaPostAndComments">
+                    <h2 class="zeldaPost">Ganon Charlie: HOW DO YOU DELETE A DING ON THIS SITE?</h2>
+                    <label id="likes"> Likes: 2</label>
+                    <br>
+                    <div id="likesAndAddComments">
+                        <button>likes</button> <button>Add Comment</button>
+                    </div>
                 </div>
-                <div class="zeldaComments">
-                    <p class="lastTwo" id="comment">Ganon Charlie:HOW DO YOU MAKE A DING PRIVATE? NO ONE READ THIS.</p>
-                    <button class="button">Delete</button>
+                <div id="zeldaPostAndComments">
+                    <h2 class="zeldaPost">Ganon Charlie: YES I WANT CHICKEN NUGGETS, MOM</h2>
+                    <label id="likes"> Likes: 3</label>
+                    <br>
+                    <div id="likesAndAddComments">
+                        <button>likes</button> <button>Add Comment</button>
+                    </div>
                 </div>
-                <div class="zeldaComments">
-                        <p class="lastTwo" id="comment">Mario Mario:I can help with that.</p>
+                <div id="zeldaPostAndComments">
+                    <h2 class="zeldaPost">Ganon Charlie: JUST ONE MORE PIECE OF THE TRIFORCE, AND I WILL BE UNSTOPPABLE
+                    </h2>
+                    <label id="likes"> Likes: 3</label>
+                    <br>
+                    <div id="likesAndAddComments">
+                        <button>likes</button> <button>Add Comment</button>
+                    </div>
+                    <div class="zeldaComments">
+                        <p id="comment">Zelda Alpha: LOL</p>
                         <button class="button">Delete</button>
                     </div>
-                <div class="zeldaComments">
-                    <p class="lastTwo" id="comment">Brock Sampson:WOW! YOU ARE SO BEAUTIFUL, HAS ANYONE EVER TOLD YOU
-                        THAT?
-                    </p>
-                    <button class="button">Delete</button>
                 </div>
-            </div>
+                <div id="zeldaPostAndComments">
 
+                    <h2 class="zeldaPost">Zelda Alpha: Stuck in this castle. AGAIN
+                    </h2>
+                    <label id="likes"> Likes: 5</label>
+                    <br>
+                    <div id="likesAndAddComments">
+                        <button>likes</button> <button>Add Comment</button>
+                    </div>
+                    <div class="zeldaComments">
+                        <p id="lastTwo">Ganon Charlie: HOW DO YOU MAKE A DING PRIVATE? NO ONE READ THIS.</p>
+                        <button class="button">Delete</button>
+                    </div>
 
+                </div>
 
-
-
-
-
+                <h2 id="joined">Joined the Blue Boys November 10, 2019</h2>
             </div>
         </div>
     </div>

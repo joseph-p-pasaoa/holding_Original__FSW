@@ -26,7 +26,7 @@ const insertFill = () => {
            </div>
         </div><!-- end header -->
   
-
+        // <div id="marquee">Welcome notsheik to The Blue Boys!</div>
   
         <div id="left-body">
            <ul id="toc">
