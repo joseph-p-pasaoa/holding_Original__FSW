@@ -29,7 +29,7 @@ const userFound = () => {
 }
 
 const enterSite = () => {
-    window.location.href = "../html/posts.html"
+    window.location.href = "../html/holds.html"
 }
 
 const tryAgain = () => {
