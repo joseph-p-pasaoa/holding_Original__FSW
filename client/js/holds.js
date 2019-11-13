@@ -74,7 +74,7 @@ const loadPosts = async (hold_user) => {
 
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
-
+log("Joey: ", posts)
   posts.forEach((post) => {
 
     /* Create divs for each post */
@@ -86,11 +86,22 @@ const loadPosts = async (hold_user) => {
     let listItem = document.createElement("li");
     listItem.id = post.post_id;
     listItem.className = "post";
-    listItem.innerText = `${post.firstname} ${post.lastname}: ${post.body}`;
+    listItem.innerText = `${post.body}`;
+
+    /* JOEY Adds for Design */
+    let makingPoster = document.createElement('div');
+    makingPoster.className = "posterName";
+    makingPoster.innerText = `${post.firstname} ${post.lastname}`;
+    let makingAva = document.createElement('img');
+    makingAva.src = post.avatar;
+    makingAva.className = "avatar";
+    makingAva.alt = `${post.firstname} ${post.lastname}`;
+    listItem.append(makingAva, makingPoster);
 
     /* Create functional delete buttons for each post */
     let deleteBTN = document.createElement("button");
     deleteBTN.id = `post${post.post_id}`;
+    deleteBTN.className = "delPostBtn";
     deleteBTN.innerText = "delete";
 
     deleteBTN.onclick = function () {

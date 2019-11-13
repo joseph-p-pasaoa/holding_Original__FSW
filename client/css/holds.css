@@ -4,14 +4,6 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
 
-/* div {
-  margin-top: 20px;
-} */
-
-#text{
-    overflow-wrap: break-word;
-  }
-  
   a {
     display: block;
     font-size: 1.5vw;
@@ -25,10 +17,10 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
     border: lightgray dashed 3px;
     /*this will be an invisible border*/
   }
-  #singlePost{
+  /* #singlePost{
     display: block;
     text-align: center;
-  }
+  } */
   
   #current {
     font-weight: bolder;
@@ -36,15 +28,15 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
   }
   
   #allPosts{
-    text-align: center;
+    text-align: left;
     padding: 10px;
     font-weight: bolder;
     /* margin-bottom: 50px; */
   }
-  #right-body ul{
+  /* #right-body ul{
     width: 400px;
      list-style-type: none;
-  }
+  } */
   #postList{
     margin-bottom: 11px;
     padding-bottom: 20px;
@@ -61,11 +53,12 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
   }
   p[id ^= 'comment']{
     background-color: #F1F1F1;
-    font-size: 1.25vw;
+    font-size: 1em;
     font-weight: lighter;
-    border-top: solid black .5px;
+    border-top: solid .5px #FAF8F9;
     margin-top: 5px;
     order:3;
+    padding-left: 200px;
     /* border: */
     /* margin-bottom: 50px; */
   }
@@ -118,6 +111,76 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
   #btnDiv:hover div[id ^= 'name_'] {display: block;}
   
   div[class ^= 'sep']{
-    margin-bottom: 10px;
-    border: goldenrod solid 2px;
+    margin-bottom: 30px;
+    border-bottom: solid 2px #6C8F92;
   }
+
+
+div#postsStage {
+  width: 560px;
+}
+
+form#postAPost label, form#postAComment label  {
+  padding-left: 12px;
+  padding-right: 7px;
+}
+
+input#text {
+    overflow-wrap: break-word;
+
+    outline: none;
+    border: solid 3px #928C96;
+    border-radius: 5px;
+    height: 39px;
+    width: 283px;
+    margin-right: 9px;
+    margin-bottom: 20px;
+}
+
+input#cText {
+  overflow-wrap: break-word;
+
+  outline: none;
+  border: solid 3px #928C96;
+  border-radius: 5px;
+  height: 39px;
+  width: 283px;
+  margin-right: 9px;
+  margin-bottom: 20px;
+}
+
+div[class^="sep"] {
+  position: relative;
+  min-height: 100px;
+}
+
+img.avatar {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+}
+
+div.posterName {
+  position: absolute;
+  top: -3px;
+  left: 75px;
+  font-size: 1.3em;
+  font-family: 'AlegreyaSans-Black', sans-serif;
+  color: #928C96;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+li.post {
+  font-size: 1em;
+  padding: 28px 12px 37px 136px;
+}
+
+div#allPosts button.delPostBtn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+
+/* div#btnDiv {
+  margin-left: 60px;
+} */
