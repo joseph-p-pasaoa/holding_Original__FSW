@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const newPostFormSubmitted = (event) => {
   event.preventDefault();
   makePosts();
+
 }
 
 const checkHold = async () => {
@@ -40,11 +41,14 @@ const checkHold = async () => {
     if (!uniqueUser.includes(hold.user_id)) {
       uniqueUser.push(hold.user_id);
     }
+    return uniqueUser;
   })
+  log(uniqueUser)
   if (uniqueUser.includes(currentUser)) {
-    loadPosts()
-    // loadLikes()
-  } 
+    loadPosts(uniqueUser)
+
+
+  }
 }
 
 
@@ -57,7 +61,7 @@ const makePosts = async () => {
 }
 
 /* Load all posts from database */
-const loadPosts = async () => {
+const loadPosts = async (hold_user) => {
   let currentUser = parseInt(document.querySelector("#userNum").value);
 
   let addCommentForm = document.querySelector("#postAComment");
@@ -70,7 +74,6 @@ const loadPosts = async () => {
 
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
-  
 
   posts.forEach((post) => {
 
@@ -108,7 +111,7 @@ const loadPosts = async () => {
 
     /* Functions to display likes and comments for each post */
 
-    loadLikes(post.post_id, separateDivs);
+    loadLikes(post.post_id, separateDivs, hold_user);
     loadComment(post.post_id, separateDivs);
   });
 }
@@ -142,8 +145,11 @@ const makeComments = (post) => {
 
 const loadComment = async (post_id, div) => {
   let currentUser = parseInt(document.querySelector("#userNum").value);
+  let holdValue = document.querySelector("#currentHold").value;
   let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
+  let holder = await axios.get(`http://localhost:11000/holds/${holdValue}`)
+  let holderResponse = holder.data.body
 
   let commentBtn = document.createElement("button");
   commentBtn.innerText = "Add Comment";
@@ -164,28 +170,36 @@ const loadComment = async (post_id, div) => {
 
   }
 
+  let holdMembers = {}
+  holderResponse.forEach((user) => {
+    holdMembers[user.user_id] = true
+  })
+
   marks.forEach((mark) => {
-    let comment = document.createElement("p");
-    comment.id = `comment${mark.comment_id}`;
-    comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
 
-    if (post_id === mark.post_id) {
-      div.append(comment);
-    }
+    if (holdMembers[mark.commenter_id]) {
+      let comment = document.createElement("p");
+      comment.id = `comment${mark.comment_id}`;
+      comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
 
-    let deleteBTN = document.createElement("button");
-    deleteBTN.id = `comment${mark.comment_id}`;
-    deleteBTN.innerText = "delete";
+      if (post_id === mark.post_id) {
+        div.append(comment);
+      }
 
-    if (currentUser === mark.commenter_id) {
-      comment.append(deleteBTN);
-    }
+      let deleteBTN = document.createElement("button");
+      deleteBTN.id = `comment${mark.comment_id}`;
+      deleteBTN.innerText = "delete";
 
-    deleteBTN.onclick = function (event) {
-      event.preventDefault();
-      let currentUser = parseInt(document.querySelector("#userNum").value);
       if (currentUser === mark.commenter_id) {
-        deleteComments(mark.post_id, mark.comment_id);
+        comment.append(deleteBTN);
+      }
+
+      deleteBTN.onclick = function (event) {
+        event.preventDefault();
+        let currentUser = parseInt(document.querySelector("#userNum").value);
+        if (currentUser === mark.commenter_id) {
+          deleteComments(mark.post_id, mark.comment_id);
+        }
       }
     }
   })
@@ -193,9 +207,8 @@ const loadComment = async (post_id, div) => {
 
 /* Load all likes from database */
 
-const loadLikes = async (post_id, div) => {
-  log(post_id, div)
-
+const loadLikes = async (post_id, div, hold_user) => {
+  log(post_id, div, hold_user)
   let hold = document.querySelector("#currentHold").value;
 
   let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
@@ -220,13 +233,17 @@ const loadLikes = async (post_id, div) => {
   names.id = `name_${post_id}`;
 
   likes.forEach((like) => {
-    let name = document.createElement("a");
-    name.href = "#";
-    name.innerText = `${like.firstname} ${like.lastname}`
 
-    names.append(name);
-    buttonDiv.append(names);
-  })
+    if (hold_user.includes(like.liker_id)) {
+      let name = document.createElement("a");
+      name.href = "#";
+      name.innerText = `${like.firstname} ${like.lastname}`
+
+      names.append(name);
+
+      buttonDiv.append(names);
+    }
+  });
 
   bell.innerText = `Likes: ${likes.length}`;
 
