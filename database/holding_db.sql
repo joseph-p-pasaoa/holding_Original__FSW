@@ -76,16 +76,16 @@ CREATE TABLE user_holds
 INSERT INTO users
    (username, password, firstname, lastname, age, avatar)
 VALUES
-   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatar/zelda by manreeree.jpg'),
-   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatar/Link Avatar.jpg'),
-   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatar/Ganon avatar.jpeg'),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatar/epona_s_favorite_child_by_celticbotan'),
-   ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatar/Mario-Avatar.jpg'),
-   ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatar/luigi-circle.jpg'),
-   ('Toadstool', 'password', 'Princess', 'Peach', 21, '../../database/photoDbSim/avatar/Peach-Avatar.jpg'),
-   ('TheVeryBest', 'LkeNo1EvrWuz', 'Ash', 'Ketchum', 14, '../../database/photoDbSim/avatar/Ash-Avatar.png'),
-   ('StarGirl', 'TokaPeePee', 'Misty', 'Mysterious', 15, '../../database/photoDbSim/avatar/Misty_Burnt_Bike'),
-   ('RockMaster', 'J33lyD0nut', 'Brock', 'Sampson', 19, '../../database/photoDbSim/avatar/brockcharacter.jpg');
+   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
+   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
+   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
+   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
+   ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
+   ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
+   ('Toadstool', 'password', 'Princess', 'Peach', 21, '../../database/photoDbSim/avatars/Peach-Avatar.jpg'),
+   ('TheVeryBest', 'LkeNo1EvrWuz', 'Ash', 'Ketchum', 14, '../../database/photoDbSim/avatars/Ash-Avatar.png'),
+   ('StarGirl', 'TokaPeePee', 'Misty', 'Mysterious', 15, '../../database/photoDbSim/avatars/Misty_Burnt_Bike'),
+   ('RockMaster', 'J33lyD0nut', 'Brock', 'Sampson', 19, '../../database/photoDbSim/avatars/brockcharacter.jpg');
 
 INSERT INTO posts
    (poster_id, body)
