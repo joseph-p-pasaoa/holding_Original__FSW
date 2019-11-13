@@ -2,7 +2,7 @@
 Sitewide Client Modules Script | HOLDING Web App
 GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
-const temp = `<h3>The Blue Boys</h3>Blue is the best! The world’s most favorite color is blue. According to a YouGov poll, pretty much every country on the planet lists it as such. Plus, it’s delighted and intrigued scientists and artists (see: Picasso’s Blue Period) alike for centuries, and is a number-one choice for everything from house paint to the jeans you’re probably wearing this very minute. Yet it turns out the color is surprisingly hard to come by in nature.`;
+// const temp = `<h3>The Blue Boys</h3>Blue is the best! The world’s most favorite color is blue. According to a YouGov poll, pretty much every country on the planet lists it as such. Plus, it’s delighted and intrigued scientists and artists (see: Picasso’s Blue Period) alike for centuries, and is a number-one choice for everything from house paint to the jeans you’re probably wearing this very minute. Yet it turns out the color is surprisingly hard to come by in nature.`;
 
 const swServerComm = async (method, urlAdds, body) => {
   const url = `http://localhost:11000/${urlAdds}`;
@@ -54,7 +54,7 @@ const initHoldsDropper = async () => {
       if (presentHold === holdObj.hold_id) {
         makingOpt.selected = "selected";
         document.querySelector('#marquee').innerHTML = `Welcome <strong>${holdObj.username}</strong> to<br /><em>${holdObj.name}</em>`;
-        document.querySelector('#aboutHold').innerHTML = temp; // holdObj.description;
+        document.querySelector('#aboutHold').innerHTML = `<h3>${holdObj.name}</h3>${holdObj.description}`;
       }
       dropperSelect.appendChild(makingOpt);
     }

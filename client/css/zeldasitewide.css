@@ -103,13 +103,10 @@ body {
 }
 
 h1 {
+  margin-right: 5%;
 
-  width: 600px;
-  margin-bottom: 12px;
-
-  color: #B8D1C9;
   text-align: right;
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: 900;
   font-style: normal;
   font-family: 'AlegreyaSans-Black', sans-serif;
@@ -122,15 +119,29 @@ div#base-grid {
   grid-template-columns: 351px auto;
   grid-template-rows: 85px 85px auto;
   grid-gap: 0px;
-  
-  /* background: rgb(250,248,249);
-  background: linear-gradient(135deg, rgba(250,248,249,1) 0%, rgba(232,237,236,1) 76%, rgba(184,209,201,1) 100%); */
+
+  background: rgb(250,248,249);
+  background: linear-gradient(135deg, rgba(250,248,249,1) 0%, rgba(232,237,236,1) 76%, rgba(184,209,201,1) 100%);
 }
 
 img#logo {
   height: 54px;
   margin: 13px 6px 6px 25px;
 }
+
+/* input[name="search"] {
+  margin: 6px 12px 12px 6px;
+  padding: 0px 10px 1px 10px;
+  width: 260px;
+  height: 22px;
+  border-radius: 27px;
+
+  font-size: 1em;
+}
+
+input[name="search"]:focus {
+  outline: none;
+} */
 
 div#headerNav {
   display: flex;
@@ -168,7 +179,6 @@ ul#toc li a:hover, ul#toc li a:active {
 }
 
 ul#toc li a.current {
-  text-decoration: underline;
 	cursor: default;
 	color: #6C8F92;
 }
@@ -277,36 +287,11 @@ div#aboutHold h3 {
   color: #B8D1C9;
 }
 
-div#right-body {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  
-  margin-top: 17px;
-  padding: 0px 12px 12px 18px;
-}
+/* div#right-body { */
+  /* display: block;
+  margin-top: 17px; */
+/* } */
 /* end MADE WITH HEADER-TOC BUILDER */
-
-
-img.avatar {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-/* input[name="search"] {
-  margin: 6px 12px 12px 6px;
-  padding: 0px 10px 1px 10px;
-  width: 260px;
-  height: 22px;
-  border-radius: 27px;
-
-  font-size: 1em;
-}
-
-input[name="search"]:focus {
-  outline: none;
-} */
 
 
 .hover-fade {
@@ -369,4 +354,27 @@ div#userSimControl input:focus {
 button {
   border-radius: 3;
   box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
+}
+
+div#marquee em {
+    font-weight: 900;
+    font-style: normal;
+    color: #6C8F92;
+    
+}
+
+div#marquee{
+    text-shadow: 3px 11px 11px #ccc;
+    font-weight: 900;
+    font-style: normal;
+    color: #6C8F92;
+    margin-left: 110px;
+
+}
+
+#blueboys{
+    margin-bottom: 12px;
+    font-size: 1.3em;
+    color: #B8D1C9;
+    padding-left: 17px;
 }
