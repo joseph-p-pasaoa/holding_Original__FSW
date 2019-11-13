@@ -264,19 +264,19 @@ VALUES
 INSERT INTO holds
    (hold_id, password, description, max_users, name)
 VALUES
-   (1, 'PWblue', 'Blue is the best', 2, 'The Blue Boys'),
-   (2, 'PWcastle', 'Castles are the best', 4, 'Castle Creeps'),
-   (3, 'PWcars', 'Fast and Furious!', 3, 'Car Talk'),
-   (4, 'PWapple', 'Everypony is welcome!', 10, 'My Little Pony Superfans'),
-   (5, 'staR13Star', 'Feel the energy', 7, 'Powerup Players'),
-   (6, '6Le5*2', 'Player 2 Support Group', 3, 'Supporting Players'),
-   (7, '1234', 'Swap recipes with the QUEEN of baking!', 100, 'Get Baked'),
-   (8, 'iLk3p3cAchu', 'Sharing our best catches', 5, 'Gotta Catch ''Em All'),
-   (9, 'Atlantic1Pacific2', 'Oceanic Research And Study', 5, 'Water Watchers'),
-   (10, 'th4tsAr0ckF4ct', 'Rock Facts Only (no rock music please)', 10, 'Legends Of Rock'),
-   (11, 'Triforce85', 'My family is like a breath of the wild', 4, 'Legend Of Zelda'),
-   (12, 'wOrLd1DASH1', 'From the Mushroom Kingdom and Beyond!', 3, 'Super Mario Brothers'),
-   (13, 'pOKm0nG0', 'The best from Pallet Town and the World!', 3, 'Pokemon Red/Blue');
+   (1, 'PWblue', 'Blue is the best color there is! Here in The Blue Boys, your favorite colors must be as follows: Blue. That''s it. All colors are welcome, but we celebrate blue hue here.', 2, 'The Blue Boys'),
+   (2, 'PWcastle', 'Castles are the best! We just can''t get enough of castles in this group. Parapets, Drawbridges, Moats, Turrets, Flying Buttresses - the list goes on! Join this hold if you''d like to stay on top of the lastest castle news!', 4, 'Castle Creeps'),
+   (3, 'PWcars', 'Do you like cars? BECAUSE WE DO! All kinds of cars! Big cars to karts, we''ve got it covered in this Hold! Join us for some fast and furious conversation!', 3, 'Car Talk'),
+   (4, 'PWapple', 'My Little Pony is the best show on TV, and this is a Hold that celebrates that fact! Here we share our favorite episodes and talk about what friendship means to us. Everypony is welcome!', 10, 'My Little Pony Superfans'),
+   (5, 'staR13Star', 'Some thirst for power, and we know how to wet that whistle! Fire Flowers, Invincibility Stars, Feathers, Leaves, Master Swords, Heart Containers, Berries - WE CONSUME THEM ALL! Feel the energy!!!', 7, 'Powerup Players'),
+   (6, '6Le5*2', 'It can be hard for those of us who are always guided with the broken controller saved for guests and younger siblings. For those of you, the Player 2 Support Group is here. Please join this private hold for frank and safe conversation about how YOU feel.', 3, 'Supporting Players'),
+   (7, '1234', 'Get down and dirty with Princess Toadstool''s personal Hold! Swap recipes and secrets with the QUEEN of baking! I can increase your baking skills faster than you can get into my castle through the unguarded portcullis on the East side of my castle!', 100, 'Get Baked'),
+   (8, 'iLk3p3cAchu', 'I made this Hold to share my best catches, but I''d love to see yours too! I need every tip and trick I can get on my quest to be the very best like no one ever was! To catch them all and understand the power that''s inside of Pokemon. Join me!', 5, 'Gotta Catch ''Em All'),
+   (9, 'Atlantic1Pacific2', 'Oceanic Research And Study (or ORAS) for short, is the primary focus of this Hold. Please join us for stimulating coversation about the seven seas and even some larger lakes and the Pokeon that inhabit them. Off topic conversation is NOT ALLOWED, and you WILL be removed from my Hold if you break this rule.', 5, 'Water Watchers'),
+   (10, 'th4tsAr0ckF4ct', 'Welcome to the Legends of Rock! Here we talk about all types of sedemetary. It''s elementary! From Granite to Onyx, we investigate both regular rocks and rock pokemon, as well as finding new stragtiges for battling. Rock Facts Only (no rock music please)!!!', 10, 'Legends Of Rock'),
+   (11, 'Triforce85', 'I can''t Majora''s Mask my love for my LoZ fam. They''re my Link To The Past! Wherever our adventures take us - like that weird one with the train that I can''t remember the title of - we always stay tight. My family is like a breath of the wild', 4, 'Legend Of Zelda'),
+   (12, 'wOrLd1DASH1', 'Mama Mia! We''re the Mario Brothers and plumbin''s our game. We''re not like the others who get all the fame! If your sink is in trouble, you can call us on the double - We''re faster than the others, you''ll be hooked on the brothers!', 3, 'Super Mario Brothers'),
+   (13, 'pOKm0nG0', 'Electrode, Diglett, Nidoran, Mankey, Venusaur, Rattatta, Fearow, Pidgey, Seaking, Jolteon, Dragonite, Gastly, Ponyta, Vaporeon, Poliwrath, Butterfree! Venomoth, Poliwag, Nidorino, Golduck, Ivysaur, Grimer, Victreebel, Moltres, Nidoking, Farfetch''d, Abra, Jigglypuff, Kingler, Rhyhorn, Clefable, Wigglytuff', 3, 'Pokemon Red/Blue');
 
 INSERT INTO user_holds
    (holds_user_id, holds_hold_id)
