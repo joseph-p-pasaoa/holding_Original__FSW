@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const newPostFormSubmitted = (event) => {
   event.preventDefault();
   makePosts();
-  
+
 }
 
 const checkHold = async () => {
@@ -46,9 +46,9 @@ const checkHold = async () => {
   log(uniqueUser)
   if (uniqueUser.includes(currentUser)) {
     loadPosts(uniqueUser)
-    
-    
-  } 
+
+
+  }
 }
 
 
@@ -145,8 +145,17 @@ const makeComments = (post) => {
 
 const loadComment = async (post_id, div) => {
   let currentUser = parseInt(document.querySelector("#userNum").value);
+  let holdValue = document.querySelector("#currentHold").value;
+  console.log(currentUser)
+
+  
   let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
+  console.log('marks',marks)
+  let holder = await axios.get(`http://localhost:11000/holds/${holdValue}`)
+  let holderResponse = holder.data.body
+
+ 
 
   let commentBtn = document.createElement("button");
   commentBtn.innerText = "Add Comment";
@@ -167,28 +176,46 @@ const loadComment = async (post_id, div) => {
 
   }
 
+
+
+  let holdMembers = {}
+  console.log("holderResponse",holderResponse)
+  
+  holderResponse.forEach((user) => {
+    console.log("user.user_id",user.user_id)
+    holdMembers[user.user_id] = true
+  })
+  console.log("holdMembers", holdMembers)
+
+
+
   marks.forEach((mark) => {
-    let comment = document.createElement("p");
-    comment.id = `comment${mark.comment_id}`;
-    comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
 
-    if (post_id === mark.post_id) {
-      div.append(comment);
-    }
+  
 
-    let deleteBTN = document.createElement("button");
-    deleteBTN.id = `comment${mark.comment_id}`;
-    deleteBTN.innerText = "delete";
+    if (holdMembers[mark.commenter_id]) {
+      let comment = document.createElement("p");
+      comment.id = `comment${mark.comment_id}`;
+      comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
 
-    if (currentUser === mark.commenter_id) {
-      comment.append(deleteBTN);
-    }
+      if (post_id === mark.post_id) {
+        div.append(comment);
+      }
 
-    deleteBTN.onclick = function (event) {
-      event.preventDefault();
-      let currentUser = parseInt(document.querySelector("#userNum").value);
+      let deleteBTN = document.createElement("button");
+      deleteBTN.id = `comment${mark.comment_id}`;
+      deleteBTN.innerText = "delete";
+
       if (currentUser === mark.commenter_id) {
-        deleteComments(mark.post_id, mark.comment_id);
+        comment.append(deleteBTN);
+      }
+
+      deleteBTN.onclick = function (event) {
+        event.preventDefault();
+        let currentUser = parseInt(document.querySelector("#userNum").value);
+        if (currentUser === mark.commenter_id) {
+          deleteComments(mark.post_id, mark.comment_id);
+        }
       }
     }
   })
@@ -222,15 +249,16 @@ const loadLikes = async (post_id, div, hold_user) => {
   names.id = `name_${post_id}`;
 
   likes.forEach((like) => {
-    
-    if(hold_user.includes(like.liker_id)){
-    let name = document.createElement("a");
-    name.href = "#";
-    name.innerText = `${like.firstname} ${like.lastname}`
 
-    names.append(name);
-    
- buttonDiv.append(names);}
+    if (hold_user.includes(like.liker_id)) {
+      let name = document.createElement("a");
+      name.href = "#";
+      name.innerText = `${like.firstname} ${like.lastname}`
+
+      names.append(name);
+
+      buttonDiv.append(names);
+    }
   });
 
   bell.innerText = `Likes: ${likes.length}`;
