@@ -39,7 +39,7 @@ form{
 }
 
 #allTheUsers, #usersResults,#searchResults, #deleteUser , #addUser, #displayAllPostFromGivenUser{
-    margin-left: 200px;
+    margin-left: 100px;
     margin-right: 10%;
 }
 ul{

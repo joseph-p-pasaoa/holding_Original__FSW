@@ -34,10 +34,14 @@ async function loadUsers() {
         usersUserName.className = "usersUserName"
         let usersAge = document.createElement('li')
         usersAge.className = "usersAge"
+        let avatar = document.createElement('img')
+        avatar.src = users.avatar
+        avatar.height = "100"
         usersName.innerText = `Name:${users.firstname} ${users.lastname}`;
         usersUserName.innerText = `UserName:${users.username}`;
         usersAge.innerText = `Age:${users.age}`;
-        resultDiv.append(usersName, usersUserName, usersAge)
+
+        resultDiv.append(avatar, usersName, usersUserName, usersAge)
     })
 }
 
