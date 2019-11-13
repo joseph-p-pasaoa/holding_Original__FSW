@@ -30,7 +30,7 @@ const insertFill = () => {
 
       <div id="left-body">
          <ul id="toc">
-            <li><a href="./posts.html" id="tocPosts">Posts</a></li>
+            <li><a href="./holds.html" id="tocPosts">Posts</a></li>
             <li><a href="./albums.html" id="tocAlbums">Albums</a></li>
             <li><a href="./users.html" id="tocPosts">Users</a></li>
          </ul>

@@ -14,7 +14,11 @@ const log = console.log;
 /* POST DOM Loaded Exec */
 
 document.addEventListener("DOMContentLoaded", () => {
+  let addCommentForm = document.querySelector("#postAComment");
+  addCommentForm.style.display = "none";
+  
   checkHold();
+
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
@@ -80,7 +84,6 @@ const loadPosts = async (hold_user) => {
     separateDivs.id = post.post_id;
     separateDivs.className = `sep${post.post_id}`;
 
-    log(post)
     /*Create picture for each post*/
     let avatar = document.createElement("img");
     avatar.src = post.avatar;
@@ -113,14 +116,15 @@ const loadPosts = async (hold_user) => {
       listItem.append(deleteBTN);
     }
     /* Append all posts things to the postList ul */
-    separateDivs.prepend(avatar, listItem)
-    separateDivs.append(listItem);
+    
     postList.append(separateDivs);
 
     /* Functions to display likes and comments for each post */
 
     loadLikes(post.post_id, separateDivs, hold_user);
     loadComment(post.post_id, separateDivs);
+    separateDivs.prepend(avatar, listItem)
+    separateDivs.append(listItem);
   });
 }
 
