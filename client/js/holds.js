@@ -31,6 +31,8 @@ const newPostFormSubmitted = (event) => {
 
 const checkHold = async () => {
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
+  let hold = document.querySelector("#currentHold");
+  
   let group = await axios.get(`http://localhost:11000/holds/${hold}`, { hold_id: hold });
   log(group.data.body)
   let holds = group.data.body
@@ -64,6 +66,8 @@ const loadPosts = async () => {
 
   const postList = document.querySelector("#postList");
   postList.innerText = "";
+
+  let hold = document.querySelector("#currentHold");
 
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
@@ -192,6 +196,8 @@ const loadComment = async (post_id, div) => {
 
 const loadLikes = async (post_id, div) => {
   log(post_id, div)
+
+  let hold = document.querySelector("#currentHold");
 
   let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
   log(response)
