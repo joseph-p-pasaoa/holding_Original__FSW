@@ -31,14 +31,14 @@ const grabAllAlbums = async () => {
 }
 
 const buildAlbumCards = (dataArray) => {
-    log(dataArray);
+    const userId = document.querySelector('#userNum').value;
     let albumTracker = {};
     for (let photoObj of dataArray) {
       if (!albumTracker[photoObj.album_id]) {
         let makingCard = document.createElement('div');
           makingCard.className = 'album-card hover-fade';
         let makingA = document.createElement('a');
-          makingA.href = `./photos.html?album=${photoObj.album_id}`;
+          makingA.href = `./photos.html?user=${userId}&album=${photoObj.album_id}`;
         let makingImg = document.createElement('img');
           photoObj.photo_url
             ? makingImg.src = photoObj.photo_url

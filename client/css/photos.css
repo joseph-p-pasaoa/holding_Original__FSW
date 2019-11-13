@@ -20,10 +20,10 @@
     margin: 40px;
 }
 
-.picture-frame > .user-photo:active {
+/* .picture-frame > .user-photo:active {
     width: 800px;
     height: auto;
-}
+} */
 
 #photo-container {
     display: flex;

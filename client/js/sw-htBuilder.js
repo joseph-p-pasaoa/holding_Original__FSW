@@ -7,9 +7,10 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 const insertFill = () => {
   const fill = `
       <div id="header">
-         <img id="logo" src="../assets/images/logo-191107.png" alt="Holding Logo" />
+         <img id="logo" src="../assets/images/logo-191111-j.png" alt="Holding Logo" />
          <div id="right-console">
             <div id="cornerNav">
+               <select id="holdsDrop"></select>
                <a href="#">Me</a>
                <a href="#">Events</a>
             </div>

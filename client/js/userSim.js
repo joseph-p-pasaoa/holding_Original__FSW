@@ -9,6 +9,19 @@ const whoIsUser = () => {
   return urlParams.get('user');
 }
 
+const reloadFromUserChange = () => {
+  const userId = document.querySelector('#userNum').value;
+  currentPathname = window.location.pathname;
+  if (currentPathname.includes('photos.html')) {
+    let urlBuild = window.location.href;
+    urlBuild = urlBuild.replace("photos.html", "albums.html");
+    urlBuild = urlBuild.replace(window.location.search, `?user=${userId}`);
+    window.location.href = urlBuild;
+  } else {
+    window.location.search = `?user=${userId}`;
+  }
+}
+
 const initUserSim = () => {
   let makingUserSim = document.createElement('div');
     makingUserSim.id = "userSimControl";
@@ -19,12 +32,27 @@ const initUserSim = () => {
     makingUSInput.type = "text";
     makingUSInput.id = "userNum";
     makingUSInput.name = "userNum";
-    makingUSInput.value = whoIsUser() || 4;
+    makingUSInput.value = whoIsUser() || 4; 
+    makingUSInput.addEventListener("focus", (e) => {
+        e.target.parentNode.style.backgroundColor = "gold";
+    });
+    makingUSInput.addEventListener("keypress", (e) => {
+        if (e.keyCode === 13) {
+          reloadFromUserChange();
+        };
+    });
+    makingUSInput.addEventListener("change", () => {
+          reloadFromUserChange();
+    });
 
   makingUserSim.append(makingUSLabel, makingUSInput);
   document.body.appendChild(makingUserSim);
 }
 
+// const populateHoldsDrop = () => {
+//   const currentUser = document.querySelector('#userNum');
+
+// }
 
 /* POST DOM LOAD EXEC */
 document.addEventListener("DOMContentLoaded", () => {

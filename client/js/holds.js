@@ -1,15 +1,23 @@
 
 
 /*
+<<<<<<< HEAD
 Landing Page JS | HOLDING Web App
+=======
+Holds JS | HOLDING Web App
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
 GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
+
+
+/* FILLER FILE - COMPLETELY COPY PASTED from Posts.js */
 
 
 /* HELPERS */
 const log = console.log;
 
 
+<<<<<<< HEAD
 
 
 /* POST DOM Loaded Exec */
@@ -21,6 +29,15 @@ document.addEventListener("DOMContentLoaded", () => {
   //   // loadPosts();
     // makePosts()
   // })
+=======
+/* POST DOM Loaded Exec */
+
+document.addEventListener("DOMContentLoaded", () => {
+  loadPosts();
+  document.querySelector("#userSimControl").addEventListener("click", () => {
+    loadPosts();
+  })
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
@@ -34,6 +51,7 @@ const newPostFormSubmitted = (event) => {
   makePosts();
 }
 
+<<<<<<< HEAD
 const checkHold = async () => {
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
   let hold = 3;
@@ -57,6 +75,11 @@ const makePosts = async () => {
   const text = document.querySelector("#text").value;
   let currentUser = parseInt(document.querySelector(`#userNum`).value)
 
+=======
+const makePosts = async () => {
+  const text = document.querySelector("#text").value;
+  let currentUser = parseInt(document.querySelector(`#userNum`).value)
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
   let response = await axios.post(`http://localhost:11000/posts/ `, { poster_id: currentUser, body: text });
   loadPosts();
 }
@@ -70,12 +93,21 @@ const loadPosts = async () => {
 
   const postList = document.querySelector("#postList");
   postList.innerText = "";
+<<<<<<< HEAD
   let hold = 3;
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
   
 
   posts.forEach((post) => {
+=======
+
+  let response = await axios.get("http://localhost:11000/posts/");
+  let posts = response.data.body;
+
+  posts.forEach((post) => {
+
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
     separateDivs.id = post.post_id;
@@ -86,30 +118,48 @@ const loadPosts = async () => {
     listItem.id = post.post_id;
     listItem.className = "post";
     listItem.innerText = `${post.firstname} ${post.lastname}: ${post.body}`;
+<<<<<<< HEAD
  
+=======
+
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
     /* Create functional delete buttons for each post */
     let deleteBTN = document.createElement("button");
     deleteBTN.id = `post${post.post_id}`;
     deleteBTN.innerText = "delete";
 
     deleteBTN.onclick = function () {
+<<<<<<< HEAD
       if (currentUser === post.user_id) {
+=======
+      if (currentUser === post.poster_id) {
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
         deletePost(post.post_id, separateDivs)
       }
     }
 
     /* Only show delete buttons on user's own posts */
+<<<<<<< HEAD
     if (currentUser === post.user_id) {
       listItem.append(deleteBTN);
     }
 
 
+=======
+    if (currentUser === post.poster_id) {
+      listItem.append(deleteBTN);
+    }
+
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
     /* Append all posts things to the postList ul */
     separateDivs.append(listItem);
     postList.append(separateDivs);
 
     /* Functions to display likes and comments for each post */
+<<<<<<< HEAD
   
+=======
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
     loadLikes(post.post_id, separateDivs);
     loadComment(post.post_id, separateDivs);
   });
@@ -196,11 +246,32 @@ const loadComment = async (post_id, div) => {
 /* Load all likes from database */
 
 const loadLikes = async (post_id, div) => {
+<<<<<<< HEAD
   log(post_id, div)
   let hold = 3;
 
   let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
   log(response)
+  let likes = response.data.payload;
+  let bell = document.createElement("p");
+  let buttonDiv = document.createElement("div");
+  buttonDiv.id = "btnDiv"
+
+  bell.className = "like";
+
+  bell.id = `like${post_id}`
+  div.append(buttonDiv);
+  buttonDiv.append(bell);
+
+  let likeBTN = document.createElement("button");
+  likeBTN.id = `like_${post_id}`
+  likeBTN.innerText = "like";
+
+  buttonDiv.append(likeBTN);
+  let names = document.createElement("div");
+  names.id = `name_${post_id}`;
+=======
+  let response = await axios.get(`http://localhost:11000/likes/posts/${post_id}`);
   let likes = response.data.payload;
   let bell = document.createElement("p");
   let buttonDiv = document.createElement("div");
@@ -225,11 +296,24 @@ const loadLikes = async (post_id, div) => {
     let name = document.createElement("a");
     name.href = "#";
     name.innerText = `${like.firstname} ${like.lastname}`
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
 
     names.append(name)
     buttonDiv.append(names)
   })
 
+<<<<<<< HEAD
+  likes.forEach((like) => {
+    let name = document.createElement("a");
+    name.href = "#";
+    name.innerText = `${like.firstname} ${like.lastname}`
+
+    names.append(name)
+    buttonDiv.append(names)
+  })
+
+=======
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
   bell.innerText = `Likes: ${likes.length}`;
 
   likeBTN.classList.toggle("show");
@@ -240,11 +324,14 @@ const deletePost = async (post, div) => {
   await axios.delete(`http://localhost:11000/posts/${post}`);
   div.parentNode.removeChild(div)
 }
+<<<<<<< HEAD
 
 // const deletePost = async (hold, post, div) => {
 //   await axios.delete(`http://localhost:11000/posts/${hold}/${post}`);
 //   div.parentNode.removeChild(div)
 // }
+=======
+>>>>>>> 2384e2821387224a15c853e6bb6e8ee52d9d30c9
 
 /* Delete specified comment from database */
 const deleteComments = async (post, comment_id) => {
