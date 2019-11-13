@@ -153,8 +153,11 @@ const makeComments = (post) => {
 
 const loadComment = async (post_id, div) => {
   let currentUser = parseInt(document.querySelector("#userNum").value);
+  let holdValue = document.querySelector("#currentHold").value;
   let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
+  let holder = await axios.get(`http://localhost:11000/holds/${holdValue}`)
+  let holderResponse = holder.data.body
 
   let commentBtn = document.createElement("button");
   commentBtn.innerText = "Add Comment";
@@ -175,28 +178,36 @@ const loadComment = async (post_id, div) => {
 
   }
 
+  let holdMembers = {}
+  holderResponse.forEach((user) => {
+    holdMembers[user.user_id] = true
+  })
+
   marks.forEach((mark) => {
-    let comment = document.createElement("p");
-    comment.id = `comment${mark.comment_id}`;
-    comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
 
-    if (post_id === mark.post_id) {
-      div.append(comment);
-    }
+    if (holdMembers[mark.commenter_id]) {
+      let comment = document.createElement("p");
+      comment.id = `comment${mark.comment_id}`;
+      comment.innerText = `${mark.firstname} ${mark.lastname}: ${mark.body}`;
 
-    let deleteBTN = document.createElement("button");
-    deleteBTN.id = `comment${mark.comment_id}`;
-    deleteBTN.innerText = "delete";
+      if (post_id === mark.post_id) {
+        div.append(comment);
+      }
 
-    if (currentUser === mark.commenter_id) {
-      comment.append(deleteBTN);
-    }
+      let deleteBTN = document.createElement("button");
+      deleteBTN.id = `comment${mark.comment_id}`;
+      deleteBTN.innerText = "delete";
 
-    deleteBTN.onclick = function (event) {
-      event.preventDefault();
-      let currentUser = parseInt(document.querySelector("#userNum").value);
       if (currentUser === mark.commenter_id) {
-        deleteComments(mark.post_id, mark.comment_id);
+        comment.append(deleteBTN);
+      }
+
+      deleteBTN.onclick = function (event) {
+        event.preventDefault();
+        let currentUser = parseInt(document.querySelector("#userNum").value);
+        if (currentUser === mark.commenter_id) {
+          deleteComments(mark.post_id, mark.comment_id);
+        }
       }
     }
   })
