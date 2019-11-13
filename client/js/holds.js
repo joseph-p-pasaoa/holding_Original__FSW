@@ -1,7 +1,6 @@
 
 
 /*
-
 Holds JS | HOLDING Web App
 GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
@@ -15,13 +14,7 @@ const log = console.log;
 /* POST DOM Loaded Exec */
 
 document.addEventListener("DOMContentLoaded", () => {
-  // loadPosts();
   checkHold()
-  // document.querySelector("#userSimControl").addEventListener("click", () => {
-  //   // loadPosts();
-    // makePosts()
-  // })
-
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
@@ -29,16 +22,15 @@ document.addEventListener("DOMContentLoaded", () => {
   let addCommentForm = document.querySelector("#postAComment");
   addCommentForm.addEventListener("submit", newCommentFormSubmitted);
 });
+
 /*           POSTS         */
 const newPostFormSubmitted = (event) => {
   event.preventDefault();
   makePosts();
 }
 
-
 const checkHold = async () => {
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
-  let hold = 3;
   let group = await axios.get(`http://localhost:11000/holds/${hold}`, { hold_id: hold });
   log(group.data.body)
   let holds = group.data.body
@@ -73,7 +65,6 @@ const loadPosts = async () => {
   const postList = document.querySelector("#postList");
   postList.innerText = "";
 
-  let hold = 3;
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
   
@@ -224,11 +215,6 @@ const loadLikes = async (post_id, div) => {
   let names = document.createElement("div");
   names.id = `name_${post_id}`;
 
-
-    names.append(name)
-    buttonDiv.append(names)
-  })
-
   likes.forEach((like) => {
     let name = document.createElement("a");
     name.href = "#";
@@ -248,12 +234,6 @@ const deletePost = async (post, div) => {
   await axios.delete(`http://localhost:11000/posts/${post}`);
   div.parentNode.removeChild(div)
 }
-
-// const deletePost = async (hold, post, div) => {
-//   await axios.delete(`http://localhost:11000/posts/${hold}/${post}`);
-//   div.parentNode.removeChild(div)
-// }
-
 
 /* Delete specified comment from database */
 const deleteComments = async (post, comment_id) => {
