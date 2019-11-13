@@ -1,28 +1,27 @@
 body {
-    background-image: url(../assets/images/Couple_01.jpeg);
+    background-image: url(../assets/images/mainplay.jpg);
     background-repeat: no-repeat;
-    background-color: black;
+    background-color: #faf8f9;
     background-size: cover;
 }
 
-#logo_container {
-    display: grid;
-    grid-template-columns: 1fr;
-    justify-self: center;
-    text-align: center;
+#logo-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 #logo {
-    display: block;
-    margin-top: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 7%;
-    margin-bottom: 5%;
     width: 60%;
     -webkit-filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #222);
+}
 
+#badge {
+    width: 25%;
+    -webkit-filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #222);
 }
 
 #login-container {
@@ -30,36 +29,33 @@ body {
     margin-left: auto;
     margin-right: auto;
     width: 40%;
-    background: lightyellow;
+    background: #b8d1ca;
     text-align: center;
+    border-radius: 15px;
+    border: solid 5px #a3ad8e;
+    box-shadow: 5px 5px 5px #222;
 }
 
 .button {
     width: 150px;
     height: 40px;
     font-size: large;
-    justify-self: center;
-    align-items: center;
     border-radius: 10px;
-    border: solid 3px goldenrod;
-    background-color: gold;
-    box-shadow: 10px 10px 5px black;
+    border: solid 3px #a3ad8e;
+    background-color: #b8d1ca;
+    box-shadow: 5px 5px 5px #222;
 }
 
 .button:hover {
     width: 150px;
     height: 40px;
     font-size: large;
-    justify-self: center;
-    align-items: center;
     border-radius: 10px;
-    border: solid 3px gold;
-    background-color: yellow;
-    box-shadow: 10px 10px 5px black;
+    border: solid 3px #928c96;
+    background-color: #6c8f92;
+    box-shadow: 5px 5px 5px #222;
 }
 
 #formy-mcformface {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
 }
