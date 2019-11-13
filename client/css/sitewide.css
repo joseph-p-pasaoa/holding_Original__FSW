@@ -54,13 +54,39 @@ table {
 }
 
 
-/* FONT INITS -- just here for reference. delete if wanted */
-/* @font-face {
-  font-family: 'Special Elite';
-  src: url('./fonts/Special_Elite/SpecialElite-Regular.ttf') format('truetype');
+/* FONT INITS 
+font-family: 'Alegreya Sans', sans-serif;
+font-family: 'Lato', sans-serif;
+*/
+@font-face {
+  font-family: 'AlegreyaSans-Black';
+  src: url('../assets/fonts/Alegreya_Sans/AlegreyaSans-Black.ttf') format('truetype');
+  font-weight: black;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AlegreyaSans-BlackItalic';
+  src: url('../assets/fonts/Alegreya_Sans/AlegreyaSans-BlackItalic.ttf') format('truetype');
+  font-weight: black;
+  font-style: italic;
+}
+@font-face {
+  font-family: 'Lato';
+  src: url('../assets/fonts/Lato/Lato-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-} */
+} 
+
+
+
+
+/*
+FAF8F9
+A3AD8E
+B8D1C9
+928C96
+6C8F92
+*/
 
 
 /* MAIN STYLE */
@@ -72,7 +98,7 @@ html, body, div#base-grid {
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
 	font-size: 0.9em;
 }
 
@@ -81,62 +107,29 @@ h1 {
 
   text-align: right;
   font-size: 2em;
-	font-weight: bold;
-	font-family: 'Quicksand', sans-serif;
+  font-weight: 900;
+  font-style: normal;
+  font-family: 'AlegreyaSans-Black', sans-serif;
 }
 
 
 /* MADE WITH HEADER-TOC BUILDER */
 div#base-grid {
   display: grid;
-  grid-template-columns: 189px auto;
-  grid-template-rows: 131px 31px auto;
+  grid-template-columns: 351px auto;
+  grid-template-rows: 85px 85px auto;
   grid-gap: 0px;
-}
 
-div#header {
-  grid-column: span 2;
-  background-color: #fff;
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  background: rgb(250,248,249);
+  background: linear-gradient(135deg, rgba(250,248,249,1) 0%, rgba(232,237,236,1) 76%, rgba(184,209,201,1) 100%);
 }
 
 img#logo {
-  height: 41px;
-  margin: 11px;
+  height: 54px;
+  margin: 13px 6px 6px 25px;
 }
 
-div#right-console {
-  width: 400px;
-  text-align: left;
-}
-
-div#cornerNav {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-
-  margin: 12px 12px 6px 6px;
-  padding: 3px 40px 2px 6px;
-  border-radius: 25px 25px 25px 0px;
-
-  background: rgb(255,236,126);
-	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
-	border-top: solid 1px gold;
-	border-right: solid 1px gold;
-	border-bottom: solid 1px goldenrod;
-	border-left: solid 1px goldenrod;
-}
-
-div#cornerNav a {
-  padding: 3px 15px 4px 15px;
-
-  font-weight: bold;
-}
-
-input[name="search"] {
+/* input[name="search"] {
   margin: 6px 12px 12px 6px;
   padding: 0px 10px 1px 10px;
   width: 260px;
@@ -148,52 +141,150 @@ input[name="search"] {
 
 input[name="search"]:focus {
   outline: none;
-}
+} */
 
-div#marquee {
-  grid-column: span 2;
-  padding: 9px 12px 12px 0px;
-  
-  text-align: center;
-  
-  background: rgb(255,236,126);
-	background: linear-gradient(180deg, rgba(255,236,126,1) 0%, rgba(235,186,60,1) 65%, rgba(227,180,58,1) 80%);
-	border-top: solid 1px gold;
-	border-bottom: solid 1px goldenrod;
-}
-
-div#left-body {
-  padding-top: 50px;
-
-  font-size: 1em;
+div#headerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
 }
 
 ul#toc {
-  margin: 0px 12px;
-  padding: 8px 0px 48px 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 
-  border: solid 2px #000;
-  border-radius: 7px 0px 7px 7px;
+  margin: 0px 52px 0 12px;
+  padding: 39px 0px 48px 0px;
+  width: 560px;
 }
 
 ul#toc li {
   padding: 4px 12px;
 }
 
+ul#toc li a:link, ul#toc li a:visited {
+  text-decoration: none;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 1.3em;
+  font-family: 'AlegreyaSans-Black', sans-serif;
+  color: #A3AD8E;
+}
+
+ul#toc li a:hover, ul#toc li a:active {
+  color: #B8D1C9;
+}
+
 ul#toc li a.current {
 	cursor: default;
-	text-decoration: none;
-	color: orange;
+	color: #6C8F92;
 }
 
-div#section-actions {
-  padding-top: 40px;
+div#leftBase {
+  grid-row: span 2;
+
+  display: grid;
+  grid-template-columns: 136px auto;
+  grid-template-rows: 85px auto;
+  grid-gap: 0px;
+  
+  position: relative;
+  width: auto;
+  height: auto;
+  background-color: #A3AD8E;
+  border-radius: 0px 7px 0px 0px;
+  z-index: 100;
 }
 
-div#left-body button {
-  margin: 4px 12px;
+div#crownShim {
+  width: auto;
+  height: auto;
+}
 
-  border-radius: 7px;
+div#crownHolder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+  height: auto;
+}
+
+div#leftBase { /* UNIVERSAL DROP-SHADOWS */
+  box-shadow: 3px 11px 18px #999;
+}
+
+div#crownMarquee {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: auto;
+  height: auto;
+}
+
+div#marquee {
+  padding: 9px 12px 6px 6px;
+  height: auto;
+  width: 556px;
+
+  text-align: right;
+  text-decoration: none;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 2.5em;
+  font-family: 'AlegreyaSans-Black', sans-serif;
+  color: #000;
+
+  text-shadow: 3px 11px 11px #ccc;
+}
+
+div#marquee strong {
+  font-weight: 900;
+  color: #928C96;
+}
+
+div#marquee em {
+  font-weight: 900;
+  font-style: normal;
+  color: #6C8F92;
+}
+
+div#bodyLeftSpot {
+  position: relative;
+  width: auto;
+  height: auto;
+  background-color: #928C96;
+  border-radius: 0px 11px 0px 0px;
+  box-shadow: 3px 11px 18px #666;
+  z-index: 500;
+}
+
+div#bodyAboutHold {
+  width: auto;
+  height: auto;
+}
+
+div#aboutHold {
+  width: auto;
+  height: auto;
+
+  text-align: left;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.8em;
+  line-height: 1.4em;
+  /* font-style: italic; */
+  padding: 22px 12px 12px 18px;
+  color: #FAF8F9;
+}
+
+div#aboutHold h3 {
+  margin-bottom: 12px;
+  
+  font-size: 1.3em;
+  color: #B8D1C9;
 }
 
 div#right-body {
@@ -256,3 +347,11 @@ div#userSimControl input:focus {
   outline: none;
 }
 /* end MADE WITH USER SIM CONTROL */
+
+
+/*.btn, .btn.btn-default, .navbar .navbar-nav > li > a.btn, .navbar .navbar-nav > li > a.btn.btn-default { */
+
+button {
+  border-radius: 3;
+  box-shadow: 0 2px 2px 0 rgba(153, 153, 153, 0.14), 0 3px 1px -2px rgba(153, 153, 153, 0.2), 0 1px 5px 0 rgba(153, 153, 153, 0.12);
+}
