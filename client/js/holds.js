@@ -192,7 +192,6 @@ const loadComment = async (post_id, div) => {
 
 const loadLikes = async (post_id, div) => {
   log(post_id, div)
-  let hold = 3;
 
   let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
   log(response)
