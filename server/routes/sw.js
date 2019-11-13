@@ -36,6 +36,7 @@ const getHoldsWNames = async (req, res, next) => {
       const getQuery = `
         SELECT hold_id
           , holds.name
+          , holds.description
           , users.username
         FROM user_holds
         JOIN holds ON (user_holds.holds_hold_id = holds.hold_id)
