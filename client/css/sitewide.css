@@ -122,9 +122,9 @@ div#base-grid {
   grid-template-columns: 351px auto;
   grid-template-rows: 85px 85px auto;
   grid-gap: 0px;
-
-  background: rgb(250,248,249);
-  background: linear-gradient(135deg, rgba(250,248,249,1) 0%, rgba(232,237,236,1) 76%, rgba(184,209,201,1) 100%);
+  
+  /* background: rgb(250,248,249);
+  background: linear-gradient(135deg, rgba(250,248,249,1) 0%, rgba(232,237,236,1) 76%, rgba(184,209,201,1) 100%); */
 }
 
 img#logo {
