@@ -146,16 +146,10 @@ const makeComments = (post) => {
 const loadComment = async (post_id, div) => {
   let currentUser = parseInt(document.querySelector("#userNum").value);
   let holdValue = document.querySelector("#currentHold").value;
-  console.log(currentUser)
-
-  
   let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
-  console.log('marks',marks)
   let holder = await axios.get(`http://localhost:11000/holds/${holdValue}`)
   let holderResponse = holder.data.body
-
- 
 
   let commentBtn = document.createElement("button");
   commentBtn.innerText = "Add Comment";
@@ -176,22 +170,12 @@ const loadComment = async (post_id, div) => {
 
   }
 
-
-
   let holdMembers = {}
-  console.log("holderResponse",holderResponse)
-  
   holderResponse.forEach((user) => {
-    console.log("user.user_id",user.user_id)
     holdMembers[user.user_id] = true
   })
-  console.log("holdMembers", holdMembers)
-
-
 
   marks.forEach((mark) => {
-
-  
 
     if (holdMembers[mark.commenter_id]) {
       let comment = document.createElement("p");
