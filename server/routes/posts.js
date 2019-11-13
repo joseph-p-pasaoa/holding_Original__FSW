@@ -18,7 +18,12 @@ const db = require('../db.js');
 /* MIDDLEWARE */
 const allPosts = async (req, res) => {
   try {
-    let response = await db.any("SELECT * FROM posts INNER JOIN users ON posts.poster_id = users.user_id ORDER BY (post_id) DESC;");
+    let selectQuery = `SELECT users.user_id, users.firstname, users.lastname, holds.name, posts.body, posts.post_id 
+    FROM users INNER JOIN user_holds ON users.user_id = user_holds.holds_user_id 
+    INNER JOIN holds ON user_holds.holds_hold_id = holds.hold_id 
+    INNER JOIN posts ON posts.poster_id = users.user_id WHERE holds.hold_id = $1;`
+
+    let response = await db.any(selectQuery, parseInt(req.params.hold));
     res.json({
       status: "success",
       message: req.get('host') + req.originalUrl,
@@ -32,15 +37,28 @@ const allPosts = async (req, res) => {
     });
   }
 }
+// const holdUsers = async(req, res) => {
+//   try{
+//     let selectQuery = 
+//   }catch{
+
+//   }
+// }
 
 const singlePost = async (req, res) => {
   try {
-    let selectQuery = `SELECT body FROM posts WHERE post_id =$1`
-    let post = await db.any(selectQuery, parseInt(req.params.id));
+    let selectQuery = `SELECT users.user_id, users.firstname, users.lastname, holds.name, posts.body FROM users 
+    INNER JOIN user_holds ON users.user_id = user_holds.holds_user_id 
+    INNER JOIN holds ON user_holds.holds_hold_id = holds.hold_id 
+    INNER JOIN posts ON posts.poster_id = users.user_id 
+    WHERE holds.hold_id = $1 AND posts.post_id = $2;`
+    let post = await db.any(selectQuery, [parseInt(req.params.hold), parseInt(req.params.id)]);
 
     res.json({
-      body: {body: body,
-        poster_id: id
+      body: {
+        body: body,
+        poster_id: id,
+        hold_id: hold
       },
       message: `Here is the post!`
     });
@@ -102,8 +120,8 @@ const removePost = async (req, res) => {
 
 
 /* ROUTES */
-router.get("/", allPosts);
-router.get("/:id", singlePost);
+router.get("/:hold", allPosts);
+router.get("/:hold/:id", singlePost);
 router.post("/", addPost);
 router.patch("/:id", updatePost);
 router.delete("/:id", removePost);

@@ -20,13 +20,17 @@ const express = require('express');
 // Database 
 const db = require('../db.js');
 
-router.get("/posts/:post_id", async (req, res) => {
+router.get("/posts/:hold_id/:post_id", async (req, res) => {
   try {
     let postId = parseInt(req.params.post_id)
     let getQuery =`
-    SELECT DISTINCT(firstname), lastname FROM users INNER JOIN likes ON users.user_id = likes.liker_id WHERE users.user_id IN (SELECT likes.liker_id FROM posts INNER JOIN likes ON posts.post_id = likes.post_id WHERE posts.post_id = $1);`
+    SELECT DISTINCT (liker_id), post_id FROM likes WHERE post_id IN (SELECT posts.post_id FROM users 
+      INNER JOIN user_holds ON users.user_id = user_holds.holds_user_id 
+      INNER JOIN holds ON user_holds.holds_hold_id = holds.hold_id 
+      INNER JOIN posts ON posts.poster_id = users.user_id 
+      WHERE holds.hold_id = $1 AND post_id = $2);`
 
-    let allLikes = await db.any(getQuery, postId)
+    let allLikes = await db.any(getQuery, [req.params.hold_id, postId])
     res.json({
         payload: allLikes,
         message: "Yo ho, me hearties! Here be all the likes on all the posts! I'm a pirate server!"

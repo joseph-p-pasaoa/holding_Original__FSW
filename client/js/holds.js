@@ -1,4 +1,7 @@
+
+
 /*
+
 Holds JS | HOLDING Web App
 GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
@@ -9,15 +12,16 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 
 /* HELPERS */
 const log = console.log;
-
-
 /* POST DOM Loaded Exec */
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadPosts();
-  document.querySelector("#userSimControl").addEventListener("click", () => {
-    loadPosts();
-  })
+  // loadPosts();
+  checkHold()
+  // document.querySelector("#userSimControl").addEventListener("click", () => {
+  //   // loadPosts();
+    // makePosts()
+  // })
+
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
@@ -31,9 +35,30 @@ const newPostFormSubmitted = (event) => {
   makePosts();
 }
 
+
+const checkHold = async () => {
+  let currentUser = parseInt(document.querySelector(`#userNum`).value);
+  let hold = 3;
+  let group = await axios.get(`http://localhost:11000/holds/${hold}`, { hold_id: hold });
+  log(group.data.body)
+  let holds = group.data.body
+  let uniqueUser = [];
+  holds.forEach((hold) => {
+    if (!uniqueUser.includes(hold.user_id)) {
+      uniqueUser.push(hold.user_id);
+    }
+  })
+  if (uniqueUser.includes(currentUser)) {
+    loadPosts()
+    // loadLikes()
+  } 
+}
+
+
 const makePosts = async () => {
   const text = document.querySelector("#text").value;
   let currentUser = parseInt(document.querySelector(`#userNum`).value)
+
   let response = await axios.post(`http://localhost:11000/posts/ `, { poster_id: currentUser, body: text });
   loadPosts();
 }
@@ -48,8 +73,10 @@ const loadPosts = async () => {
   const postList = document.querySelector("#postList");
   postList.innerText = "";
 
-  let response = await axios.get("http://localhost:11000/posts/");
+  let hold = 3;
+  let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
   let posts = response.data.body;
+  
 
   posts.forEach((post) => {
 
@@ -70,21 +97,23 @@ const loadPosts = async () => {
     deleteBTN.innerText = "delete";
 
     deleteBTN.onclick = function () {
-      if (currentUser === post.poster_id) {
+      if (currentUser === post.user_id) {
+
         deletePost(post.post_id, separateDivs)
       }
     }
 
     /* Only show delete buttons on user's own posts */
-    if (currentUser === post.poster_id) {
+
+    if (currentUser === post.user_id) {
       listItem.append(deleteBTN);
     }
-
     /* Append all posts things to the postList ul */
     separateDivs.append(listItem);
     postList.append(separateDivs);
 
     /* Functions to display likes and comments for each post */
+
     loadLikes(post.post_id, separateDivs);
     loadComment(post.post_id, separateDivs);
   });
@@ -171,7 +200,11 @@ const loadComment = async (post_id, div) => {
 /* Load all likes from database */
 
 const loadLikes = async (post_id, div) => {
-  let response = await axios.get(`http://localhost:11000/likes/posts/${post_id}`);
+  log(post_id, div)
+  let hold = 3;
+
+  let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
+  log(response)
   let likes = response.data.payload;
   let bell = document.createElement("p");
   let buttonDiv = document.createElement("div");
@@ -192,6 +225,10 @@ const loadLikes = async (post_id, div) => {
   names.id = `name_${post_id}`;
 
 
+    names.append(name)
+    buttonDiv.append(names)
+  })
+
   likes.forEach((like) => {
     let name = document.createElement("a");
     name.href = "#";
@@ -211,6 +248,12 @@ const deletePost = async (post, div) => {
   await axios.delete(`http://localhost:11000/posts/${post}`);
   div.parentNode.removeChild(div)
 }
+
+// const deletePost = async (hold, post, div) => {
+//   await axios.delete(`http://localhost:11000/posts/${hold}/${post}`);
+//   div.parentNode.removeChild(div)
+// }
+
 
 /* Delete specified comment from database */
 const deleteComments = async (post, comment_id) => {
