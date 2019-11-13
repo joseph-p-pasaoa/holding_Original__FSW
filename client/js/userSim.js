@@ -51,7 +51,7 @@ const initUserSim = () => {
     makingUSInput.type = "text";
     makingUSInput.id = "userNum";
     makingUSInput.name = "userNum";
-    makingUSInput.value = whoIsUser() || 3; 
+    makingUSInput.value = whoIsUser() || 4; 
     makingUSInput.addEventListener("focus", (e) => {
         e.target.parentNode.style.backgroundColor = "gold";
         e.target.style.backgroundColor = "red";

@@ -1,7 +1,4 @@
-
-
-/*
-Holds JS | HOLDING Web App
+/* Holds JS | HOLDING Web App
 GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
@@ -16,15 +13,14 @@ const log = console.log;
 document.addEventListener("DOMContentLoaded", () => {
   let addCommentForm = document.querySelector("#postAComment");
   addCommentForm.style.display = "none";
-  
+addCommentForm.addEventListener("submit", newCommentFormSubmitted);  
   checkHold();
 
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
 
-  let addCommentForm = document.querySelector("#postAComment");
-  addCommentForm.addEventListener("submit", newCommentFormSubmitted);
+  
 });
 
 /*           POSTS         */
@@ -65,6 +61,7 @@ const makePosts = async () => {
 
 /* Load all posts from database */
 const loadPosts = async (hold_user) => {
+  log(hold_user)
   let currentUser = parseInt(document.querySelector("#userNum").value);
 
   let addCommentForm = document.querySelector("#postAComment");
@@ -79,6 +76,8 @@ const loadPosts = async (hold_user) => {
   let posts = response.data.body;
 
   posts.forEach((post) => {
+ makeLike(post.post_id)
+
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
     separateDivs.id = post.post_id;
@@ -218,14 +217,21 @@ const loadComment = async (post_id, div) => {
   div.append(commentBtn);
 }
 
+ /* Make a Like */
+
+const makeLike = async (post_id, current_hold) => {
+  let liker = parseInt("1");
+  let response = await axios.post(`http://localhost:11000/likes/posts/${post_id}/${liker}`, {liker_id: liker, post_id: post_id})
+}
+
 /* Load all likes from database */
 
-const loadLikes = async (post_id, div, hold_user) => {
-  log(post_id, div, hold_user)
+const loadLikes = async (post_id, div) => {
+  log(post_id, div)
   let hold = document.querySelector("#currentHold").value;
-
+  let holder = await axios.get(`http://localhost:11000/holds/${hold}`)
+  let holderResponse = holder.data.body
   let response = await axios.get(`http://localhost:11000/likes/posts/${hold}/${post_id}`);
-  log(response)
   let likes = response.data.payload;
   let bell = document.createElement("p");
   let buttonDiv = document.createElement("div");
@@ -249,9 +255,15 @@ const loadLikes = async (post_id, div, hold_user) => {
   let names = document.createElement("div");
   names.id = `name_${post_id}`;
 
+
+  let holdMembers = {}
+  holderResponse.forEach((user) => {
+    holdMembers[user.user_id] = true
+  })
+
   likes.forEach((like) => {
 
-    if (hold_user.includes(like.liker_id)) {
+    if (holdMembers[like.liker_id]) {
       let name = document.createElement("a");
       name.href = "#";
       name.innerText = `${like.firstname} ${like.lastname}`
