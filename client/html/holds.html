@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>HolDING: Posts</title>
+  <title>Holds | HolDING</title>
   <script src="https://unpkg.com/axios/dist/axios.min.js" type="text/javascript"></script>
   <script src="../js/userSim.js" type="text/javascript"></script>
   <script src="../js/sw.js" type="text/javascript"></script>
@@ -24,17 +24,17 @@
       <div id='postsStage'>
         <div id='singlePost'>
           <form id='postAPost'>
-            <input id='text' rows="4" cols="50" placeholder="What's on your mind?" required
-              style='height:30px; width: 200px'></input>
+            <label>Make a new DING:</label>
+            <input id='text' rows="4" cols="50" placeholder="What's on your mind?" required></input>
             <button>Submit</button>
           </form>
         </div>
         <div id = 'postAComment'>
             <form id='postAComment'>
-                <input id='cText' rows="4" cols="50" placeholder='Make a comment...' required
-                  style='height:30px; width: 200px'></input>
-                <button id = 'addCom'>Submit</button>
-              </form>
+              <label>Add comment:</label>
+              <input id='cText' rows="4" cols="50" placeholder='Make a comment...' required></input>
+              <button id = 'addCom'>Submit</button>
+            </form>
         </div>
         <div id='allPosts'>
           <ul id='postList'>
