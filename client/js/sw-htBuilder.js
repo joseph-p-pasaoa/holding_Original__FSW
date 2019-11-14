@@ -27,26 +27,13 @@ const buildContent = () => {
           <div id="crownHolder">
               <form>
                   <select id="holdsDropper"></select>
-                  <input type="hidden" id="currentHold">
-               </form>
-               <a href="#">Me</a>
-               <a href="#">Events</a>
-            </div>
-            <div>
-               <input type="text" id="search" name="search" placeholder="Search" />
-            </div>
-         </div>
-      </div><!-- end header -->
-
-      <div id="marquee">A Family Social Media!</div>
-
-      <div id="left-body">
-         <ul id="toc">
-            <li><a href="./holds.html" id="tocPosts">Posts</a></li>
-            <li><a href="./albums.html" id="tocAlbums">Albums</a></li>
-            <li><a href="./users.html" id="tocPosts">Users</a></li>
-         </ul>
-         <div id="section-actions"></div>
+                  <input type="hidden" id="currentHold" />
+                  </form>
+              </div>
+              <div id="bodyLeftSpot"></div>
+              <div id="bodyAboutHold">
+                  <div id="aboutHold"></div>
+              </div>
       </div>
 
       <div id="crownMarquee">
@@ -57,7 +44,7 @@ const buildContent = () => {
 
       <!-- input type="text" id="search" name="search" placeholder="Search" / -->
   `;
-document.querySelector('#base-grid').innerHTML = content;
+  document.querySelector('#base-grid').innerHTML = content;
 }
 
 const setCurrentTOC = () => {
