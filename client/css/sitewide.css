@@ -78,14 +78,12 @@ font-family: 'Lato', sans-serif;
 } 
 
 
-
-
-/*
-FAF8F9
-A3AD8E
-B8D1C9
-928C96
-6C8F92
+/* COLOR SCHEME
+FAF8F9  Hint of Red
+A3AD8E  Locust
+B8D1C9  Jet Stream
+928C96  Mountain Mist
+6C8F92  Juniper
 */
 
 
@@ -103,16 +101,20 @@ body {
 }
 
 h1 {
+  width: 130px;
+  height: 21px;
+  margin-bottom: 35px;
+  margin-left: 541px;
+  padding: 3px 9px 0px 9px;
+  border-radius: 15px;
 
-  width: 600px;
-  margin-bottom: 12px;
-
-  color: #B8D1C9;
+  background-color: #A3AD8E;
+  color: #FAF8F9;
   text-align: right;
-  font-size: 1.5em;
-  font-weight: 900;
+  font-size: 1.1em;
+  font-weight: 600;
   font-style: normal;
-  font-family: 'AlegreyaSans-Black', sans-serif;
+  font-family: 'Lato', sans-serif;
 }
 
 
@@ -143,7 +145,7 @@ div#headerNav {
 ul#toc {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
 
   margin: 0px 52px 0 12px;
   padding: 39px 0px 48px 0px;
@@ -151,16 +153,19 @@ ul#toc {
 }
 
 ul#toc li {
-  padding: 4px 12px;
+  /* padding: 4px 12px; */
 }
 
 ul#toc li a:link, ul#toc li a:visited {
   text-decoration: none;
   font-weight: 900;
   font-style: normal;
-  font-size: 1.3em;
-  font-family: 'AlegreyaSans-Black', sans-serif;
-  color: #A3AD8E;
+  font-size: 1.0em;
+  font-family: 'Lato', sans-serif;
+  color: #222;
+
+  margin: 4px 12px;
+  padding: 3px 9px;
 }
 
 ul#toc li a:hover, ul#toc li a:active {
@@ -169,8 +174,11 @@ ul#toc li a:hover, ul#toc li a:active {
 
 ul#toc li a.current {
   text-decoration: underline;
-	cursor: default;
-	color: #6C8F92;
+  cursor: default;
+  
+	/* color: #FAF8F9; */
+  border: solid 2px #A3AD8E;
+  border-radius: 15px;
 }
 
 div#leftBase {
@@ -184,7 +192,7 @@ div#leftBase {
   position: relative;
   width: auto;
   height: auto;
-  background-color: #A3AD8E;
+  background-color: #928C96;
   border-radius: 0px 7px 0px 0px;
   z-index: 100;
 }
@@ -196,11 +204,13 @@ div#crownShim {
 
 div#crownHolder {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
 
   width: auto;
   height: auto;
+  padding-left: 19px;
 }
 
 div#leftBase { /* UNIVERSAL DROP-SHADOWS */
@@ -218,7 +228,7 @@ div#crownMarquee {
 div#marquee {
   padding: 9px 12px 6px 6px;
   height: auto;
-  width: 556px;
+  width: 663px;
 
   text-align: right;
   text-decoration: none;
@@ -226,27 +236,34 @@ div#marquee {
   font-style: normal;
   font-size: 2.5em;
   font-family: 'AlegreyaSans-Black', sans-serif;
-  color: #000;
+  color: #222;
 
-  text-shadow: 3px 11px 11px #ccc;
+  /* text-shadow: 3px 11px 11px #ccc; */
 }
 
 div#marquee strong {
   font-weight: 900;
-  color: #928C96;
+  color: #B8D1C9;
 }
 
 div#marquee em {
   font-weight: 900;
   font-style: normal;
-  color: #6C8F92;
+  color: #928C96;
+}
+
+div#marquee strong, div#marquee em {
+  position: relative;
+  top: -2px;
+
+  text-shadow: 2px 7px 5px #ddd;
 }
 
 div#bodyLeftSpot {
   position: relative;
   width: auto;
   height: auto;
-  background-color: #928C96;
+  background-color: #6C8F92;
   border-radius: 0px 11px 0px 0px;
   box-shadow: 3px 11px 18px #666;
   z-index: 500;
@@ -263,10 +280,10 @@ div#aboutHold {
 
   text-align: left;
   font-family: 'Lato', sans-serif;
-  font-size: 0.8em;
+  font-size: 0.9em;
   line-height: 1.4em;
   /* font-style: italic; */
-  padding: 22px 12px 12px 18px;
+  padding: 22px 19px 12px 19px;
   color: #FAF8F9;
 }
 
@@ -282,7 +299,7 @@ div#right-body {
   flex-direction: column;
   flex-wrap: nowrap;
   
-  margin-top: 17px;
+  margin-top: 4px;
   padding: 0px 12px 12px 18px;
 }
 /* end MADE WITH HEADER-TOC BUILDER */
