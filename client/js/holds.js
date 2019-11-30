@@ -68,6 +68,7 @@ const loadPosts = async (hold_user) => {
   let hold = document.querySelector("#currentHold").value;
 
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
+
   let posts = response.data.body;
   posts.forEach((post) => {
     makeLike(post.post_id);

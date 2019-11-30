@@ -18,7 +18,7 @@ const db = require('../db.js');
 /* MIDDLEWARE */
 const allPosts = async (req, res) => {
   try {
-    let selectQuery = `SELECT users.user_id, users.firstname, users.lastname, users.avatar, holds.name, posts.body, posts.post_id 
+    let selectQuery = `SELECT users.user_id, users.firstname, users.lastname, users.avatar, holds.name, posts.body, posts.post_id, posts.time_post 
     FROM users INNER JOIN user_holds ON users.user_id = user_holds.holds_user_id 
     INNER JOIN holds ON user_holds.holds_hold_id = holds.hold_id 
     INNER JOIN posts ON posts.poster_id = users.user_id WHERE holds.hold_id = $1 ORDER BY posts.post_id DESC;`
