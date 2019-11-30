@@ -1,7 +1,7 @@
 {
   "name": "holding--fsw-app",
   "version": "1.0.0-alpha",
-  "description": "holDING is a social network sphere of micro social networks intersecting at the users, for the users. ",
+  "description": "holDING is a massive social network consisting of micro social networks intersecting at the users, for the users.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
