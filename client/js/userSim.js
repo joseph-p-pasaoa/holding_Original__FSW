@@ -16,7 +16,6 @@ const usServerComm = async (method, urlAdds, body) => {
 
 const commForDESTUserHolds = async (userId) => {
   const response = await usServerComm('get', `sw/userholds/${userId}`);
-  // console.log(response.body.length);
   if (response.body.length > 0) {
     return response.body[0].hold_id;
   }
@@ -39,7 +38,18 @@ const reloadFromUserChange = (userId, holdId) => {
   } else {
     window.location.search = `?user=${userId}&hold=${holdId}`;
   }
+
+  if (currentPathname.includes('usersProfile.html')) {
+    let urlBuild = window.location.href;
+
+    urlBuild = urlBuild.replace("usersProfile.html", "users.html");
+    urlBuild = urlBuild.replace(window.location.search, `?user=${userId}&hold=${holdId}`);
+    window.location.href = urlBuild;
+  } else {
+    window.location.search = `?user=${userId}&hold=${holdId}`;
+  }
 }
+
 
 const initUserSim = () => {
   let makingUserSim = document.createElement('div');
@@ -61,6 +71,7 @@ const initUserSim = () => {
           const userId = document.querySelector('#userNum').value;
           const holdId = await commForDESTUserHolds(userId);
           reloadFromUserChange(userId, holdId);
+          // reloadFromUserProfile(userId,holdId)
         };
     });
     // makingUSInput.addEventListener("change", async () => {
