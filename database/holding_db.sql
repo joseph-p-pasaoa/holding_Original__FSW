@@ -80,7 +80,7 @@ INSERT INTO users
 VALUES
    ('notsheik', 'Wisdom', 'Zelda', 'Queensworth', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
    ('ElfWithSword', 'Courage', 'Link', 'Masterswordsman', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
-   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
+   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 61, '../../database/photoDbSim/avatars/Ganon-Avatar1.jpeg'),
    ('NEIGH', 'nay nay', 'Epona', 'Horse', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
    ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
    ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
@@ -189,16 +189,16 @@ INSERT INTO albums
    (creator_id, album_title)
 VALUES(1, 'Castle Pics'),
    (2, 'Pots I''ve smashed'),
-   (3, 'DATING PROFILE PICTURES'),
+   (3, 'Selfies'),
    (4, 'Foodie-isms'),
    (4, 'Profile Photos'),
-   (4, 'friends'),
+   (3, 'friends'),
    (4, 'field shots'),
    (4, 'artwork of the most awesome horse eva'),
    (4, 'trip to botw'),
    (5, 'Selfies'),
    (5, 'Family'),
-   (5, 'Pasta'),
+   (3, 'Pasta'),
    (6, 'Family'),
    (6, 'Plumbing Mishaps'),
    (6, 'Ghosts And Other Dead People I Know'),
@@ -260,7 +260,8 @@ VALUES
    (22, 'Joy', 'https://princessofdragons.files.wordpress.com/2016/04/800px-nurse_joy.png'),
    (22, 'Joy At Work', 'http://images6.fanpop.com/image/photos/32900000/Nurse-Joy-girls-of-pokemon-32920705-342-192.jpg'),
    (23, 'Jenny', 'https://cdn.bulbagarden.net/upload/thumb/4/4d/Officer_Jenny.png/730px-Officer_Jenny.png'),
-   (23, 'Jenny At Work', 'https://cdn.bulbagarden.net/upload/2/22/Jenny_Blue.png');
+   (23, 'Jenny At Work', 'https://cdn.bulbagarden.net/upload/2/22/Jenny_Blue.png'),
+   (3, 'Me', '../../database/photoDbSim/albums/Ganon-Avatar1.jpeg');
 
 INSERT INTO holds
    (password, description, max_users, name)
