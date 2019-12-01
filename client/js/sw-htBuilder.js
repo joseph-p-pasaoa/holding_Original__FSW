@@ -55,7 +55,7 @@ const setCurrentTOC = () => {
   if (window.location.href.includes("profile.html")) {
     whereAreWe = document.querySelector('#tocProfile');
   }
-  if (window.location.href.includes("users.html")) {
+  if (window.location.href.includes("users.html")  || window.location.href.includes("userProfile.html")) {
     whereAreWe = document.querySelector('#tocUsers');
   }
   if (window.location.href.includes("albums.html") || window.location.href.includes("photos.html")) {
