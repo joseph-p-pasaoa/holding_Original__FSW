@@ -15,10 +15,10 @@ const buildContent = () => {
       <div id="headerNav">
           <ul id="toc">
               <li><a href="./holds.html" id="tocHolds" class="toc">Home</a></li>
-              <li><a href="./profile.html" id="tocProfile" class="toc">Me</a></li>
-              <li><a href="./users.html" id="tocUsers" class="toc">Others</a></li>
-              <li><a href="./albums.html" id="tocAlbums" class="toc">My Photos</a></li>
-              <li><a href="./about.html" id="tocAboutH" class="toc">About holDING</a></li>
+              <li><a href="./profile.html" id="tocProfile" class="toc">Profile</a></li>
+              <li><a href="./users.html" id="tocUsers" class="toc">Search</a></li>
+              <li><a href="./albums.html" id="tocAlbums" class="toc">MyAlbums</a></li>
+              <li><a href="./about.html" id="tocAboutH" class="toc">About</a></li>
           </ul>
       </div>
 
@@ -26,7 +26,9 @@ const buildContent = () => {
           <div id="crownShim"></div>
           <div id="crownHolder">
               <form>
-                  <select id="holdsDropper"></select>
+                  <label>Move to:
+                      <select id="holdsDropper"></select>
+                  </label>
                   <input type="hidden" id="currentHold" />
                   </form>
               </div>
@@ -41,8 +43,6 @@ const buildContent = () => {
       </div>
 
 
-
-      <!-- input type="text" id="search" name="search" placeholder="Search" / -->
   `;
   document.querySelector('#base-grid').innerHTML = content;
 }

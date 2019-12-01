@@ -1,6 +1,3 @@
-html,body{
-    height: 100%;
-}
 
 #submitButton, #deleteButton, #addButton, #submitButton2{
     border-radius: 12px;
@@ -23,7 +20,7 @@ li {
     color: black;
     }
 
-#displayAllPostFromGivenUser,#addUser {
+div#allUsers form{
     display:flex;
     margin-bottom: 20px;
     margin-right: 10%;
