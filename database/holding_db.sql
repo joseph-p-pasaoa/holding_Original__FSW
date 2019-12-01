@@ -76,10 +76,10 @@ CREATE TABLE user_holds
 INSERT INTO users
    (username, password, firstname, lastname, age, avatar)
 VALUES
-   ('notsheik', '*tLoZ@14', 'Zelda', 'Alpha', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
-   ('ElfWithSword', '321cba', 'Link', 'Beta', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
-   ('gerudoMaster', '3$trifs', 'Ganon', 'Charlie', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
-   ('NEIGH', 'nay nay', 'Epona', 'Delta', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
+   ('notsheik', 'Wisdom', 'Zelda', 'Queensworth', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
+   ('ElfWithSword', 'Courage', 'Link', 'Masterswordsman', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
+   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
+   ('NEIGH', 'nay nay', 'Epona', 'Horse', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
    ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
    ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
    ('Toadstool', 'password', 'Princess', 'Peach', 21, '../../database/photoDbSim/avatars/Peach-Avatar.jpg'),
