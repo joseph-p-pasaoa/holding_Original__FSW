@@ -78,7 +78,7 @@ font-family: 'Lato', sans-serif;
 } 
 
 
-/* COLOR SCHEME */
+/* COLOR SCHEME
 #palette {
   hintOfRed: #FAF8F9;  
   locust: #A3AD8E;
@@ -86,6 +86,7 @@ font-family: 'Lato', sans-serif;
   mountainMist: #928C96;
   juniper: #6C8F92;
 }
+*/
 
 
 /* MAIN STYLE */
@@ -153,10 +154,6 @@ ul#toc {
   width: 560px;
 }
 
-ul#toc li {
-  /* padding: 4px 12px; */
-}
-
 ul#toc li a:link, ul#toc li a:visited {
   text-decoration: none;
   font-weight: 900;
@@ -212,10 +209,6 @@ div#crownHolder { /* DROP DOWN GRID SPACE */
   width: auto;
   height: auto;
   padding-left: 19px;
-}
-
-form#holdDD select {
-  
 }
 
 div#leftBase { /* UNIVERSAL DROP-SHADOWS */
