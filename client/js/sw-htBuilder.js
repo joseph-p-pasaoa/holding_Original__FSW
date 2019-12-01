@@ -25,10 +25,8 @@ const buildContent = () => {
       <div id="leftBase">
           <div id="crownShim"></div>
           <div id="crownHolder">
-              <form>
-                  <label>Move to:
-                      <select id="holdsDropper"></select>
-                  </label>
+              <form id="holdDD">
+                  <select id="holdsDropper"></select>
                   <input type="hidden" id="currentHold" />
                   </form>
               </div>

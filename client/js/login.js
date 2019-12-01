@@ -7,13 +7,13 @@ const userNotFound = () => {
     clearAlerts();
     let alertUser = document.querySelector("#alert1")
     alertUser.innerText = "User Not Found!"
-    let linkToNewUser = document.querySelector("alert2")
+    let linkToNewUser = document.querySelector("#alert2")
     linkToNewUser.innerText = "Click HERE to register as a new user!"
     linkToNewUser.href = "../html/new-user.html"
 }
 
 const userFound = () => {
-    window.location.href = "../html/holds.html"
+    window.location.href = "../html/holds.html?user=3&hold=1"
 }
 
 const tryAgain = () => {
@@ -34,7 +34,6 @@ const tryAgain = () => {
 
 const userCheck = async (event) => {
     event.preventDefault();
-    let counter = 0
     const username = document.querySelector("#username").value 
     const password = document.querySelector("#password").value
     let response = await axios.get(`http://localhost:11000/users/`);
@@ -42,19 +41,13 @@ const userCheck = async (event) => {
     for (let user of existingUsers) {
         if (!username || !password) {
             return tryAgain();
-        }
-        if (username === user.username) {
-            counter += 1
-        }
-        if (password === user.password) {
-            counter += 1
+        } else if (username === user.username) {
+            if (password === user.password) {
+                return userFound()
+            }
         }
     }
-    if (counter === 2) {
-        return userFound()
-    } else {
-        return userNotFound()
-    }
+    return userNotFound()
 }
 
 const clearAlerts = () => {
