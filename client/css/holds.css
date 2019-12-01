@@ -59,10 +59,18 @@ p[id ^= 'comment']{
   border-radius: 10px;
   margin-bottom: 6px;
   margin-left: 200px;
-  padding: 12px;
+  padding: 12px 80px 12px 12px;
 
   font-size: 1em;
   font-weight: lighter;
+}
+
+li.time {
+  position: absolute;
+  top: 14px;
+  left: 80px;
+  font-size: 0.8em;
+  color: #6C8F92;
 }
 
 #footer {
@@ -243,7 +251,9 @@ div.posterName {
   font-size: 1.3em;
   font-family: 'AlegreyaSans-Black', sans-serif;
   color: #928C96;
-  text-shadow: 1px 1px 2px #fff;
+  /* text-shadow: 1px 1px 2px #fff; */
+
+  text-shadow: 2px 4px 3px #ddd;
 }
 
 li.post {
