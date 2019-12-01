@@ -94,7 +94,7 @@ INSERT INTO posts
 VALUES
    (2, 'People say I don''t talk much. I guess they don''t follow me on holDING!'),
    (1, 'Stuck in this castle. AGAIN.'),
-   (3, ' Just one more piece of the triforce, and I will be unstoppable'),
+   (3, 'Just one more piece of the triforce, and I will be unstoppable'),
    (4, 'Apples apples apples. Carrot?'),
    (5, 'Sometimes I wish the princess was in THIS castle.'),
    (5, 'FUN FACT: Fire Flowers taste like Mint!'),
