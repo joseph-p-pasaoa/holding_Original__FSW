@@ -95,18 +95,19 @@ VALUES
    (2, 'People say I don''t talk much. I guess they don''t follow me on holDING!'),
    (1, 'Stuck in this castle. AGAIN.'),
    (3, 'Just one more piece of the triforce, and I will be unstoppable'),
+   (3, 'Yes, I want chicken nuggets, mom'),
+   (3, 'How do you delete a ding on this site?'),
    (4, 'Apples apples apples. Carrot?'),
    (5, 'Sometimes I wish the princess was in THIS castle.'),
    (5, 'FUN FACT: Fire Flowers taste like Mint!'),
    (6, 'Haunted Mansion? It''s free real estate.'),
    (6, 'It''s easy being green.'),
-   (3, 'How do you delete a ding on this site?'),
    (7, 'Who wants cake?!'),
    (8, 'Only 732 more Pokemon to catch!'),
    (8, 'On my way to the Gym!'),
    (9, 'Bike 4 Sale, slightly used.'),
    (10, 'My DMs are open, Nurse Joy.'),
-   (3, 'Yes, I want chicken nuggets, mom'),
+   
    (10, 'Officer Jenny, U up?');
 
 INSERT INTO comments
