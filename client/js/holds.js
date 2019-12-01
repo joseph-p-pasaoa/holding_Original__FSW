@@ -223,9 +223,8 @@ const loadComment = async (post_id, div) => {
 }
 
 /* Make a Like for all incoming posts */
-const makeLike = async (post_id, current_hold) => {
-  let liker = parseInt("1");
-await axios.post(`http://localhost:11000/likes/posts/${post_id}/${liker}`, { liker_id: liker, post_id: post_id });
+const makeLike = async (post_id, liker) => {
+  await axios.post(`http://localhost:11000/likes/posts/${post_id}/${liker}`, { post_id: post_id, liker_id: liker });
 }
 
 /* Load all likes from database */
@@ -255,6 +254,12 @@ const loadLikes = async (post_id, div) => {
   let names = document.createElement("div");
   names.id = `name_${post_id}`;
 
+  likeBTN.onclick = function(event) {
+    let currentUser = parseInt(document.querySelector("#userNum").value);
+    event.preventDefault();
+    makeLike(post_id, currentUser )
+    loadPosts();
+    }
 
   let holdMembers = {};
   holderResponse.forEach((user) => {
