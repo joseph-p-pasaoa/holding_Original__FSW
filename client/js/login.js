@@ -7,7 +7,7 @@ const userNotFound = () => {
     clearAlerts();
     let alertUser = document.querySelector("#alert1")
     alertUser.innerText = "User Not Found!"
-    let linkToNewUser = document.querySelector("alert2")
+    let linkToNewUser = document.querySelector("#alert2")
     linkToNewUser.innerText = "Click HERE to register as a new user!"
     linkToNewUser.href = "../html/new-user.html"
 }
