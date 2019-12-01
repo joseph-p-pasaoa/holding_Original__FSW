@@ -100,7 +100,6 @@ const loadPosts = async (hold_user) => {
     const date = arr[0].split('-')
     const oldDate = new Date(post.time_post)
     const today = new Date()
-    console.log(Math.floor((today - oldDate) / (1000 * 3600) * 60))
 
     time.innerText = ` ${Math.floor((today - oldDate) / (1000 * 3600) * 60)} mins ago`
 
