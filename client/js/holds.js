@@ -12,12 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let addCommentForm = document.querySelector("#postAComment");
   addCommentForm.style.display = "none";
   addCommentForm.addEventListener("submit", newCommentFormSubmitted);
-  
+
   checkHold();
 
   let addPostForm = document.querySelector("#postAPost");
   addPostForm.addEventListener("submit", newPostFormSubmitted);
-
 
 });
 
@@ -53,7 +52,7 @@ const makePosts = async () => {
   const text = document.querySelector("#text").value;
   let currentUser = parseInt(document.querySelector(`#userNum`).value);
 
-await axios.post(`http://localhost:11000/posts/ `, { poster_id: currentUser, body: text });
+  await axios.post(`http://localhost:11000/posts/ `, { poster_id: currentUser, body: text });
   loadPosts();
 }
 
@@ -74,6 +73,8 @@ const loadPosts = async (hold_user) => {
   let posts = response.data.body;
   posts.forEach((post) => {
     makeLike(post.post_id);
+    // console.log(post.time_post)
+
 
     /* Create divs for each post */
     let separateDivs = document.createElement("div");
@@ -92,6 +93,17 @@ const loadPosts = async (hold_user) => {
     listItem.id = post.post_id;
     listItem.className = "post";
     listItem.innerText = `${post.body}`;
+    let time = document.createElement("li");
+    time.className = 'time';
+
+    const arr = post.time_post.split(' ')
+    const date = arr[0].split('-')
+    const oldDate = new Date(post.time_post)
+    const today = new Date()
+    console.log(Math.floor((today - oldDate) / (1000 * 3600) * 60))
+
+    time.innerText = ` ${Math.floor((today - oldDate) / (1000 * 3600) * 60)} mins ago`
+
 
     /* JOEY Adds for Design */
     let makingPoster = document.createElement('div');
@@ -101,7 +113,7 @@ const loadPosts = async (hold_user) => {
     makingAva.src = post.avatar;
     makingAva.className = "avatar";
     makingAva.alt = `${post.firstname} ${post.lastname}`;
-    listItem.append(makingAva, makingPoster);
+    listItem.append(makingAva, makingPoster, time);
 
     /* Create functional delete buttons for each post */
     let deleteBTN = document.createElement("button");
@@ -153,7 +165,7 @@ const makeComments = (post) => {
     commentBox.id = post;
     const text = commentBox;
 
-  await axios.post(`http://localhost:11000/comments/posts/${post}/${currentUser}`, { commenter_id: currentUser, post_id: post, body: text });
+    await axios.post(`http://localhost:11000/comments/posts/${post}/${currentUser}`, { commenter_id: currentUser, post_id: post, body: text });
     loadPosts();
   }
 }
@@ -254,12 +266,12 @@ const loadLikes = async (post_id, div) => {
   let names = document.createElement("div");
   names.id = `name_${post_id}`;
 
-  likeBTN.onclick = function(event) {
+  likeBTN.onclick = function (event) {
     let currentUser = parseInt(document.querySelector("#userNum").value);
     event.preventDefault();
-    makeLike(post_id, currentUser )
+    makeLike(post_id, currentUser)
     loadPosts();
-    }
+  }
 
   let holdMembers = {};
   holderResponse.forEach((user) => {
@@ -298,3 +310,22 @@ const deleteComments = async (post, comment_id) => {
   deletedComment.parentNode.removeChild(deletedComment);
   await axios.delete(`http://localhost:11000/comments/${post}/${comment_id}`);
 }
+// const timeFormat = (times) => {
+//   console.log(times)
+//   const timeTag = document.querySelectorAll('.time');
+//   // console.log(timeTag); 
+//   // timeTag.forEach(ele => {
+//     let time = times.innerText.split(' ')[0]
+//     let unit = ele.innerText.split(' ')[1]
+//     if (time < 60) {
+//       time = Number(time);
+//       ele.innerText = `${time} mins ago`;
+//     } else if (time >= 60 && time < 1440) {
+//       ele.innerText = `${Math.floor(time / 60)} hours ago`;
+//     } else if (time >= 1440) {
+//       ele.innerText = `${Math.floor(time / (60 * 24))} days ago`;
+//     }
+//     console.log(time);
+//     timeTag.innerText = time
+  // });
+// }
