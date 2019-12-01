@@ -78,13 +78,14 @@ font-family: 'Lato', sans-serif;
 } 
 
 
-/* COLOR SCHEME
-FAF8F9  Hint of Red
-A3AD8E  Locust
-B8D1C9  Jet Stream
-928C96  Mountain Mist
-6C8F92  Juniper
-*/
+/* COLOR SCHEME */
+#palette {
+  hintOfRed: #FAF8F9;  
+  locust: #A3AD8E;
+  jetStream: #B8D1C9;
+  mountainMist: #928C96;
+  juniper: #6C8F92;
+}
 
 
 /* MAIN STYLE */
@@ -108,7 +109,7 @@ h1 {
   padding: 3px 9px 0px 9px;
   border-radius: 15px;
 
-  background-color: #A3AD8E;
+  background-color: #6C8F92;
   color: #FAF8F9;
   text-align: right;
   font-size: 1.1em;
@@ -202,7 +203,7 @@ div#crownShim {
   height: auto;
 }
 
-div#crownHolder {
+div#crownHolder { /* DROP DOWN GRID SPACE */
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -211,6 +212,10 @@ div#crownHolder {
   width: auto;
   height: auto;
   padding-left: 19px;
+}
+
+form#holdDD select {
+  
 }
 
 div#leftBase { /* UNIVERSAL DROP-SHADOWS */
