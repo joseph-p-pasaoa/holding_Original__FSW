@@ -4,3 +4,24 @@ GROUP 3: Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, Kathy Puma
 */
 
 
+div#leftBase { /* UNIVERSAL DROP-SHADOWS */
+  transition: 1s background;
+  /* background: url('file:///Users/joeyp/Code/_repos/holding__WebApp/database/photoDbSim/avatars/zelda%20by%20manreeree.jpg'); */
+  background-repeat: no-repeat;
+}
+
+div#bodyLeftSpot {
+  /* background-color: rgba(108, 143, 146, 0.23); */
+  border: solid 2px rgba(210, 229, 230, 0.48);
+  transition: 1s opacity;
+  box-shadow: none;
+}
+
+div#aboutHold h3 {
+  opacity: 0.9;
+  color: #928C96;
+}
+
+div#aboutHold {
+  opacity: 0.6;
+}

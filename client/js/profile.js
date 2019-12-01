@@ -17,3 +17,10 @@ const serverComm = async (method, urlAdds, body) => {
   }
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  setTimeout(() => {
+    document.querySelector('#leftBase').style.background = 'url("file:///Users/joeyp/Code/_repos/holding__WebApp/database/photoDbSim/avatars/zelda%20by%20manreeree.jpg")';
+    document.querySelector('#bodyLeftSpot').style.opacity = 0.23;
+  }, 1000);
+});
