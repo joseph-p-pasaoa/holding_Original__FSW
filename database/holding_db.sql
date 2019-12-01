@@ -24,7 +24,8 @@ CREATE TABLE posts
 (
    post_id SERIAL PRIMARY KEY,
    poster_id INT REFERENCES users(user_id) ON DELETE CASCADE,
-   body TEXT
+   body TEXT,
+   time_post text DEFAULT NOW()
 );
 
 CREATE TABLE comments
@@ -32,7 +33,8 @@ CREATE TABLE comments
    comment_id SERIAL PRIMARY KEY,
    commenter_id INT REFERENCES users(user_id) ON DELETE CASCADE,
    post_id INT REFERENCES posts(post_id) ON DELETE CASCADE,
-   body TEXT
+   body TEXT,
+   time_comment text DEFAULT NOW()
 );
 
 CREATE TABLE likes
@@ -283,7 +285,6 @@ VALUES
    (1, 1),
    (1, 2),
    (1, 11),
-   (2, 4),
    (2, 11),
    (3, 1),
    (3, 2),
@@ -291,9 +292,7 @@ VALUES
    (3, 4),
    (3, 11),
    (4, 3),
-   (4, 11),
    (5, 2),
-   (5, 4),
    (5, 5),
    (5, 7),
    (5, 9),
@@ -304,25 +303,9 @@ VALUES
    (6, 7),
    (6, 10),
    (6, 12),
-   (7, 2),
    (7, 4),
-   (7, 7),
-   (7, 10),
-   (7, 12),
    (8, 4),
-   (8, 5),
-   (8, 7),
-   (8, 8),
-   (8, 9),
-   (8, 10),
-   (8, 13),
    (9, 4),
-   (9, 5),
-   (9, 7),
-   (9, 8),
-   (9, 9),
-   (9, 10),
-   (9, 13),
    (10, 7),
    (10, 8),
    (10, 9),
