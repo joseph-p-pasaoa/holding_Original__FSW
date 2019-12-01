@@ -91,21 +91,22 @@ VALUES
 
 INSERT INTO posts
    (poster_id, body)
-VALUES(1, 'Stuck in this castle. AGAIN.'),
+VALUES
    (2, 'People say I don''t talk much. I guess they don''t follow me on holDING!'),
-   (3, 'JUST ONE MORE PIECE OF THE TRIFORCE, AND I WILL BE UNSTOPPABLE'),
-   (3, 'YES I WANT CHICKEN NUGGETS, MOM'),
-   (3, 'HOW DO YOU DELETE A DING ON THIS SITE?'),
+   (1, 'Stuck in this castle. AGAIN.'),
+   (3, ' Just one more piece of the triforce, and I will be unstoppable'),
    (4, 'Apples apples apples. Carrot?'),
    (5, 'Sometimes I wish the princess was in THIS castle.'),
    (5, 'FUN FACT: Fire Flowers taste like Mint!'),
    (6, 'Haunted Mansion? It''s free real estate.'),
    (6, 'It''s easy being green.'),
+   (3, 'How do you delete a ding on this site?'),
    (7, 'Who wants cake?!'),
    (8, 'Only 732 more Pokemon to catch!'),
    (8, 'On my way to the Gym!'),
    (9, 'Bike 4 Sale, slightly used.'),
    (10, 'My DMs are open, Nurse Joy.'),
+   (3, 'Yes, I want chicken nuggets, mom'),
    (10, 'Officer Jenny, U up?');
 
 INSERT INTO comments
@@ -296,13 +297,13 @@ VALUES
    (5, 2),
    (5, 5),
    (5, 7),
-   (5, 9),
+   (5, 1),
    (5, 12),
    (6, 3),
    (6, 5),
    (6, 6),
    (6, 7),
-   (6, 10),
+   (6, 1),
    (6, 12),
    (7, 4),
    (8, 4),
@@ -311,7 +312,7 @@ VALUES
    (10, 8),
    (10, 9),
    (10, 10),
-   (10, 13);
+   (10, 1);
 
 /* QUERIES */
 
