@@ -78,7 +78,7 @@ INSERT INTO users
 VALUES
    ('notsheik', 'Wisdom', 'Zelda', 'Queensworth', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
    ('ElfWithSword', 'Courage', 'Link', 'Masterswordsman', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
-   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
+   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 61, '../../database/photoDbSim/avatars/Ganon-Avatar1.jpeg'),
    ('NEIGH', 'nay nay', 'Epona', 'Horse', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
    ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
    ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
