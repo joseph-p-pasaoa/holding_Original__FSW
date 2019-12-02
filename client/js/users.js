@@ -10,29 +10,28 @@ document.addEventListener('DOMContentLoaded', () => {
         addAUser()
     });
     const deleteUser = document.querySelector('#deleteUser');
-    deleteUser.addEventListener('submit', () => {
+    deleteUser.addEventListener('submit', (event) => {
+        event.preventDefault()
         deleteAUser()
     });
 })
 
 
 async function loadUsers() {
+    let currentUser = document.querySelector('#userNum').value;
     let holdValue = document.querySelector("#currentHold").value;
     const holdsDropper = document.querySelector('#holdsDropper')
     const allOptions = document.createElement('option')
-    allOptions.innerText = "All Friends"
+    allOptions.innerText = "All Friends in holds"
     allOptions.value = "0"
     holdsDropper.appendChild(allOptions)
     let holdsDescriptionDiv = document.querySelector('#aboutHold')
     let holdsDescription = document.createElement('h3')
-    holdsDescriptionDiv.innerText = "okay"
-    holdsDescription.innerText = "This is all the friends in all of your holds"
-    holdsDescriptionDiv.appendChild(holdsDescription)
-    const currentUser = document.querySelector('#userNum').value;
     const allPost = document.querySelector("#usersResults");
     allPost.innerHTML = "";
     let response = await axios.get(`http://localhost:11000/users/holds/${currentUser}`)
     let responseData = response.data.body
+    let acutalUsename = responseData[0].username
     let allHoldsUserIsAMember = {}
     responseData.forEach((holds) => {
         allHoldsUserIsAMember[holds.hold_id] = true
@@ -55,27 +54,46 @@ async function loadUsers() {
         let allUsers = await axios.get(`http://localhost:11000/users/`)
         allUsersData = allUsers.data.body
         allUsersResponse(allUsersData, nonrepeatAllMemberId, allPost, "0")
-    } else {
+        holdsDescription.innerText = "This is all the friends in all of your holds"
+        let holdsname = []
+        for (let i = 0; i < responseData.length; i++) {
+            holdsname.push(" " + `${responseData[i].name}`)
+        }
 
+        holdsDescriptionDiv.innerText = holdsname + " "
+        holdsDescriptionDiv.appendChild(holdsDescription)
+        holdsDescription.id = "descriptionOfHold"
+        // holdsDescriptionDiv.appendChild(holdsDescription)
+        let titleOfPageDiv = document.querySelector("#marquee")
+
+        titleOfPageDiv.innerHTML = `Welcome <strong>${acutalUsename}</strong>! These are  <br> <em> All of your friends</em> `
+    } else {
         let allUsersFromSpecificHold = await axios.get(`http://localhost:11000/holds/${holdValue}`)
         usersFromHold = allUsersFromSpecificHold.data.body
-        allUsersResponse(usersFromHold, nonrepeatAllMemberId, allPost, holdValue)
+        allUsersResponse(usersFromHold, nonrepeatAllMemberId, allPost, holdValue, currentUser)
     }
 }
 
 
 
-const allUsersResponse = async (allUsersData, memberId, allPost, num) => {
+
+const allUsersResponse = async (allUsersData, memberId, allPost, num, currentUser) => {
     allUsersData.forEach((users) => {
         if (memberId.includes(users.user_id)) {
             let resultDiv = document.createElement('div')
             resultDiv.id = `allResultsDiv${users.user_id}`
             resultDiv.className = `allResultsDiv`
             allPost.appendChild(resultDiv)
+            let imageDiv = document.createElement('div')
+            imageDiv.className = "imageDiv"
+            let profileInfo = document.createElement('div')
+            profileInfo.className = "profileInfo"
             let linkToUser = document.createElement('a');
-            linkToUser.href = `./usersProfile.html?user=${users.user_id}&hold=${num}`
+            linkToUser.className = "toSpecificProfile"
+            // linkToUser.href = `./usersProfile.html?user=${users.user_id}&hold=${num}`
+            linkToUser.href = `./usersProfile.html?user=${currentUser}&profile=${users.user_id}&hold=${num}`
             let usersAvatar = document.createElement('img')
-            usersAvatar.id = "avatar"
+            usersAvatar.className = "avatar"
             usersAvatar.src = `${users.avatar}`
             usersAvatar.height = "150"
             usersAvatar.width = "150"
@@ -90,17 +108,10 @@ const allUsersResponse = async (allUsersData, memberId, allPost, num) => {
             usersUserName.innerText = `UserName:${users.username}`;
             usersAge.innerText = `Age:${users.age}`;
             resultDiv.append(linkToUser)
-            linkToUser.append(usersAvatar, usersName, usersUserName, usersAge)
-            // let deleteBTN = document.createElement("button");
-            // deleteBTN.id = `user${users.user_id}`;
-            // deleteBTN.className = "delUserBtn";
-            // deleteBTN.innerText = "delete";
+            linkToUser.append(imageDiv, profileInfo)
+            imageDiv.append(usersAvatar)
+            profileInfo.append(usersName, usersUserName, usersAge)
 
-            // deleteBTN.onclick = function () {
-
-            //     // deleteAUser(currentUser);
-
-            // }
 
         }
     })
@@ -122,6 +133,7 @@ const allUsersResponse = async (allUsersData, memberId, allPost, num) => {
 
 async function searchUser() {
     let userNameValue = document.querySelector('#userSearch').value;
+   
     let userName = userNameValue
     if (userNameValue.includes(" ")) {
         userName = userNameValue.trim()
@@ -163,19 +175,30 @@ async function searchUser() {
             sameid.push(nonrepeatAllMemberId[i])
         }
     }
-
+    let holdValue = document.querySelector("#currentHold").value;
 
     if (sameid.length > 0) {
         for (let i = 0; i < sameid.length; i++) {
             let responseSearch = await axios.get(`http://localhost:11000/users/${sameid[i]}`)
             responseSearch.data.body.forEach((users) => {
-                title.innerHTML = `Results for : ${userName}`;
+                title.innerHTML = `Results for: ${userName}`;
 
                 let searchDiv = document.createElement('div')
                 searchDiv.className = "searchResultsDiv"
                 userPost.append(searchDiv)
+
+
+
+
+                let imageDiv = document.createElement('div')
+            imageDiv.className = "imageDiv"
+            let profileInfo = document.createElement('div')
+            profileInfo.className = "profileInfo"
+
                 let linkToUser = document.createElement('a')
-                linkToUser.href = `./usersProfile.html?user=${users.user_id}&hold=${0}`
+                linkToUser.className="toSpecificProfile"
+              
+                linkToUser.href = `./usersProfile.html?user=${currentUser}&profile=${users.user_id}&hold=${holdValue}`
                 searchDiv.appendChild(linkToUser)
                 let usersName = document.createElement('li')
                 let usersAvatar = document.createElement('img')
@@ -189,7 +212,9 @@ async function searchUser() {
                 usersAvatar.width = "150"
                 usersAvatar.className = "profileImage"
                 UsersAge.innerText = `Age: ${users.age}`;
-                linkToUser.append(usersAvatar, usersName, UsersUsername, UsersAge)
+                linkToUser.append(imageDiv,profileInfo)
+                imageDiv.append(usersAvatar)
+                profileInfo.append(usersName, UsersUsername, UsersAge)
             })
         }
     } else {
@@ -197,13 +222,6 @@ async function searchUser() {
 
     }
 }
-
-
-
-
-
-
-
 
 
 
@@ -224,71 +242,54 @@ const searchNames = (data, userName) => {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
 const addAUser = async () => {
     event.preventDefault();
     const username = document.querySelector("#searchBoxAddUsername").value
-    const findAllUsers = await axios.get(`http://localhost:11000/users/`)
-    let responseData = findAllUsers.data.body
-    let id = filerResults(responseData, username)
-   
-
-
-
-
-    if (id > -1) {
-        await axios.post(`http://localhost:11000/users/`, { username: username, password: password, firstname: firstname, lastname: lastname, age: age });
-        loadUsers()
-    }
-}
-
-
-
-
-
-const filerResults = async (data, username) => {
     let holdValue = document.querySelector("#currentHold").value;
-    console.log(holdValue)
-    let usernameId = -2; //-2: Does not exist at all; -1: exist and in the hold ; other:exist and not in the hold
+
+    let usernameIdTest = -2; //-2: Does not exist at all; -1: exist and in the hold ; other:exist and not in the hold
     // let usernameExistInTheHold = -1 // -1: already in the hold; other: does not exist in the hold
+    usernameId = -2 //-2: default, -1: username exits in hold: <0 not in the hold
     let allUsers = await axios.get(`http://localhost:11000/users/`)
     allUsersData = allUsers.data.body
-    console.log(allUsersData)
-
-
     let allUsersFromSpecificHold = await axios.get(`http://localhost:11000/holds/${holdValue}`)
     usersFromHold = allUsersFromSpecificHold.data.body
-    console.log(usersFromHold)
-
-
-
 
     for (let i = 0; i < allUsersData.length; i++) {
         if (username === allUsersData[i].username) {
+            usernameIdTest = allUsersData[i].user_id
             usernameId = allUsersData[i].user_id
-
         }
     }
-    console.log(usernameId)
-    if (!usernameId === -2) {
+
+    if (usernameIdTest > -2) {
         for (let j = 0; j < usersFromHold.length; j++) {
-            if (usernameId === usersFromHold[i].username) {
-                usernameId = -1
-                console.log(usernameId)
-            } else {
-                usernameId = usersFromHold.userId
-                console.log(usernameId)
+            console.log(usersFromHold[j].user_id)
+            console.log(usernameIdTest)
+            if (usernameIdTest === usersFromHold[j].user_id) {
+                usernameIdTest = -1
             }
-
         }
     }
-    
-    return usernameId;
+
+
+
+    if (usernameIdTest > 0 && usernameId > 0) {
+        await axios.post(`http://localhost:11000/userHolds/`, { holds_user_id: usernameId, holds_hold_id: holdValue });
+        loadUsers()
+    }
 }
-
-
-
-
-
 
 
 
@@ -306,3 +307,42 @@ const filerResults = async (data, username) => {
 //     //     loadUsers()
 //     // }
 // }
+
+const deleteAUser = async () => {
+
+    let username = document.querySelector('#searchBoxDeleteUsername').value;
+    let holdValue = document.querySelector("#currentHold").value;
+
+    let usernameIdTest = -2; //-2: Does not exist at all; -1: exist and in the hold ; other:exist and not in the hold
+    // let usernameExistInTheHold = -1 // -1: already in the hold; other: does not exist in the hold
+    usernameId = -2 //-2: default, -1: username exits in hold: 0: pass the second test of existing in hold
+    let allUsers = await axios.get(`http://localhost:11000/users/`)
+    allUsersData = allUsers.data.body
+    let allUsersFromSpecificHold = await axios.get(`http://localhost:11000/holds/${holdValue}`)
+    usersFromHold = allUsersFromSpecificHold.data.body
+
+    for (let i = 0; i < allUsersData.length; i++) {
+        if (username === allUsersData[i].username) {
+            usernameIdTest = -1
+            usernameId = allUsersData[i].user_id
+        }
+    }
+
+
+    if (usernameIdTest === -1) {
+        for (let j = 0; j < usersFromHold.length; j++) {
+            if (usernameId === usersFromHold[j].user_id) {
+                usernameIdTest = 0
+            }
+        }
+    }
+
+
+    if (usernameIdTest === 0 && usernameId > 0) {
+        let holdValueNum = parseInt(holdValue)
+        let userNameIdNum = parseInt(usernameId)
+        let response = await axios.delete(`http://localhost:11000/userHolds/${holdValueNum}/${userNameIdNum}`, { holds_hold_id: userNameIdNum, holds_user_id: userNameIdNum });
+        loadUsers()
+    }
+
+}

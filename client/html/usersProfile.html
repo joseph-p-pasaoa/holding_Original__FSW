@@ -13,17 +13,13 @@
    <script src="../js/sw.js" type="text/javascript"></script>
    <script src="../js/usersProfile.js" type="text/javascript"></script>
    <link rel="stylesheet" href="../css/sitewide.css" type="text/css" />
-   <!-- <link rel="stylesheet" href="../css/users.css" type="text/css" /> -->
-</head>
+   <link rel="stylesheet" href="../css/usersProfile.css" type="text/css" />
 
+</head>
 <body>
    <div id="base-grid">
       <script src="../js/sw-htBuilder.js" type="text/javascript"></script>
-
       <div id="right-body">
-
-       
-
 
             <div id="displayInfo">
                <div id="results">
@@ -32,7 +28,37 @@
                   </ul>
                </div>
             </div>
+
+
+            <div id= "comments">
+                  <div id='postsStage'>
+                    <div id='singlePost'>
+                      <form id='postAPost'>
+                        <label>Make a new DING:</label>
+                        <input id='text' rows="4" cols="50" placeholder="What's on your mind?" required></input>
+                        <button>Submit</button>
+                      </form>
+                    </div>
+                    <div id = 'postAComment'>
+                        <form id='postAComment'>
+                          <label>Add comment:</label>
+                          <input id='cText' rows="4" cols="50" placeholder='Make a comment...' required></input>
+                          <button id = 'addCom'>Submit</button>
+                        </form>
+                    </div>
+                    <div id='allPosts'>
+                      <ul id='postList'>
+                      </ul>
+                    </div>
+            
+                    
+                  </div>
+
+            </div>
+            
          </div>
+
+        
       </div>
    </div>
 </body>
