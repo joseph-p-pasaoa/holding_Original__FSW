@@ -90,8 +90,8 @@ const allUsersResponse = async (allUsersData, memberId, allPost, num, currentUse
             profileInfo.className = "profileInfo"
             let linkToUser = document.createElement('a');
             linkToUser.className = "toSpecificProfile"
-            linkToUser.href = `./usersProfile.html?user=${users.user_id}&hold=${num}`
-            // linkToUser.href = `./usersProfile.html?user=${currentUser}&profile=${users.user_id}&hold=${num}`
+            // linkToUser.href = `./usersProfile.html?user=${users.user_id}&hold=${num}`
+            linkToUser.href = `./usersProfile.html?user=${currentUser}&profile=${users.user_id}&hold=${num}`
             let usersAvatar = document.createElement('img')
             usersAvatar.className = "avatar"
             usersAvatar.src = `${users.avatar}`
@@ -198,7 +198,7 @@ async function searchUser() {
                 let linkToUser = document.createElement('a')
                 linkToUser.className="toSpecificProfile"
               
-                // linkToUser.href = `./usersProfile.html?user=${currentUser}&profile=${users.user_id}&hold=${holdValue}`
+                linkToUser.href = `./usersProfile.html?user=${currentUser}&profile=${users.user_id}&hold=${holdValue}`
                 searchDiv.appendChild(linkToUser)
                 let usersName = document.createElement('li')
                 let usersAvatar = document.createElement('img')

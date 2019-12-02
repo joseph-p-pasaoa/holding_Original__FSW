@@ -4,12 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
-
 async function loadUserProfile() {
 
     let params = (new URL(document.location)).searchParams;
-    let currentUser = params.get("user");
+    let currentUser = params.get("profile");
+    console.log(currentUser)
     const allPost = document.querySelector("#usersResults");
     let holdValue = document.querySelector("#currentHold").value;
     allPost.innerHTML = "";
@@ -92,7 +91,9 @@ const newPostFormSubmitted = (event) => {
 }
 
 const checkHold = async () => {
-  let currentUser = parseInt(document.querySelector(`#userNum`).value);
+    let params = (new URL(document.location)).searchParams;
+    let currentUser = parseInt(params.get("profile"));
+    console.log(currentUser)
   let hold = document.querySelector("#currentHold").value;
 
   let group = await axios.get(`http://localhost:11000/holds/${hold}`, { hold_id: hold });
@@ -114,16 +115,20 @@ const checkHold = async () => {
 
 const makePosts = async () => {
   const text = document.querySelector("#text").value;
-  let currentUser = parseInt(document.querySelector(`#userNum`).value);
 
+  let params = (new URL(document.location)).searchParams;
+  let currentUser = parseInt(params.get("profile"));
+  console.log(currentUser)
   await axios.post(`http://localhost:11000/posts/ `, { poster_id: currentUser, body: text });
   loadPosts();
 }
 
 /* Load all posts from database */
 const loadPosts = async (hold_user) => {
-  let currentUser = parseInt(document.querySelector("#userNum").value);
 
+    let params = (new URL(document.location)).searchParams;
+    let currentUser = parseInt(params.get("profile"));
+    console.log(currentUser)
   let addCommentForm = document.querySelector("#postAComment");
   addCommentForm.style.display = "none"
 
@@ -133,12 +138,12 @@ const loadPosts = async (hold_user) => {
   let hold = document.querySelector("#currentHold").value;
 
   let response = await axios.get(`http://localhost:11000/posts/${hold}/`);
-   console.log(response)
+
 
   let posts = response.data.body;
 
   posts.forEach((post) => {
-      console.log(post)
+
 
 
     //RESTRICT TO ONLY SEE THE CURRENT USERS POST
@@ -172,7 +177,7 @@ const loadPosts = async (hold_user) => {
     const date = arr[0].split('-')
     const oldDate = new Date(post.time_post)
     const today = new Date()
-    console.log(Math.floor((today - oldDate) / (1000 * 3600) * 60))
+    // console.log(Math.floor((today - oldDate) / (1000 * 3600) * 60))
 
     time.innerText = ` ${Math.floor((today - oldDate) / (1000 * 3600) * 60)} mins ago`
 
@@ -194,12 +199,18 @@ const loadPosts = async (hold_user) => {
     deleteBTN.innerText = "delete";
 
     deleteBTN.onclick = function () {
+        let params = (new URL(document.location)).searchParams;
+        let currentUser = parseInt(params.get("profile"));
+        console.log(currentUser)
       if (currentUser === post.user_id) {
         deletePost(post.post_id, separateDivs);
       }
     }
 
     /* Only show delete buttons on user's own posts */
+    let params = (new URL(document.location)).searchParams;
+    let currentUser = parseInt(params.get("profile"));
+    console.log(currentUser)
     if (currentUser === post.user_id) {
       listItem.append(deleteBTN);
     }
@@ -232,7 +243,10 @@ const makeComments = (post) => {
   }
 
   const postComment = async (post) => {
-    let currentUser = parseInt(document.querySelector("#userNum").value);
+
+    let params = (new URL(document.location)).searchParams;
+    let currentUser = parseInt(params.get("profile"));
+    console.log(currentUser)
     let commentBox = document.querySelector("#cText").value;
 
     commentBox.id = post;
@@ -245,10 +259,13 @@ const makeComments = (post) => {
 
 /* Load all comments from database */
 const loadComment = async (post_id, div) => {
-  let currentUser = parseInt(document.querySelector("#userNum").value);
+
+    let params = (new URL(document.location)).searchParams;
+    let currentUser = parseInt(params.get("profile"));
+    console.log(currentUser)
   let holdValue = document.querySelector("#currentHold").value;
-console.log(currentUser)
-console.log(holdValue)
+// console.log(currentUser)
+// console.log(holdValue)
   let response = await axios.get(`http://localhost:11000/comments/posts/${post_id}`);
   let marks = response.data.body;
 
@@ -298,7 +315,9 @@ console.log(holdValue)
 
       deleteBTN.onclick = function (event) {
         event.preventDefault();
-        let currentUser = parseInt(document.querySelector("#userNum").value);
+        let params = (new URL(document.location)).searchParams;
+        let currentUser = parseInt(params.get("profile"));
+        console.log(currentUser)
         if (currentUser === mark.commenter_id) {
           deleteComments(mark.post_id, mark.comment_id);
         }
@@ -341,7 +360,9 @@ const loadLikes = async (post_id, div) => {
   names.id = `name_${post_id}`;
 
   likeBTN.onclick = function (event) {
-    let currentUser = parseInt(document.querySelector("#userNum").value);
+    let params = (new URL(document.location)).searchParams;
+    let currentUser = parseInt(params.get("profile"));
+    console.log(currentUser)
     event.preventDefault();
     makeLike(post_id, currentUser)
     loadPosts();
