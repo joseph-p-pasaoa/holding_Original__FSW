@@ -133,7 +133,7 @@ VALUES(1, 2, 'I''d like to see you talk my way out of this mess.'),
    (8, 14, 'I said I was sorry!'),
    (8, 16, 'Brock, you''re posting in the wrong HOLD.'),
    (9, 6, 'What a pretty horse!'),
-   (9, 15, 'Ew, Brock. Gross.'),
+   (9, 15, 'Pink is the best!'),
    (10, 1, 'WOW! YOU ARE SO BEAUTIFUL, HAS ANYONE EVER TOLD YOU THAT?'),
    (10, 7, 'They never are, buddy. They never are.');
 
