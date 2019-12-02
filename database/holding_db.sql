@@ -82,7 +82,7 @@ VALUES
    ('ElfWithSword', 'Courage', 'Link', 'Masterswordsman', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
    ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 35, '../../database/photoDbSim/avatars/Ganon-Avatar1.jpeg'),
    ('NEIGH', 'nay nay', 'Epona', 'Horse', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
-   ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
+   ('Super Mario', 'MamaMia', 'Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
    ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
    ('Toadstool', 'password', 'Princess', 'Peach', 21, '../../database/photoDbSim/avatars/Peach-Avatar.jpg'),
    ('TheVeryBest', 'LkeNo1EvrWuz', 'Ash', 'Ketchum', 14, '../../database/photoDbSim/avatars/Ash-Avatar.png'),
@@ -95,18 +95,21 @@ VALUES
    (2, 'People say I don''t talk much. I guess they don''t follow me on holDING!'),
    (1, 'Stuck in this castle. AGAIN.'),
    (3, 'Just one more piece of the triforce, and I will be unstoppable'),
-   (4, 'Apples apples apples. Carrot?'),
+   (3, 'Yes, I want chicken nuggets, mom'),
+   (3, 'How do you delete a ding on this site?'),
    (5, 'Sometimes I wish the princess was in THIS castle.'),
    (5, 'FUN FACT: Fire Flowers taste like Mint!'),
    (6, 'Haunted Mansion? It''s free real estate.'),
    (6, 'It''s easy being green.'),
-   (3, 'How do you delete a ding on this site?'),
    (7, 'Who wants cake?!'),
    (8, 'Only 732 more Pokemon to catch!'),
+   (7, 'Where is my knight and shining plumber to come rescue me from this castle?'),
    (8, 'On my way to the Gym!'),
    (9, 'Bike 4 Sale, slightly used.'),
+   (7, 'I need to get my dress in a different color!'),
+   (4, 'Apples apples apples. Carrot?'),
    (10, 'My DMs are open, Nurse Joy.'),
-   (3, 'Yes, I want chicken nuggets, mom'),
+
    (10, 'Officer Jenny, U up?');
 
 INSERT INTO comments
