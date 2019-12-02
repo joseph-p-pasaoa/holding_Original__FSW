@@ -80,7 +80,7 @@ INSERT INTO users
 VALUES
    ('notsheik', 'Wisdom', 'Zelda', 'Queensworth', 23, '../../database/photoDbSim/avatars/zelda by manreeree.jpg'),
    ('ElfWithSword', 'Courage', 'Link', 'Masterswordsman', 19, '../../database/photoDbSim/avatars/Link Avatar.jpg'),
-   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 61, '../../database/photoDbSim/avatars/Ganon avatar.jpeg'),
+   ('gerudoMaster', 'Power', 'Ganon', 'Dorf', 35, '../../database/photoDbSim/avatars/Ganon-Avatar1.jpeg'),
    ('NEIGH', 'nay nay', 'Epona', 'Horse', 36, '../../database/photoDbSim/avatars/Epona-Avatar.png'),
    ('Super Mario', 'MamaMia','Mario', 'Mario', 31, '../../database/photoDbSim/avatars/Mario-Avatar.jpg'),
    ('Player 2', 'PlAyEr1', 'Luigi', 'Mario', 25, '../../database/photoDbSim/avatars/luigi-circle.jpg'),
@@ -91,21 +91,22 @@ VALUES
 
 INSERT INTO posts
    (poster_id, body)
-VALUES(1, 'Stuck in this castle. AGAIN.'),
+VALUES
    (2, 'People say I don''t talk much. I guess they don''t follow me on holDING!'),
-   (3, 'JUST ONE MORE PIECE OF THE TRIFORCE, AND I WILL BE UNSTOPPABLE'),
-   (3, 'YES I WANT CHICKEN NUGGETS, MOM'),
-   (3, 'HOW DO YOU DELETE A DING ON THIS SITE?'),
+   (1, 'Stuck in this castle. AGAIN.'),
+   (3, 'Just one more piece of the triforce, and I will be unstoppable'),
    (4, 'Apples apples apples. Carrot?'),
    (5, 'Sometimes I wish the princess was in THIS castle.'),
    (5, 'FUN FACT: Fire Flowers taste like Mint!'),
    (6, 'Haunted Mansion? It''s free real estate.'),
    (6, 'It''s easy being green.'),
+   (3, 'How do you delete a ding on this site?'),
    (7, 'Who wants cake?!'),
    (8, 'Only 732 more Pokemon to catch!'),
    (8, 'On my way to the Gym!'),
    (9, 'Bike 4 Sale, slightly used.'),
    (10, 'My DMs are open, Nurse Joy.'),
+   (3, 'Yes, I want chicken nuggets, mom'),
    (10, 'Officer Jenny, U up?');
 
 INSERT INTO comments
@@ -189,16 +190,16 @@ INSERT INTO albums
    (creator_id, album_title)
 VALUES(1, 'Castle Pics'),
    (2, 'Pots I''ve smashed'),
-   (3, 'DATING PROFILE PICTURES'),
+   (3, 'Selfies'),
    (4, 'Foodie-isms'),
    (4, 'Profile Photos'),
-   (4, 'friends'),
+   (3, 'friends'),
    (4, 'field shots'),
    (4, 'artwork of the most awesome horse eva'),
    (4, 'trip to botw'),
    (5, 'Selfies'),
    (5, 'Family'),
-   (5, 'Pasta'),
+   (3, 'Pasta'),
    (6, 'Family'),
    (6, 'Plumbing Mishaps'),
    (6, 'Ghosts And Other Dead People I Know'),
@@ -260,7 +261,8 @@ VALUES
    (22, 'Joy', 'https://princessofdragons.files.wordpress.com/2016/04/800px-nurse_joy.png'),
    (22, 'Joy At Work', 'http://images6.fanpop.com/image/photos/32900000/Nurse-Joy-girls-of-pokemon-32920705-342-192.jpg'),
    (23, 'Jenny', 'https://cdn.bulbagarden.net/upload/thumb/4/4d/Officer_Jenny.png/730px-Officer_Jenny.png'),
-   (23, 'Jenny At Work', 'https://cdn.bulbagarden.net/upload/2/22/Jenny_Blue.png');
+   (23, 'Jenny At Work', 'https://cdn.bulbagarden.net/upload/2/22/Jenny_Blue.png'),
+   (3, 'Me', '../../database/photoDbSim/albums/Ganon-Avatar1.jpeg');
 
 INSERT INTO holds
    (password, description, max_users, name)
@@ -295,13 +297,13 @@ VALUES
    (5, 2),
    (5, 5),
    (5, 7),
-   (5, 9),
+   (5, 1),
    (5, 12),
    (6, 3),
    (6, 5),
    (6, 6),
    (6, 7),
-   (6, 10),
+   (6, 1),
    (6, 12),
    (7, 4),
    (8, 4),
@@ -310,7 +312,7 @@ VALUES
    (10, 8),
    (10, 9),
    (10, 10),
-   (10, 13);
+   (10, 1);
 
 /* QUERIES */
 
