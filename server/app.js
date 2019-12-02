@@ -35,6 +35,7 @@ const albumsRT = require('./routes/albums.js');
 const photosRT = require('./routes/photos.js');
 const eventsRT = require('./routes/events.js');
 const holdsRT = require('./routes/holds.js');
+const userHoldsRT = require('./routes/userHolds.js');
 
 // Connects
 app.use('/sw', swRT);
@@ -46,6 +47,7 @@ app.use('/albums', albumsRT);
 app.use('/photos', photosRT);
 app.use('/events', eventsRT);
 app.use('/holds', holdsRT);
+app.use('/userHolds', userHoldsRT)
 
 
 // NO-ROUTE CATCH
