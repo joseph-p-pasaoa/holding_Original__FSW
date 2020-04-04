@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "quick_install": "psql -f ../database/holding_db.sql && npm install && npm start"
   },
   "keywords": [],
   "author": "Douglas MacKrell, Briahana Maugé, Joseph P. Pasaoa, and Kathy Puma",
